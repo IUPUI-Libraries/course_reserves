@@ -1,0 +1,72 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :item_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :item_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publication_date %>
+    <%= form.date_select :publication_date, id: :item_publication_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :item_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publisher %>
+    <%= form.text_field :publisher, id: :item_publisher %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edition %>
+    <%= form.text_field :edition, id: :item_edition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :loan_period %>
+    <%= form.text_field :loan_period, id: :item_loan_period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner %>
+    <%= form.text_field :owner, id: :item_owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :call_number %>
+    <%= form.text_field :call_number, id: :item_call_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_field :note, id: :item_note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :iucat_id %>
+    <%= form.text_field :iucat_id, id: :item_iucat_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

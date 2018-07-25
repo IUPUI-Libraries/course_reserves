@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  publication_date: 2018-07-25
+  status: MyString
+  publisher: MyString
+  edition: MyString
+  loan_period: MyString
+  owner: MyString
+  call_number: MyString
+  note: MyString
+  iucat_id: MyString
+
+two:
+  title: MyString
+  author: MyString
+  publication_date: 2018-07-25
+  status: MyString
+  publisher: MyString
+  edition: MyString
+  loan_period: MyString
+  owner: MyString
+  call_number: MyString
+  note: MyString
+  iucat_id: MyString

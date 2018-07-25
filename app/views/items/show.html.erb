@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @item.author %>
+</p>
+
+<p>
+  <strong>Publication date:</strong>
+  <%= @item.publication_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @item.status %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @item.publisher %>
+</p>
+
+<p>
+  <strong>Edition:</strong>
+  <%= @item.edition %>
+</p>
+
+<p>
+  <strong>Loan period:</strong>
+  <%= @item.loan_period %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @item.owner %>
+</p>
+
+<p>
+  <strong>Call number:</strong>
+  <%= @item.call_number %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @item.note %>
+</p>
+
+<p>
+  <strong>Iucat:</strong>
+  <%= @item.iucat_id %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
