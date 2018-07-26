@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publication date</th>
+      <th>Status</th>
+      <th>Publisher</th>
+      <th>Edition</th>
+      <th>Loan period</th>
+      <th>Owner</th>
+      <th>Call number</th>
+      <th>Note</th>
+      <th>Iucat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.author %></td>
+        <td><%= item.publication_date %></td>
+        <td><%= item.status %></td>
+        <td><%= item.publisher %></td>
+        <td><%= item.edition %></td>
+        <td><%= item.loan_period %></td>
+        <td><%= item.owner %></td>
+        <td><%= item.call_number %></td>
+        <td><%= item.note %></td>
+        <td><%= item.iucat_id %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>
