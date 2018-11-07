@@ -1,0 +1,34 @@
+<div class="rvt-header__controls">
+        <div class="rvt-header-id">
+            <div href="#0" class="rvt-header-id__profile">
+                <span class="rvt-header-id__avatar" aria-hidden="true">
+                  <%= current_user.uid[0,2].upcase %>
+                </span>
+                <span class="rvt-header-id__user"><%= current_user.uid %></span>
+            </div>
+            <%= link_to "Logout", destroy_user_session_path, class: "rvt-header-id__log-out"  %>
+        </div>
+        <button class="rvt-drawer-button" aria-haspopup="true" aria-expanded="false" data-drawer-toggle="mobile-drawer">
+            <span class="sr-only">Toggle menu</span>
+            <svg role="img" alt="" class="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <g fill="currentColor">
+                    <path d="M15,3H1A1,1,0,0,1,1,1H15a1,1,0,0,1,0,2Z"/>
+                    <path d="M15,9H1A1,1,0,0,1,1,7H15a1,1,0,0,1,0,2Z"/>
+                    <path d="M15,15H1a1,1,0,0,1,0-2H15a1,1,0,0,1,0,2Z"/>
+                </g>
+            </svg>
+            <svg role="img" alt="" class="rvt-drawer-button-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
+            </svg>
+        </button>
+    </div>
+    <div class="rvt-drawer" aria-hidden="true" id="mobile-drawer">
+        <div class="rvt-header-id rvt-header-id--drawer">
+            <div class="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
+                <span class="rvt-header-id__avatar" aria-hidden="true"><%= current_user.uid[0,2].upcase %></span>
+                <span class="rvt-header-id__user"><%= current_user.uid %></span>
+                <%= link_to "Logout", destroy_user_session_path, class: "rvt-header-id__log-out"  %>
+            </div>
+        </div>
+        <button class="rvt-drawer__bottom-close">Close nav</button>
+    </div>
