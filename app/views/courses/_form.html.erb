@@ -1,4 +1,5 @@
-<%= form_with(model: course, local: true) do |form| %>
+<%= form_for @course do |form| %>
+<%#= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -40,6 +41,22 @@
     <%= form.label :semester %>
     <%= form.text_field :semester, id: :course_semester %>
   </div>
+
+
+
+  <div class="add_items">
+    <ul>
+      <%= form.nested_fields_for :items do |item_form| %>
+      <li>
+        <%= item_form.remove_nested_fields_link %>
+        <%= item_form.label :title %>
+        <%= item_form.text_field :title %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= form.add_nested_fields_link :items %>
 
   <div class="actions">
     <%= form.submit %>

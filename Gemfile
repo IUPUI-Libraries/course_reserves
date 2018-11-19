@@ -54,5 +54,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'jquery-rails'
+gem 'nested_form_fields'
 gem 'omniauth'
 gem 'omniauth-cas', '~> 1.1', '>= 1.1.1'
