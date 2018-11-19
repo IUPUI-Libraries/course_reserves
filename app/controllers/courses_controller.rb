@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    # 2.times { @course.items.build }
   end
 
   # GET /courses/1/edit
@@ -57,19 +58,30 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'Course successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def course_params
-      params.require(:course).permit(:name, :course_number, :instructor, :instructor_username, :library, :semester)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def course_params
+    params.require(:course).permit(
+      :name, :course_number, :instructor,
+      :instructor_username, :library, :semester,
+      items_attributes: [
+        :id, :title, :author,
+        :publication_date, :status, :publisher,
+        :edition, :loan_period, :owner,
+        :call_number, :note, :iucat_id, :_destroy
+      ]
+    )
+  end
 end
