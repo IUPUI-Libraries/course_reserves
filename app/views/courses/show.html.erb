@@ -30,5 +30,13 @@
   <%= @course.semester %>
 </p>
 
+<h3>Items</h3>
+
+<ul>
+<% @course.items.each  do |item| %>
+  <li><%= item.title.to_s %></li>
+<% end %>
+</ul>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

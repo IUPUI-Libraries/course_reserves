@@ -44,17 +44,7 @@
 
 
 
-  <div class="add_items">
-    <ul>
-      <%= form.nested_fields_for :items do |item_form| %>
-      <li>
-        <%= item_form.remove_nested_fields_link %>
-        <%= item_form.label :title %>
-        <%= item_form.text_field :title %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
+  <%= render 'add_items', form: form %>
 
   <%= form.add_nested_fields_link :items %>
 

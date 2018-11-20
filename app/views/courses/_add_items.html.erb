@@ -1,0 +1,15 @@
+<div class="add_items">
+  <ul>
+    <%= form.nested_fields_for :items do |item_form| %>
+    <li>
+      <%= item_form.remove_nested_fields_link %>
+      <%= item_form.label :title %>
+      <%= item_form.text_field :title %>
+      <%= item_form.label :author %>
+      <%= item_form.text_field :author %>
+      <%= item_form.label :publication_date %>
+      <%= item_form.text_field :publication_date %>
+    </li>
+    <% end %>
+  </ul>
+</div>
