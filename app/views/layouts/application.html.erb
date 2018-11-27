@@ -10,9 +10,8 @@
 
   <body>
     <%= render "layouts/header" %>
-    <main role="main" id="main-content">
+    <main role="main" id="main-content" class="rvt-container">
       <%= render "layouts/notice" if notice %>
-      
       <%= yield %>
     </main>
     <%= render "layouts/footer" %>
