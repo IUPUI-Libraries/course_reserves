@@ -7,17 +7,36 @@ class IucatRecord
   end
 
   def data
-    @record.map { |tag| parse_tag(tag) }.to_h
+    data = {}
+    @record.each do |tag|
+      info = parse_tag(tag);
+      if info
+        info.each do |point|
+          data[point[0]] = point[1];
+        end
+     end
+    end
+    return data
   end
 
   private
 
   def parse_tag(tag)
+    return parse_control(tag) unless tag.css('span.control_field_values').text.empty?
+    return parse_subfields(tag) unless tag.css('div.subfields').text.empty?
+    false
+  end
+
+  def parse_subfields(tag)
+    tag_id = tag.css('div.tag_ind span.tag').text.delete(" \n")
+    subfields = tag.css('div.subfields').text.delete("\n").strip
+    [[tag_id, subfields]]
+  end
+
+  def parse_control(tag)
     tag_id = tag.css('div.tag_ind span.tag').text.delete(" \n")
     control_field = tag.css('span.control_field_values').text.strip
-    subfields = tag.css('div.subfields').text.delete("\n").strip
-    tag_val = control_field + subfields
-    [tag_id, tag_val]
+    [[tag_id, control_field]]
   end
 
   def record_attributes
