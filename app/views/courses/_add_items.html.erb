@@ -3,6 +3,9 @@
     <%= form.nested_fields_for :items do |item_form| %>
     <li>
       <%= item_form.remove_nested_fields_link %>
+      <%= item_form.label :iucat_id %>
+      <%= item_form.text_field :iucat_id %>
+      <div><button onclick="return false;">Fetch Metadata</button></div>
       <%= item_form.label :title %>
       <%= item_form.text_field :title %>
       <%= item_form.label :author %>
