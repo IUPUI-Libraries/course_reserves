@@ -54,7 +54,7 @@ function iucatRecordUrl(input){
   //
   // System iucat record json url: /iucat_records/{number}.json
   //
-  // Acceptable range: 1-9 digits.
+  // Acceptable range: 1-8 digits.
   //
   // This code will self-destruct in 10 seconds.
   // 9 -- 8  -- 7 -- ...
