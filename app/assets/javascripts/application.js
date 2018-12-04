@@ -44,7 +44,7 @@ function iucatRecordUrl(input){
   // IF input is in the form of an iucat url
   // such as https://iucat.iu.edu/catalog/4293173,
   // AND final parameter is a number within the acceptable range,
-  // THEN return a system iucat record json url using funal paramter.
+  // THEN return a system iucat record json url using final paramter.
   //
   // IF input is already a number
   // AND within acceptable range,
