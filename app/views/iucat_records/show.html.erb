@@ -1,0 +1,46 @@
+<div class="rvt-p-all-md">
+  <h2>IUCAT Record</h2>
+  <table class="rvt-table-compact">
+    <caption class="sr-only">IUCAT Record Info</caption>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          Catalog ID
+        </th>
+        <td>
+          <%=  @record.data['001']%>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Title
+        </th>
+        <td>
+          <%= @record.data['245a'] + @record.data['245b'] %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Author
+        </th>
+        <td>
+          <%= @record.data['245c'] %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+
+        </th>
+        <td>
+          <%=  %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
