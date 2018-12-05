@@ -58,5 +58,25 @@ function iucatRecordUrl(input){
   //
   // This code will self-destruct in 10 seconds.
   // 9 -- 8  -- 7 -- ...
-  return '/iucat_records/' + input + '.json';
+
+  // A quick test
+  // Candle making - IUCAT ID = 5494842
+  // input = 5494842;
+
+  // Remove all non-numbers from input string
+  var iucat_id = input.match(/\d+/g);
+
+  // Test: Is this a valid IUCAT ID number, acceptable range: 1-8 digits?
+  if (iucat_id.length > 0 && iucat_id.length  < 9) {
+    var input = iucat_id;
+    return '/iucat_records/' + input + '.json';
+  } else {
+    return false;
+  }
+
+//if (condition) {
+//  block of code to be executed if the condition is true
+//} else {
+//  block of code to be executed if the condition is false
+
 }
