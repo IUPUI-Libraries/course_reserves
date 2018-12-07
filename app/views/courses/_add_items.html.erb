@@ -1,18 +1,29 @@
-<div class="add_items">
-  <ul>
-    <%= form.nested_fields_for :items do |item_form| %>
-    <li>
-      <%= item_form.remove_nested_fields_link %>
-      <%= item_form.label :iucat_id %>
-      <%= item_form.text_field :iucat_id %>
-      <div><button class="rvt-button" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;">Fetch Metadata</button></div>
-      <%= item_form.label :title %>
-      <%= item_form.text_field :title %>
-      <%= item_form.label :author %>
-      <%= item_form.text_field :author %>
-      <%= item_form.label :publication_date %>
-      <%= item_form.text_field :publication_date %>
-    </li>
-    <% end %>
-  </ul>
+<%= form.nested_fields_for :items do |item_form| %>
+<div class='rvt-border-left rvt-m-bottom-sm'>
+<div class='rvt-p-all-sm'>
+  <%= item_form.remove_nested_fields_link 'Remove Item x', class: 'rvt-button rvt-button--danger' %>
 </div>
+<div class="add_items rvt-container">
+
+    <div class="rvt-grid">
+      <!--
+      <div class="rvt-grid__item">
+        <%= item_form.label :iucat_id %>
+      </div>
+      -->
+      <div class="rvt-grid__item">
+        <%= item_form.text_field :iucat_id, placeholder: "Get Metadata from IUCAT" %>
+      </div>
+      <div class="rvt-grid__item">
+        <button class="rvt-button" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;">Fetch Metadata</button>
+      </div>
+    </div>
+    <%= item_form.label :title %>
+    <%= item_form.text_field :title %>
+    <%= item_form.label :author %>
+    <%= item_form.text_field :author %>
+    <%= item_form.label :publication_date %>
+    <%= item_form.text_field :publication_date %>
+</div>
+</div>
+<% end %>
