@@ -1,6 +1,8 @@
 <h1>Editing Course</h1>
 
-<%= render 'form', course: @course %>
+<div class="rvt-button-group rvt-p-bottom-md">
+  <%= link_to 'Show', @course, class: 'rvt-button rvt-button--small' %>
+  <%= link_to 'Back', courses_path, class: 'rvt-button rvt-button--small rvt-button--secondary' %>
+</div>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<%= render 'form', course: @course %>
