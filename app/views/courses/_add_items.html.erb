@@ -1,29 +1,31 @@
 <%= form.nested_fields_for :items do |item_form| %>
-<div class='rvt-border-left rvt-m-bottom-sm'>
-<div class='rvt-p-all-sm'>
-  <%= item_form.remove_nested_fields_link 'Remove Item x', class: 'rvt-button rvt-button--danger' %>
-</div>
-<div class="add_items rvt-container">
-
+<div class='rvt-border-all rvt-border-radius rvt-m-bottom-sm rvt-p-all-md'>
+  <div class="add_items rvt-container">
     <div class="rvt-grid">
-      <!--
-      <div class="rvt-grid__item">
-        <%= item_form.label :iucat_id %>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-1-xxl-up  rvt-p-bottom-md'>
+        <%= item_form.remove_nested_fields_link 'Remove Item x', class: 'rvt-button rvt-button--danger' %>
       </div>
-      -->
-      <div class="rvt-grid__item">
-        <%= item_form.text_field :iucat_id, placeholder: "Get Metadata from IUCAT" %>
+      <div class='rvt-grid__item-4-sm-up rvt-grid__item-2-md-up rvt-grid__item-1-xxl-up rvt-p-bottom-md'>
+        <button class="rvt-button" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;">IUCAT Data</button>
       </div>
-      <div class="rvt-grid__item">
-        <button class="rvt-button" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;">Fetch Metadata</button>
+      <div class='rvt-grid__item-8-sm-up rvt-grid__item-8-md-up rvt-grid__item-10-xxl-up rvt-p-bottom-md'>
+        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID." %>
       </div>
     </div>
-    <%= item_form.label :title %>
-    <%= item_form.text_field :title %>
-    <%= item_form.label :author %>
-    <%= item_form.text_field :author %>
-    <%= item_form.label :publication_date %>
-    <%= item_form.text_field :publication_date %>
-</div>
+    <div class="rvt-grid">
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= item_form.label :title %>
+        <%= item_form.text_field :title %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= item_form.label :author %>
+        <%= item_form.text_field :author %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= item_form.label :publication_date %>
+        <%= item_form.text_field :publication_date %>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>
