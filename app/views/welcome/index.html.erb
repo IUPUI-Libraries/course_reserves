@@ -1,15 +1,13 @@
 <p>Application for holding materials at IUPUI Univeristy Library.</p>
-<ul>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to "Add Course", new_course_path %>
-    </li>
-    <li>
-      <%= link_to "List Courses", courses_path %>
-    </li>
-  <% else %>
-  <li>
-    <%= link_to "Sign in with IUCAS", user_cas_omniauth_authorize_path %>
-  </li>
-  <% end %>
-</ul>
+<% if user_signed_in? %>
+  <div class='rvt-p-all-sm'>
+    <%= link_to "Add Course", new_course_path, class: 'rvt-button' %>
+  </div>
+  <div class='rvt-p-all-sm'>
+    <%= link_to "List Courses", courses_path, class: 'rvt-button' %>
+  </div>
+<% else %>
+<div class='rvt-p-all-sm'>
+  <%= link_to "Sign in with IUCAS", user_cas_omniauth_authorize_path, class: 'rvt-button' %>
+</div>
+<% end %>

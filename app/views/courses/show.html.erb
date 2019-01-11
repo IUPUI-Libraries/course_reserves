@@ -38,5 +38,7 @@
 <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="rvt-button-group rvt-border-top rvt-p-top-md">
+  <%= link_to 'Edit', edit_course_path(@course), class: 'rvt-button rvt-button--small'  %>
+  <%= link_to 'Back', courses_path, class: 'rvt-button rvt-button--small rvt-button--secondary' %>
+</div>

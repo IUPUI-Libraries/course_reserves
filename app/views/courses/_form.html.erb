@@ -44,9 +44,11 @@
 
   <%= render 'add_items', form: form %>
 
-  <%= form.add_nested_fields_link :items %>
+  <div class='rvt-p-all-sm'>
+    <%= form.add_nested_fields_link :items, 'Add item +', class: 'rvt-button' %>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save Course', class: 'rvt-button' %>
   </div>
 <% end %>
