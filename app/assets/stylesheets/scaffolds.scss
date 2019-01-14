@@ -82,3 +82,9 @@ div {
 label {
   display: block;
 }
+
+.rvt-header__title a:hover,
+.rvt-header__title a span:hover {
+  text-decoration: none !important;
+  background-color: inherit;
+}
