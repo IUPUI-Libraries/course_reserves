@@ -6,7 +6,13 @@
   <div class='rvt-p-all-sm'>
     <%= link_to "List Courses", courses_path, class: 'rvt-button' %>
   </div>
-  <%= switch_user_select %>
+  <% if current_user.admin? %>
+  <div class='rvt-p-all-sm'>
+    <%= link_to "Administer", rails_admin_path, class: 'rvt-button' %>
+  </div>
+  <p class='rvt-text-bold'>Switch User</p>
+  <%= switch_user_select style: 'width: 220px' %>
+  <% end %>
 <% else %>
 <div class='rvt-p-all-sm'>
   <%= link_to "Sign in with IUCAS", user_cas_omniauth_authorize_path, class: 'rvt-button' %>
