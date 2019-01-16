@@ -6,6 +6,7 @@
   <div class='rvt-p-all-sm'>
     <%= link_to "List Courses", courses_path, class: 'rvt-button' %>
   </div>
+  <%= switch_user_select %>
 <% else %>
 <div class='rvt-p-all-sm'>
   <%= link_to "Sign in with IUCAS", user_cas_omniauth_authorize_path, class: 'rvt-button' %>
