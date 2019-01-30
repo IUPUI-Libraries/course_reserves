@@ -12,41 +12,48 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :course_name %>
-  </div>
+  <div class="rvt-container">
+    <div class="rvt-grid">
 
-  <div class="field">
-    <%= form.label :course_number %>
-    <%= form.text_field :course_number, id: :course_course_number %>
-  </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :course_name %>
+      </div>
 
-  <div class="field">
-    <%= form.label :instructor %>
-    <%= form.text_field :instructor, id: :course_instructor %>
-  </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :course_number %>
+        <%= form.text_field :course_number, id: :course_course_number %>
+      </div>
 
-  <div class="field">
-    <%= form.label :instructor_username %>
-    <%= form.text_field :instructor_username, id: :course_instructor_username %>
-  </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :instructor %>
+        <%= form.text_field :instructor, id: :course_instructor %>
+      </div>
 
-  <div class="field">
-    <%= form.label :library %>
-    <%= form.text_field :library, id: :course_library %>
-  </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :instructor_username %>
+        <%= form.text_field :instructor_username, id: :course_instructor_username %>
+      </div>
 
-  <div class="field">
-    <%= form.label :semester %>
-    <%= form.text_field :semester, id: :course_semester %>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :library %>
+        <%= form.text_field :library, id: :course_library %>
+      </div>
+
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :semester %>
+        <%= form.text_field :semester, id: :course_semester %>
+      </div>
+    </div>
   </div>
 
   <%= render 'add_items', form: form %>
 
-  <%= form.add_nested_fields_link :items %>
+  <div class='rvt-p-all-sm'>
+    <%= form.add_nested_fields_link :items, 'Add item +', class: 'rvt-button' %>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save Course', class: 'rvt-button' %>
   </div>
 <% end %>

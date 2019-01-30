@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setting Up Demo / Prod Mode
 
-Things you may want to cover:
+* RAILS_ENV=production rake db:migrate
+* RAILS_ENV=production bin/rails assets:precompile
 
-* Ruby version
+## Creating admin account fro initial account
+* user = User.find(1)
+* admin = Role.new(name: 'admin')
+* user.roles << admin
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

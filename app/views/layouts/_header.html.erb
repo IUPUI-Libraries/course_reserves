@@ -8,10 +8,10 @@
         </svg>
     </div>
     <span class="rvt-header__title">
-        <a href="/">
-          University Library <br/>
-          <span class="header__subtitle">Course Reserves</span>
-        </a>
+      <%= link_to root_path do %>
+        University Library <br/>
+        <span class="header__subtitle">Course Reserves</span>
+      <% end %>
     </span>
     <% if user_signed_in? %>
       <%= render "layouts/header_user" %>

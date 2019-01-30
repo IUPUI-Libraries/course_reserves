@@ -1,42 +1,47 @@
 <p id="notice"><%= notice %></p>
+<h3>Course</h3>
+<table class="rvt-table-stripes">
+  <caption class="sr-only">Course Information</caption>
+  <tbody>
+    <tr>
+      <th scope="row">Name:</th>
+      <td><%= @course.name %></td>
+    </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+    <tr>
+      <th scope="row">Course number:</th>
+      <td><%= @course.course_number %></td>
+    </tr>
 
-<p>
-  <strong>Course number:</strong>
-  <%= @course.course_number %>
-</p>
+    <tr>
+      <th scope="row">Instructor:</th>
+      <td><%= @course.instructor %></td>
+    </tr>
 
-<p>
-  <strong>Instructor:</strong>
-  <%= @course.instructor %>
-</p>
+    <tr>
+      <th scope="row">Instructor Username:</th>
+      <td><%= @course.instructor_username %></td>
+    </tr>
 
-<p>
-  <strong>Instructor username:</strong>
-  <%= @course.instructor_username %>
-</p>
+    <tr>
+      <th scope="row">Library:</th>
+      <td><%= @course.library %></td>
+    </tr>
 
-<p>
-  <strong>Library:</strong>
-  <%= @course.library %>
-</p>
-
-<p>
-  <strong>Semester:</strong>
-  <%= @course.semester %>
-</p>
+    <tr>
+      <th scope="row">Semester:</th>
+      <td><%= @course.semester %></td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>Items</h3>
 
 <ul>
-<% @course.items.each  do |item| %>
-  <li><%= item.title.to_s %></li>
-<% end %>
+  <%= render @course.items %>
 </ul>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="rvt-button-group rvt-p-top-md">
+  <%= link_to 'Edit', edit_course_path(@course), class: 'rvt-button rvt-button--small'  %>
+  <%= link_to 'Back', courses_path, class: 'rvt-button rvt-button--small rvt-button--secondary' %>
+</div>

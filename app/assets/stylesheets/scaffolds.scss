@@ -23,7 +23,7 @@ a {
   color: #000;
 
   &:visited {
-    color: #666;
+    /*color: #fff;*/
   }
 
   &:hover {
@@ -81,4 +81,10 @@ div {
 
 label {
   display: block;
+}
+
+.rvt-header__title a:hover,
+.rvt-header__title a span:hover {
+  text-decoration: none !important;
+  background-color: inherit;
 }

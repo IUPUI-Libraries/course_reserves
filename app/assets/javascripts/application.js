@@ -79,4 +79,15 @@ function iucatRecordUrl(input){
 //} else {
 //  block of code to be executed if the condition is false
 
+  path = get_base_path();
+  return path + '/iucat_records/' + input + '.json';
+}
+
+function get_base_path(){
+  path = '';
+  first_path = window.location.pathname.split('/')[1];
+  if(first_path != 'courses'){
+    path = '/' + first_path;
+  }
+  return path;
 }
