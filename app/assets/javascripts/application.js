@@ -39,48 +39,15 @@ function courseAttr(x, field_name){
 }
 
 function iucatRecordUrl(input){
-  // Your Mission should you choose to accept...
-  //
-  // IF input is in the form of an iucat url
-  // such as https://iucat.iu.edu/catalog/4293173,
-  // AND final parameter is a number within the acceptable range,
-  // THEN return a system iucat record json url using final paramter.
-  //
-  // IF input is already a number
-  // AND within acceptable range,
-  // THEN return a system iucat record json url using nunmber.
-  //
-  // OTHERWISE, return false.
-  //
-  // System iucat record json url: /iucat_records/{number}.json
-  //
-  // Acceptable range: 1-8 digits.
-  //
-  // This code will self-destruct in 10 seconds.
-  // 9 -- 8  -- 7 -- ...
-
-  // A quick test
-  // Candle making - IUCAT ID = 5494842
-  // input = 5494842;
-
   // Remove all non-numbers from input string
   var iucat_id = input.match(/\d+/g);
 
   // Test: Is this a valid IUCAT ID number, acceptable range: 1-8 digits?
   if (iucat_id.length > 0 && iucat_id.length  < 9) {
-    var input = iucat_id;
-    return '/iucat_records/' + input + '.json';
-  } else {
-    return false;
+    path = get_base_path();
+    return path + '/iucat_records/' + iucat_id + '.json';
   }
-
-//if (condition) {
-//  block of code to be executed if the condition is true
-//} else {
-//  block of code to be executed if the condition is false
-
-  path = get_base_path();
-  return path + '/iucat_records/' + input + '.json';
+  return false;
 }
 
 function get_base_path(){
