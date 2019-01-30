@@ -24,3 +24,6 @@
 
 # RVM files
 .ruby-*
+
+# Production stuff to ignore
+public/assets/

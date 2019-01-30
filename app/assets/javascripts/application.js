@@ -58,5 +58,15 @@ function iucatRecordUrl(input){
   //
   // This code will self-destruct in 10 seconds.
   // 9 -- 8  -- 7 -- ...
-  return '/iucat_records/' + input + '.json';
+  path = get_base_path();
+  return path + '/iucat_records/' + input + '.json';
+}
+
+function get_base_path(){
+  path = '';
+  first_path = window.location.pathname.split('/')[1];
+  if(first_path != 'courses'){
+    path = '/' + first_path;
+  }
+  return path;
 }
