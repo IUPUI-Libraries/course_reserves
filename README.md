@@ -10,3 +10,8 @@
 * admin = Role.new(name: 'admin')
 * user.roles << admin
 
+## Clearing Database
+* RAILS_ENV=production rake db:reset db:migrate DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+
+## Precompiling Assets
+* RAILS_ENV=production bin/rails assets:precompile
