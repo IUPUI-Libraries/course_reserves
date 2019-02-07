@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
     create_table :items do |t|
       t.string :title
       t.string :author
-      t.date :publication_date
+      t.string :publication_date
       t.string :status
       t.string :publisher
       t.string :edition
