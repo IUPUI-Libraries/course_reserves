@@ -4,7 +4,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.admin? || user.role?(:instructor)
   end
 
   def edit?
