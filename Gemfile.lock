@@ -122,6 +122,7 @@ GEM
       coffee-rails (>= 3.2.1)
       jquery-rails
       rails (>= 3.2.0)
+    net-ldap (0.16.1)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -253,6 +254,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   nested_form_fields
+  net-ldap (~> 0.16.1)
   nokogiri
   omniauth
   omniauth-cas (~> 1.1, >= 1.1.1)
