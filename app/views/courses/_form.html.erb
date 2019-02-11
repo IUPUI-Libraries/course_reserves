@@ -42,7 +42,7 @@
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :semester %>
-        <%= form.text_field :semester, id: :course_semester %>
+        <%= form.collection_select :semester_id, Semester.active, :id, :semester %>
       </div>
     </div>
   </div>
