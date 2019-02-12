@@ -29,7 +29,7 @@ class User < ApplicationRecord
   def ads_info
     ldap = Net::LDAP.new
     ldap.host = 'ads.iu.edu'
-    ldap.auth 'cn=***REMOVED***,ou=IN-ULib,ou=Accounts,dc=ADS,dc=IU,dc=Edu', '***REMOVED***'
+    ldap.auth 'cn=***REMOVED***,ou=IN-ULib,ou=Accounts,dc=ADS,dc=IU,dc=Edu', 'replace'
     if ldap.bind
       treebase = 'ou=Accounts,dc=ADS,dc=IU,dc=Edu'
       filter = Net::LDAP::Filter.eq("cn", self.uid)
