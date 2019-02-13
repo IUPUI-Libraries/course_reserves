@@ -29,9 +29,9 @@ class User < ApplicationRecord
   def ads_info
     ldap = Net::LDAP.new
     ldap.host = 'ads.iu.edu'
-    ldap.auth 'cn=***REMOVED***,ou=IN-ULib,ou=Accounts,dc=ADS,dc=IU,dc=Edu', 'replace'
+    ldap.auth 'cn=user,dc=example,dc=com', 'password'
     if ldap.bind
-      treebase = 'ou=Accounts,dc=ADS,dc=IU,dc=Edu'
+      treebase = 'ou=accounts,dc=example,dc=com'
       filter = Net::LDAP::Filter.eq("cn", self.uid)
       attrs = ["mail", "sn", "memberof"]
       ldap.search(base: treebase, filter: filter, attributes: attrs) do |entry|
