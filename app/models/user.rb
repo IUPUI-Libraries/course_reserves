@@ -1,5 +1,3 @@
-require 'net/ldap'
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -14,7 +12,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.ads_info
+      user.from_ads
     end
   end
 
@@ -26,29 +24,13 @@ class User < ApplicationRecord
     role?(:admin)
   end
 
-  def ads_info
-    ldap = Net::LDAP.new
-    ldap.host = 'ads.iu.edu'
-    ldap.auth 'cn=user,dc=example,dc=com', 'password'
-    if ldap.bind
-      treebase = 'ou=accounts,dc=example,dc=com'
-      filter = Net::LDAP::Filter.eq("cn", self.uid)
-      attrs = ["mail", "sn", "memberof"]
-      ldap.search(base: treebase, filter: filter, attributes: attrs) do |entry|
-        Rails.logger.info "Adding LDAP info to user #{self.uid}"
-        self.email = entry.mail[0]
-        entry.memberof.each do |member|
-          # IUPUI Faculty: IU-UITS-MANAGED-IN-FACULTY
-          # UL Admins (for testing): IN-ULIB-Admins
-          if member.include? "IU-UITS-MANAGED-IN-FACULTY"
-            instructor = Role.find_or_create_by(name: 'instructor')
-            self.roles << instructor
-            Rails.logger.info "User #{self.uid} added to INSTRUCTOR role."
-          end
-        end
-      end
-    else
-      Rails.logger.warning "LDAP Bind Failed : #{ldap.get_operation_result}"
+  def from_ads
+    info = LdapService.fetch_info(self.uid)
+    self.email = info[:email] if info.key? :email
+    if info.key? :role
+      role = Role.find_or_create_by(name: info[:role])
+      self.roles << role
+      Rails.logger.info "User #{self.uid} added to #{info[:role]} role."
     end
   end
 end

@@ -17,6 +17,9 @@
 !/log/.keep
 !/tmp/.keep
 
+# Configuration files to ignore
+/config/course_reserves.yml
+
 /node_modules
 /yarn-error.log
 
