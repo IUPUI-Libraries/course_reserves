@@ -7,6 +7,10 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module CourseReserves
+  def self.config
+    Rails.application.config_for(:course_reserves)
+  end
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20190211190524) do
   create_table "items", force: :cascade do |t|
     t.string "title"
     t.string "author"
-    t.date "publication_date"
+    t.string "publication_date"
     t.string "status"
     t.string "publisher"
     t.string "edition"

@@ -1,0 +1,15 @@
+default: &default
+  ldap:
+    host: ads.iu.edu
+    username: username
+    password: password
+    treebase: 'ou=accounts,dc=ads,dc=edu'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
