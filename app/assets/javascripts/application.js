@@ -23,15 +23,39 @@ function fetchMetadata(x){
   iucat_json = iucatRecordUrl(iucat_input);
   if(iucat_json){
     $.getJSON(iucat_json, function(data){
+      fields = {};
+      populate = true;
       $.each(data, function(key, val){
-        if($(courseAttr(x,'title')).length){
-          $(courseAttr(x,key)).val(val);
+        if(key == 'location'){
+          // Must be Ul or Herron
+          if(val != 'I-UNIVLIB' && val != 'I-ART'){
+            alert("This is not a IUPUI UL or Herron Item.");
+            populate = false;
+          }
+        }else if(key == 'book_on_demand' && val == true){
+          // Check if Book on Demand
+            alert("This is a Book on Demand item..... I DON'T KNOW WHAT TO DO!!!!");
+            populate = false;
+        }else{
+          // Add item to display array
+          fields[key] = val;
         }
       })
+      if(populate){
+        populate_form(x, fields);
+      }
     }).fail(function() { alert('Could not retrieve data from IUCAT.'); });
   }else{
     alert('Invalid IUCAT ID.')
   }
+}
+
+function populate_form(x, fields){
+  $.each(fields, function(key, val){
+    if($(courseAttr(x,'title')).length){
+      $(courseAttr(x,key)).val(val);
+    }
+  })
 }
 
 function courseAttr(x, field_name){

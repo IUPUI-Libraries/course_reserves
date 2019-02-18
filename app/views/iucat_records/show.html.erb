@@ -22,7 +22,7 @@
           Title
         </th>
         <td>
-          <%= @record.data['245a'] + @record.data['245b'] %>
+          <%= @record.data['245a'].to_s + @record.data['245b'].to_s %>
         </td>
       </tr>
       <tr>
@@ -39,6 +39,22 @@
         </th>
         <td>
           <%= @record.data['260c'] %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Location
+        </th>
+        <td>
+          <%= @record.data['999m'] %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Book on Demand
+        </th>
+        <td>
+          <%= (@record.data['999n'] == '_ULDEMAND' ? true : false).to_s %>
         </td>
       </tr>
       <tr>
