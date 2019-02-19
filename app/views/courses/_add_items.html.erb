@@ -6,10 +6,10 @@
         <%= item_form.remove_nested_fields_link 'Remove Item x', class: 'rvt-button rvt-button--danger' %>
       </div>
       <div class='rvt-grid__item-4-sm-up rvt-grid__item-2-md-up rvt-grid__item-1-xxl-up rvt-p-bottom-md'>
-        <button class="rvt-button" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;">IUCAT Data</button>
+        <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>IUCAT Data</button>
       </div>
       <div class='rvt-grid__item-8-sm-up rvt-grid__item-8-md-up rvt-grid__item-10-xxl-up rvt-p-bottom-md'>
-        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID." %>
+        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID.", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__);" %>
       </div>
     </div>
     <div class="rvt-grid">
