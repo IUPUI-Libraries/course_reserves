@@ -1,3 +1,15 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.iucat-data{
+  background-color: #ffece5;
+  border: 1px solid #ffb49a;
+  border-radius: 4px;
+  padding-top: 20px;
+  margin-bottom:15px;
+}
+
+.iucat-data input{
+  background-color: #fff !important;
+}
