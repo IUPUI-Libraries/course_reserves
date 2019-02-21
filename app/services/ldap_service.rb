@@ -25,7 +25,7 @@ module LdapService
         end
       end
     else
-      Rails.logger.warning "LDAP Bind Failed : #{ldap.get_operation_result}"
+      Rails.logger.warn "LDAP Bind Failed : #{ldap.get_operation_result}"
     end
     info
   end
