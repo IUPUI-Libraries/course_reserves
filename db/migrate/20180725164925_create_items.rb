@@ -4,7 +4,6 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :author
       t.string :publication_date
-      t.string :status
       t.string :publisher
       t.string :edition
       t.string :loan_period

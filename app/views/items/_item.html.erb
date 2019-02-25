@@ -1,4 +1,7 @@
 <li>
+  <span class="rvt-badge <%= item_badge(item) %>">
+    <%= item.item_status.status %>
+  </span>
   <%= item.author.to_s %>
   (<%= item.publication_date.to_s %>).
   <i><%= item.title.to_s %></i>.

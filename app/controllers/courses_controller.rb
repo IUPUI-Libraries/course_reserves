@@ -80,12 +80,7 @@ class CoursesController < ApplicationController
     params.require(:course).permit(
       :name, :course_number, :instructor,
       :instructor_username, :library, :semester_id,
-      items_attributes: [
-        :id, :title, :author,
-        :publication_date, :status, :publisher,
-        :edition, :loan_period, :owner,
-        :call_number, :note, :iucat_id, :_destroy
-      ]
+      items_attributes: policy(:item).permitted_attributes
     )
   end
 end
