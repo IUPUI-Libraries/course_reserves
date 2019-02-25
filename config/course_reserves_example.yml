@@ -1,9 +1,15 @@
 default: &default
-  ldap:
-    host: ads.iu.edu
-    username: username
-    password: password
-    treebase: 'ou=accounts,dc=ads,dc=edu'
+  :ldap:
+    :host: ads.university.edu
+    :username: username
+    :password: password
+    :authbase: 'ou=group,ou=accounts,dc=ads,dc=university,dc=edu'
+    :treebase: 'ou=accounts,dc=ads,dc=university,dc=edu'
+
+  # Roles with the ldap groups that should be assigned to them.
+  :roles:
+    :instructor: ['UNIV-FACULTY','LIB-Admins']
+    :admin: ['LIB-OPS']
 
 development:
   <<: *default

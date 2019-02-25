@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  #devise :database_authenticatable, :registerable,
+  # devise :database_authenticatable, :registerable,
   #       :recoverable, :rememberable, :validatable
   devise :omniauthable, :omniauth_providers => [:cas]
 
@@ -27,10 +27,12 @@ class User < ApplicationRecord
   def from_ads
     info = LdapService.fetch_info(self.uid)
     self.email = info[:email] if info.key? :email
-    if info.key? :role
-      role = Role.find_or_create_by(name: info[:role])
-      self.roles << role
-      Rails.logger.info "User #{self.uid} added to #{info[:role]} role."
+    if info.key? :roles
+      info[:roles].each do |role|
+        role_obj = Role.find_or_create_by(name: role)
+        self.roles << role_obj
+        Rails.logger.info "User #{self.uid} added to #{info[:role]} role."
+      end
     end
   end
 end
