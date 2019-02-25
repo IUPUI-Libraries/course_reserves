@@ -8,8 +8,11 @@ default: &default
 
   # Roles with the ldap groups that should be assigned to them.
   :roles:
-    :instructor: ['UNIV-FACULTY','LIB-Admins']
-    :admin: ['LIB-OPS']
+    :instructor:
+      - UNIV-FACULTY
+      - LIB-Admins
+    :admin:
+      - LIB-OPS
 
 development:
   <<: *default
