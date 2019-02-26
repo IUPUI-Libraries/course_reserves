@@ -13,3 +13,9 @@ Semester.create(semester: '2018-2019 Fall', active: false)
 Semester.create(semester: '2018-2019 Spring', active: true)
 Semester.create(semester: '2018-2019 Summer', active: true)
 Semester.create(semester: '2019-2020 Fall', active: false)
+
+ItemStatus.destroy_all
+
+ItemStatus.create(status: 'Pending')
+ItemStatus.create(status: 'Ordering')
+ItemStatus.create(status: 'Available')

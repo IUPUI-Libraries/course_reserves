@@ -22,6 +22,12 @@
         <%= item_form.label :publication_date %>
         <%= item_form.text_field :publication_date %>
       </div>
+      <% if current_user.admin? %>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= item_form.label :item_status %>
+        <%= item_form.collection_select :item_status_id, ItemStatus.all, :id, :status %>
+      </div>
+      <% end %>
     </div>
     <div class="rvt-grid">
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md'>
