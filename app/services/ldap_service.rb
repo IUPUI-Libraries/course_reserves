@@ -9,24 +9,27 @@ module LdapService
     auth_user = ["cn=#{CourseReserves.config[:ldap][:user]}", CourseReserves.config[:ldap][:authbase]].join(',')
     ldap.auth auth_user, CourseReserves.config[:ldap][:password]
     if ldap.bind
-      filter = Net::LDAP::Filter.eq("cn", username)
-      attrs = ["mail", "sn", "memberof"]
+      filter = Net::LDAP::Filter.eq('cn', username)
+      attrs = %w[mail sn memberof]
       treebase = CourseReserves.config[:ldap][:treebase]
       ldap.search(base: treebase, filter: filter, attributes: attrs) do |entry|
         info[:email] = entry.mail[0]
-        entry.memberof.each do |member|
-          # IUPUI Faculty: IU-UITS-MANAGED-IN-FACULTY
-          # UL Admins (for testing): IN-ULIB-Admins
-          if member.include? 'IU-UITS-MANAGED-IN-FACULTY'
-            info[:role] = 'instructor'
-          elsif member.include? 'IN-ULIB-OPS'
-            info[:role] = 'admin'
-          end
-        end
+        info[:name] = entry.sn[0]
+        info[:roles] = ldap_roles(entry.memberof)
       end
     else
       Rails.logger.warn "LDAP Bind Failed : #{ldap.get_operation_result}"
     end
     info
+  end
+
+  def self.ldap_roles(groups)
+    roles = []
+    groups.each do |group|
+      CourseReserves.config[:roles].each do |role, ldap_groups|
+        roles << role if group[3..-1].start_with?(*ldap_groups)
+      end
+    end
+    roles
   end
 end
