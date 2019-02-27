@@ -22,16 +22,14 @@ function fetchMetadata(x){
       fields = {};
       populate = true;
       $.each(data, function(key, val){
-        if(key == 'location'){
+        if(key == 'local_location' && !val){
           // Must be Ul or Herron
-          if(val != 'I-UNIVLIB' && val != 'I-ART'){
-            alert("This is not a IUPUI UL or Herron Item.");
-            populate = false;
-          }
+          alert("This is not a IUPUI UL or Herron Item.");
+          populate = false;
         }else if(key == 'book_on_demand' && val == true){
           // Check if Book on Demand
-            alert("This is a Book on Demand item..... I DON'T KNOW WHAT TO DO!!!!");
-            populate = false;
+          alert("This is a Book on Demand item..... I DON'T KNOW WHAT TO DO!!!!");
+          populate = false;
         }else{
           // Add item to display array
           fields[key] = val;

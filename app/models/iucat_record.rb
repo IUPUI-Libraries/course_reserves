@@ -10,13 +10,14 @@ class IucatRecord
     @record = Nokogiri::HTML(open(record_string)).css('div#marc_view div.field')
   end
 
+  # Returns Hash or arrays
   def data
-    data = Hash.new
+    data = {}
     @record.each do |tag|
-      info = parse_tag(tag);
-      data = data.merge(info) if info
+      info = parse_tag(tag)
+      info.each { |key, val| data.key?(key) ? data[key] << val : data[key] = [val] } if info
     end
-    return data
+    data
   end
 
   private
@@ -28,7 +29,7 @@ class IucatRecord
   end
 
   def parse_subfields(tag)
-    data = Hash.new
+    data = {}
     tag_id = tag.css('div.tag_ind span.tag').text.delete(" \n")
     subfields = tag.css('div.subfields')
     subfields_split = subfields.inner_html.split(/\<span class="sub_code">.*\<\/span\>/)
@@ -42,16 +43,12 @@ class IucatRecord
       data[subtag_id] = sub_val
       i += 1
     end
-    return data
+    data
   end
 
   def parse_control(tag)
     tag_id = tag.css('div.tag_ind span.tag').text.delete(" \n")
     control_field = tag.css('span.control_field_values').text.strip
     return { tag_id => control_field }
-  end
-
-  def record_attributes
-
   end
 end
