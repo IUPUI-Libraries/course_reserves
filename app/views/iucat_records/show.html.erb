@@ -14,7 +14,7 @@
           Catalog ID
         </th>
         <td>
-          <%=  @record.data['001']%>
+          <%=  wrap(@record.data['001']) %>
         </td>
       </tr>
       <tr>
@@ -22,7 +22,15 @@
           Title
         </th>
         <td>
-          <%= @record.data['245a'].to_s + @record.data['245b'].to_s %>
+          <%= wrap(@record.data['245a']) %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Sub Title
+        </th>
+        <td>
+          <%= wrap(@record.data['245b']) %>
         </td>
       </tr>
       <tr>
@@ -30,7 +38,7 @@
           Author
         </th>
         <td>
-          <%= @record.data['245c'] %>
+          <%= wrap(@record.data['245c']) %>
         </td>
       </tr>
       <tr>
@@ -38,7 +46,7 @@
           Publication Date
         </th>
         <td>
-          <%= @record.data['260c'] %>
+          <%= wrap(@record.data['260c']) %>
         </td>
       </tr>
       <tr>
@@ -46,7 +54,15 @@
           Location
         </th>
         <td>
-          <%= @record.data['999m'] %>
+          <%= wrap(@record.data['999m']) %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Local Location
+        </th>
+        <td>
+          <%= local(@record.data['999m']) %>
         </td>
       </tr>
       <tr>
@@ -54,15 +70,7 @@
           Book on Demand
         </th>
         <td>
-          <%= (@record.data['999n'] == '_ULDEMAND' ? true : false).to_s %>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-
-        </th>
-        <td>
-          <%=  %>
+          <%= bod(@record.data['999n']) %>
         </td>
       </tr>
     </tbody>

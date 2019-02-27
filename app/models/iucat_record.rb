@@ -49,6 +49,6 @@ class IucatRecord
   def parse_control(tag)
     tag_id = tag.css('div.tag_ind span.tag').text.delete(" \n")
     control_field = tag.css('span.control_field_values').text.strip
-    return { tag_id => control_field }
+    { tag_id => control_field }
   end
 end
