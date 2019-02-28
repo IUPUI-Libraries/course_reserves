@@ -30,3 +30,7 @@
 
 # Production stuff to ignore
 public/assets/
+
+# Mac generated files
+.DS_Store
+*/.DS_Store
