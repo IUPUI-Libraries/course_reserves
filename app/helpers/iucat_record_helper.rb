@@ -9,6 +9,6 @@ module IucatRecordHelper
   end
 
   def bod(data)
-    data == '_ULDEMAND'
+    (data & ['_ULDEMAND']).any? ? true : false
   end
 end
