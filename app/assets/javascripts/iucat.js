@@ -24,11 +24,11 @@ function fetchMetadata(x){
       $.each(data, function(key, val){
         if(key == 'local_location' && !val){
           // Must be Ul or Herron
-          alert("This is not a IUPUI UL or Herron Item.");
+          Modal.open('modal-local', function(){});
           populate = false;
         }else if(key == 'book_on_demand' && val == true){
           // Check if Book on Demand
-          alert("This is a Book on Demand item..... I DON'T KNOW WHAT TO DO!!!!");
+          Modal.open('modal-bod', function(){});
           populate = false;
         }else{
           // Add item to display array

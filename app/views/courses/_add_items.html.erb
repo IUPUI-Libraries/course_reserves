@@ -36,4 +36,61 @@
     </div>
   </div>
 </div>
+<div class = "rvt-modal"
+     id = "modal-bod"
+     role = "dialog"
+     aria-labelledby="modal-dialog-title"
+     aria-hidden="true"
+     tabindex=-1
+     data-modal-dialog="true">
+  <div class="rvt-modal__inner">
+    <header class="rvt-modal__header">
+      <h1>Books on Demand Item</h1>
+    </header>
+    <div class="rvt-modal__body">
+      <p>
+        This is a Books on Demand item.
+        The library will order this book
+        on your behalf. In most cases,
+        the book can be ordered as either
+        in print or electonic form.
+        Please indicate which format
+        you woudl prefer.
+      </p>
+    </div>
+    <div class="rvt-modal__controls">
+      <button class="rvt-button">eBook</button>
+      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-bod">Print Book</button>
+      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-bod">Cancel</button>
+    </div>
+  </div>
+</div>
+<div class = "rvt-modal"
+     id = "modal-local"
+     role = "dialog"
+     aria-labelledby="modal-dialog-title"
+     aria-hidden="true"
+     tabindex=-1
+     data-modal-dialog="true">
+  <div class="rvt-modal__inner">
+    <header class="rvt-modal__header">
+      <h1>Item Not Available</h1>
+    </header>
+    <div class="rvt-modal__body">
+      <p>
+        The item you are trying
+        to request is not available
+        through IUPUI University
+        Library or through the Herron
+        Art Library.
+      </p>
+    </div>
+    <div class="rvt-modal__controls">
+      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-local">Close</button>
+    </div>
+  </div>
+</div>
+
+
+
 <% end %>
