@@ -22,11 +22,16 @@
     </div>
     <div class="rvt-modal__controls">
       <button class="rvt-button"
-              data-modal-close="modal-bod">eBook</button>
+              onclick="Modal.close('modal-bod', function(){set_bod('ebook')});
+                       return false;">
+        eBook
+      </button>
       <button class="rvt-button rvt-button--secondary"
-              data-modal-close="modal-bod">Print Book</button>
-      <button class="rvt-button rvt-button--secondary"
-              data-modal-close="modal-bod">Cancel</button>
+              onclick="Modal.close('modal-bod', function(){set_bod('print')});
+                       return false;">
+        Print Book
+      </button>
     </div>
   </div>
+  <input type="hidden" id="bod_modal_index" />
 </div>

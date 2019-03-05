@@ -28,8 +28,10 @@ function fetchMetadata(x){
           populate = false;
         }else if(key == 'book_on_demand' && val == true){
           // Check if Book on Demand
-          Modal.open('modal-bod', function(){});
-          populate = false;
+          Modal.open('modal-bod', function(){
+            $('#bod_modal_index').val(x);
+          });
+          populate = true;
         }else{
           // Add item to display array
           fields[key] = val;
@@ -84,4 +86,11 @@ function get_base_path(){
     path = '/' + first_path;
   }
   return path;
+}
+
+function set_bod(format){
+  bod_id = $('#bod_modal_index').val();
+  //alert("Setting Bod to " + bod_id);
+  $("#course_items_attributes_" + bod_id + "_bod_format").val(format);
+  $("#div_bod_format_" + bod_id).show();
 }
