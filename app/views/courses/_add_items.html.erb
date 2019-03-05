@@ -22,6 +22,10 @@
         <%= item_form.label :publication_date %>
         <%= item_form.text_field :publication_date %>
       </div>
+      <div style= "display:none;" class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= item_form.label :bod_format, 'Books on Demand format' %>
+        <%= item_form.text_field :bod_format %>
+      </div>
       <% if current_user.admin? %>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :item_status %>
@@ -36,61 +40,6 @@
     </div>
   </div>
 </div>
-<div class = "rvt-modal"
-     id = "modal-bod"
-     role = "dialog"
-     aria-labelledby="modal-dialog-title"
-     aria-hidden="true"
-     tabindex=-1
-     data-modal-dialog="true">
-  <div class="rvt-modal__inner">
-    <header class="rvt-modal__header">
-      <h1>Books on Demand Item</h1>
-    </header>
-    <div class="rvt-modal__body">
-      <p>
-        This is a Books on Demand item.
-        The library will order this book
-        on your behalf. In most cases,
-        the book can be ordered as either
-        in print or electonic form.
-        Please indicate which format
-        you woudl prefer.
-      </p>
-    </div>
-    <div class="rvt-modal__controls">
-      <button class="rvt-button">eBook</button>
-      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-bod">Print Book</button>
-      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-bod">Cancel</button>
-    </div>
-  </div>
-</div>
-<div class = "rvt-modal"
-     id = "modal-local"
-     role = "dialog"
-     aria-labelledby="modal-dialog-title"
-     aria-hidden="true"
-     tabindex=-1
-     data-modal-dialog="true">
-  <div class="rvt-modal__inner">
-    <header class="rvt-modal__header">
-      <h1>Item Not Available</h1>
-    </header>
-    <div class="rvt-modal__body">
-      <p>
-        The item you are trying
-        to request is not available
-        through IUPUI University
-        Library or through the Herron
-        Art Library.
-      </p>
-    </div>
-    <div class="rvt-modal__controls">
-      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-local">Close</button>
-    </div>
-  </div>
-</div>
-
-
-
+<%= render 'bod_modal', item_form: item_form %>
+<%= render 'non-iupui_modal', item_form: item_form %>
 <% end %>
