@@ -92,6 +92,6 @@ function set_bod(format){
   bod_id = $('#bod_modal_index').val();
   $("#course_items_attributes_" + bod_id + "_bod_format").val(format);
   status_name = "course\\[items_attributes\\]\\[" + bod_id + "\\]\\[item_status_id\\]";
-  $('select[name=' + status_name + ']').val(2);
+  $('select[name=' + status_name + '] option:contains("Ordering")').prop('selected', true);
   $("#div_bod_format_" + bod_id).show();
 }
