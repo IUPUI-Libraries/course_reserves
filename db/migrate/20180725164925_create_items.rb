@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :call_number
       t.string :note
       t.integer :iucat_id
+      t.string :bod_format
 
       t.timestamps
     end

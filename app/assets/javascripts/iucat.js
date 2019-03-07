@@ -24,12 +24,14 @@ function fetchMetadata(x){
       $.each(data, function(key, val){
         if(key == 'local_location' && !val){
           // Must be Ul or Herron
-          alert("This is not a IUPUI UL or Herron Item.");
+          Modal.open('modal-local', function(){});
           populate = false;
         }else if(key == 'book_on_demand' && val == true){
           // Check if Book on Demand
-          alert("This is a Book on Demand item..... I DON'T KNOW WHAT TO DO!!!!");
-          populate = false;
+          Modal.open('modal-bod', function(){
+            $('#bod_modal_index').val(x);
+          });
+          populate = true;
         }else{
           // Add item to display array
           fields[key] = val;
@@ -84,4 +86,12 @@ function get_base_path(){
     path = '/' + first_path;
   }
   return path;
+}
+
+function set_bod(format){
+  bod_id = $('#bod_modal_index').val();
+  $("#course_items_attributes_" + bod_id + "_bod_format").val(format);
+  status_name = "course\\[items_attributes\\]\\[" + bod_id + "\\]\\[item_status_id\\]";
+  $('select[name=' + status_name + '] option:contains("Ordering")').prop('selected', true);
+  $("#div_bod_format_" + bod_id).show();
 }
