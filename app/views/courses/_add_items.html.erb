@@ -22,7 +22,7 @@
         <%= item_form.label :publication_date %>
         <%= item_form.text_field :publication_date %>
       </div>
-      <div style="display:none;"
+      <div style="display:<%= bod_display(item_form) %>;"
            class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up"
            id="div_bod_format___nested_field_for_replace_with_index__">
         <%= item_form.label :bod_format, 'Books on Demand format' %>

@@ -88,9 +88,8 @@ function get_base_path(){
   return path;
 }
 
-function set_bod(format){
+function set_bod(format, item_name){
   bod_id = $('#bod_modal_index').val();
-  //alert("Setting Bod to " + bod_id);
   $("#course_items_attributes_" + bod_id + "_bod_format").val(format);
   $("#div_bod_format_" + bod_id).show();
 }
