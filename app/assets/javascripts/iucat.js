@@ -73,7 +73,7 @@ function iucatRecordId(input){
   // Remove all non-numbers from input string
   var iucat_id = input.match(/\d+/g);
   // Test: Is this a valid IUCAT ID number, acceptable range: 1-8 digits?
-  if (iucat_id && iucat_id.length > 0 && iucat_id.length  < 9) {
+  if (iucat_id && iucat_id > 0 && iucat_id < 99999999) {
     return iucat_id;
   }
   return false;
