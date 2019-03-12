@@ -4,8 +4,12 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-    @items = policy_scope(Item)
+    if params[:status]
+      stat_id = ItemStatus.find_by(status: params[:status])
+      @items = policy_scope(Item.where(item_status_id: stat_id))
+    else
+      @items = policy_scope(Item)
+    end
   end
 
   # GET /items/1
