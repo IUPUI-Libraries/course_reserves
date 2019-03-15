@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Items</h1>
+<div class="rvt-button-group">
+  <%= link_to "All Items", items_path, class: status_class(nil) %>
+  <%= link_to "Pending", items_path(status: 'Pending'), class: status_class('Pending') %>
+  <%= link_to "Ordering", items_path(status: 'Ordering'), class: status_class('Ordering') %>
+</div>
 
 <table>
   <thead>
@@ -26,7 +31,7 @@
         <td><%= item.title %></td>
         <td><%= item.author %></td>
         <td><%= item.publication_date %></td>
-        <td><%= item.status %></td>
+        <td><%= ItemStatus.find(item.item_status_id).status %></td>
         <td><%= item.publisher %></td>
         <td><%= item.edition %></td>
         <td><%= item.loan_period %></td>

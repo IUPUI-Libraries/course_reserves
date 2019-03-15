@@ -9,4 +9,9 @@ module ItemsHelper
     return 'none' unless item.object.bod_format.present?
     'block'
   end
+
+  def status_class(status)
+    return 'rvt-button' if status == params[:status]
+    'rvt-button rvt-button--secondary'
+  end
 end
