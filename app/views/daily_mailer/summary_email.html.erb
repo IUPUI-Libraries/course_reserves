@@ -1,1 +1,26 @@
-HTML Email
+Pending Items
+<ul>
+<% pending_items.each do |item| %>
+  <li>
+    <%= item.title %>
+  </li>
+<% end %>
+</ul>
+
+Ordering Items
+<ul>
+<% ordering_items.each do |item| %>
+  <li>
+    <%= item.title %>
+  </li>
+<% end %>
+</ul>
+
+Courses Created Today
+<ul>
+<% courses_today.each do |course| %>
+  <li>
+    <%= course.title %>
+  </li>
+<% end %>
+</ul>
