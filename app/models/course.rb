@@ -10,4 +10,12 @@ class Course < ApplicationRecord
     attributes['author'].blank? &&
     attributes['publication_date'].blank?
   end
+
+  def self.today
+    where('created_at >= ?', Time.zone.now.beginning_of_day)
+  end
+
+  def title
+    name
+  end
 end
