@@ -53,7 +53,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
+gem 'devise', '>=4.6.0'
 gem 'jquery-rails'
 gem 'nested_form_fields'
 gem 'net-ldap', '~> 0.16.1'
