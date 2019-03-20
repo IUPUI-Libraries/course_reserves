@@ -1,5 +1,7 @@
 module ItemsHelper
 
+  include Pagy::Frontend
+
   def item_badge(item)
     return 'rvt-badge--info' unless item.item_status.status == 'Available'
     'rvt-badge--success'

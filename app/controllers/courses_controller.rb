@@ -2,10 +2,12 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  include Pagy::Backend
+
   # GET /courses
   # GET /courses.json
   def index
-    @courses = policy_scope(Course)
+    @pagy, @courses = pagy(policy_scope(Course))
   end
 
   # GET /courses/1
