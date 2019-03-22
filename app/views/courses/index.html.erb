@@ -35,6 +35,11 @@
   </tbody>
 </table>
 
-<br>
+<br/>
 
 <%= link_to 'New Course', new_course_path, class: 'rvt-button' %>
+
+<br/><br/>
+
+<%== pagy_info(@pagy) %>
+<%== render '/pagy/nav', locals: {pagy: @pagy} %>

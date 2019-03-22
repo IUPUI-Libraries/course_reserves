@@ -1,14 +1,16 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+  include Pagy::Backend
+
   # GET /items
   # GET /items.json
   def index
     if params[:status]
       stat_id = ItemStatus.find_by(status: params[:status])
-      @items = policy_scope(Item.where(item_status_id: stat_id))
+      @pagy, @items = pagy(policy_scope(Item.where(item_status_id: stat_id)))
     else
-      @items = policy_scope(Item)
+      @pagy, @items = pagy(policy_scope(Item))
     end
   end
 
