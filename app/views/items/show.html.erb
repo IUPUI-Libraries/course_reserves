@@ -17,7 +17,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @item.status %>
+  <%= ItemStatus.find(@item.item_status_id).status %>
 </p>
 
 <p>
