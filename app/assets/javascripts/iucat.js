@@ -1,13 +1,33 @@
 // Javascript for retrieving data from IUCAT
 
+$(document).ready(iucatLinks);
+
+function iucatLinks(){
+  $("div.iucat-data").each(function(){
+    iucat_id = $(this).find(".iucat-record-id").val();
+    if(iucatRecordId(iucat_id)){
+      $(this).find(".iucat-link-bttn").attr("disabled", false);
+      $(this).find(".iucat-link-bttn").attr("formaction", iucatLink(iucat_id));
+    }
+  });
+}
+
+function iucatLink(id){
+  return "https://iucat.iu.edu/catalog/" + id;
+}
+
 function checkIUCAT(x){
   iucat_field = courseAttr(x, 'iucat_id');
   iucat_val = $(iucat_field).val();
   iucat_button = "#iucat_data_" + x;
+  iucat_link = "#iucat_link_" + x;
   if(iucatRecordId(iucat_val)){
     $(iucat_button).attr("disabled", false);
+    $(iucat_link).attr("disabled", false);
+    $(iucat_link).attr("formaction", iucatLink(iucat_val));
   }else{
     $(iucat_button).attr("disabled", true);
+    $(iucat_link).attr("disabled", true);
   }
 }
 
