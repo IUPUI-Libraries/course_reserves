@@ -1,6 +1,9 @@
 // Javascript for retrieving data from IUCAT
 
 $(document).ready(iucatLinks);
+$(document).on('turbolinks:load',function(){
+  iucatLinks();
+});
 
 function iucatLinks(){
   $("div.iucat-data").each(function(){
@@ -13,7 +16,7 @@ function iucatLinks(){
 }
 
 function iucatLink(id){
-  return "https://iucat.iu.edu/catalog/" + id;
+  return "https://iucat.iu.edu/catalog/" + iucatRecordId(id).toString();
 }
 
 function checkIUCAT(x){
