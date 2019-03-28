@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.add_items{
-  
+.rvt-button-disabled, .rvt-button-disabled:hover {
+    background-color: #eee !important;
+    color: #666 !important;
+    border-color: #aaa !important;
+    cursor: not-allowed !important;
 }

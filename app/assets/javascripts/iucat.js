@@ -10,7 +10,8 @@ function iucatLinks(){
     iucat_id = $(this).find(".iucat-record-id").val();
     if(iucatRecordId(iucat_id)){
       $(this).find(".iucat-link-bttn").attr("disabled", false);
-      $(this).find(".iucat-link-bttn").attr("formaction", iucatLink(iucat_id));
+      $(this).find(".iucat-link-bttn").attr("href", iucatLink(iucat_id));
+      $(this).find(".iucat-link-bttn").removeClass("rvt-button-disabled");
     }
   });
 }
@@ -26,11 +27,12 @@ function checkIUCAT(x){
   iucat_link = "#iucat_link_" + x;
   if(iucatRecordId(iucat_val)){
     $(iucat_button).attr("disabled", false);
-    $(iucat_link).attr("disabled", false);
-    $(iucat_link).attr("formaction", iucatLink(iucat_val));
+    $(iucat_link).attr("href", iucatLink(iucat_val));
+    $(iucat_link).removeClass("rvt-button-disabled");
   }else{
     $(iucat_button).attr("disabled", true);
-    $(iucat_link).attr("disabled", true);
+    $(iucat_link).addClass("rvt-button-disabled");
+    $(iucat_link).removeAttr("href");
   }
 }
 

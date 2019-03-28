@@ -9,11 +9,9 @@
         <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID.", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__);", class: 'iucat-record-id' %>
       </div>
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-1-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
-        <form>
-          <button formaction="" formmethod="get" formtarget="_blank" id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button iucat-link-bttn" disabled>
-            <%= fa_icon 'external-link' %>
-          </button>
-        </form>
+        <a  id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button-disabled rvt-button iucat-link-bttn" target="_blank">
+          <%= fa_icon 'external-link' %>
+        </a>
       </div>
     </div>
     <div class="rvt-grid">
