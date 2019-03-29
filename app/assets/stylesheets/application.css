@@ -12,5 +12,6 @@
  *
  *= require font-awesome
  *= require_tree .
+ *= require rivet.min.css
  *= require_self
  */
