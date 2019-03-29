@@ -15,4 +15,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require rivet.min.js
 //= require nested_form_fields
