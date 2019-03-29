@@ -5,4 +5,9 @@
   <%= item.author.to_s %>
   (<%= item.publication_date.to_s %>).
   <i><%= item.title.to_s %></i>.
+  <% if item.iucat_id %>
+    <%= link_to(iucat_link(item), target: '_blank') do %>
+      IUCAT <%= fa_icon 'external-link' %>
+    <% end %>
+  <% end %>
 </li>

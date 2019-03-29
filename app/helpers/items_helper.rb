@@ -16,4 +16,9 @@ module ItemsHelper
     return 'rvt-button' if status == params[:status]
     'rvt-button rvt-button--secondary'
   end
+
+  def iucat_link(item)
+    return nil if item.iucat_id.nil?
+    "https://iucat.iu.edu/catalog/#{item.iucat_id}"
+  end
 end

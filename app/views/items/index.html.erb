@@ -38,7 +38,11 @@
         <td><%= item.owner %></td>
         <td><%= item.call_number %></td>
         <td><%= item.note %></td>
-        <td><%= item.iucat_id %></td>
+        <td>
+          <% if item.iucat_id %>
+          <%= link_to(item.iucat_id, iucat_link(item), target: '_blank') %>
+          <% end %>
+        </td>
         <td>
           <div class='rvt-button-segmented' role='group'>
           <%= link_to 'Show', item, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
