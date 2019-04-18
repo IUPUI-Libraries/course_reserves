@@ -2,44 +2,83 @@
 
 <h1>Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Course number</th>
-      <th>Instructor</th>
-      <th>Instructor username</th>
-      <th>Library</th>
-      <th>Semester</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.course_number %></td>
-        <td><%= course.instructor %></td>
-        <td><%= course.instructor_username %></td>
-        <td><%= course.library %></td>
-        <td><%= course.semester.semester %></td>
-        <td>
-          <div class='rvt-button-segmented' role='group'>
-          <%= link_to 'Show', course, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
-          <%= link_to 'Edit', edit_course_path(course), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
-          <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?'}, class: 'rvt-button rvt-button--secondary rvt-button--small'  %>
-          </div>
-      </tr>
+<div id="course-filters">
+  <div class="rvt-box">
+    <div class="rvt-box__header">
+      Filters
+    </div>
+    <div class="rvt-box__body rvt-m-right-sm">
+    <%= search_form_for @q do |f| %>
+      <div class="rvt-grid">
+        <div class="rvt-grid__item-md">
+          <%= f.label :name_or_course_number_cont, 'Name|Number' %>
+          <%= f.search_field :name_or_course_number_cont %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label :instructor_or_instructor_username_cont, 'Instructor|Username' %>
+          <%= f.search_field :instructor_or_instructor_username_cont %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label :libary_cont, 'Library' %>
+          <%= f.search_field :library_cont %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label :semester_id_eq, 'Semester' %>
+          <% semester = params[:q][:semester_id_eq].nil? ? '' : params[:q][:semester_id_eq] %>
+          <%= f.select :semester_id_eq, options_from_collection_for_select(Semester.all, 'id', 'semester', semester), include_blank: true %>
+        </div>
+        <div class="rvt-grid__item">
+          <br/>
+          <%= f.submit "Filter", class: "rvt-button" %>
+          <%= link_to 'Reset', courses_path, class: 'rvt-button rvt-button--secondary' %>
+        </div>
     <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
 
-<br/>
+<div class="spacer" style="padding-top:20px;"></div>
 
-<%= link_to 'New Course', new_course_path, class: 'rvt-button' %>
+<div class="course-table">
+  <table class="rvt-table-compact">
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :course_number, 'Number') %></th>
+        <th><%= sort_link(@q, :instructor) %></th>
+        <th><%= sort_link(@q, :instructor_username, 'Username') %></th>
+        <th><%= sort_link(@q, :library) %></th>
+        <th><%= sort_link(@q, :semester_semester, 'Semester') %></th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
 
-<br/><br/>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.name %></td>
+          <td><%= course.course_number %></td>
+          <td><%= course.instructor %></td>
+          <td><%= course.instructor_username %></td>
+          <td><%= course.library %></td>
+          <td><%= course.semester.semester %></td>
+          <td>
+            <div class='rvt-button-segmented' role='group'>
+            <%= link_to 'Show', course, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+            <%= link_to 'Edit', edit_course_path(course), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?'}, class: 'rvt-button rvt-button--secondary rvt-button--small'  %>
+            </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%== pagy_info(@pagy) %>
-<%== render '/pagy/nav', locals: {pagy: @pagy} %>
+  <br/>
+
+  <%= link_to 'New Course', new_course_path, class: 'rvt-button' %>
+
+  <br/><br/>
+
+  <%== pagy_info(@pagy) %>
+  <%== render '/pagy/nav', locals: {pagy: @pagy} %>
+</div>
