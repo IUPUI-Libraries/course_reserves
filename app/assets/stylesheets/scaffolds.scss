@@ -3,7 +3,9 @@ body {
   color: #333;
   margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  //font-size: 13px; // For some reason setting this
+                     // makes select box height different
+                     // from other input boxes.
   line-height: 18px;
 }
 

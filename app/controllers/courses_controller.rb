@@ -7,7 +7,8 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @pagy, @courses = pagy(policy_scope(Course))
+    @q = Course.ransack(params[:q])
+    @pagy, @courses = pagy(policy_scope(@q.result))
   end
 
   # GET /courses/1
