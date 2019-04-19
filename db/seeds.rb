@@ -6,16 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Populate Semester table
-Semester.destroy_all
-
-Semester.create(semester: '2018-2019 Fall', active: false)
-Semester.create(semester: '2018-2019 Spring', active: true)
-Semester.create(semester: '2018-2019 Summer', active: true)
-Semester.create(semester: '2019-2020 Fall', active: false)
-
-ItemStatus.destroy_all
-
-ItemStatus.create(status: 'Pending')
-ItemStatus.create(status: 'Ordering')
-ItemStatus.create(status: 'Available')
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+  load seed
+end
