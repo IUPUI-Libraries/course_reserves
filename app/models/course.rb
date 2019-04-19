@@ -1,6 +1,12 @@
 class Course < ApplicationRecord
   has_many :items, dependent: :destroy
   belongs_to :semester
+  belongs_to :department
+
+  validates :name, :course_number, :department_name, presence: true
+  validates :instructor, :instructor_username, presence: true
+  validates :semester_id, presence: true
+
   accepts_nested_attributes_for :items,
     allow_destroy: true,
     reject_if: :reject_item
@@ -17,5 +23,13 @@ class Course < ApplicationRecord
 
   def title
     name
+  end
+
+  def department_name
+    department.try(:name)
+  end
+
+  def department_name=(name)
+    self.department = Department.find_by_name(name) if name.present?
   end
 end
