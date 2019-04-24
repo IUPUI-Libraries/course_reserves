@@ -16,7 +16,7 @@
     <div class="rvt-grid">
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
-        <%= form.label :name %>
+        <%= form.label :name, 'Course name' %>
         <%= form.text_field :name, id: :course_name %>
       </div>
 
@@ -27,7 +27,7 @@
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :department_name %>
-        <%= form.text_field :department_name, data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
+        <%= form.text_field :department_name, placeholder: 'Select department...', data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
