@@ -8,3 +8,29 @@
     border-color: #aaa !important;
     cursor: not-allowed !important;
 }
+
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: deafult;
+  li {
+    background-color: #ddd;
+    border-top: solid 1px #ddd;
+    margin: 0;
+    padding: 5px;
+    a {
+      color: #000;
+      display:block;
+      padding: 0;
+    }
+    .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-state-active.ui-button:hover {
+      background-color: #fffcb2;
+    }
+  }
+}
+
+// Hide autocomplete helper
+.ui-helper-hidden-accessible { position: absolute; left:-999em; }

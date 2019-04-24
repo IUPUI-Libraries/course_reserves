@@ -14,24 +14,38 @@
 
   <div class="rvt-container">
     <div class="rvt-grid">
-
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
-        <%= form.label :name %>
+        <%= form.label :name do %>
+            Course Name <%= fa_icon 'asterisk' %>
+        <% end %>
         <%= form.text_field :name, id: :course_name %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
-        <%= form.label :course_number %>
+        <%= form.label :course_number do %>
+          Course number <%= fa_icon 'asterisk' %>
+        <% end %>
         <%= form.text_field :course_number, id: :course_course_number, placeholder: 'example: X101, W131' %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
-        <%= form.label :instructor %>
+        <%= form.label :department_name do %>
+          Department <%= fa_icon 'asterisk' %>
+        <% end %>
+        <%= form.text_field :department_name, placeholder: 'Select department...', data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
+      </div>
+
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :instructor do %>
+          Instructor <%= fa_icon 'asterisk' %>
+        <% end %>
         <%= form.text_field :instructor, id: :course_instructor %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
-        <%= form.label :instructor_username %>
+        <%= form.label :instructor_username do %>
+          Instructor name <%= fa_icon 'asterisk' %>
+        <% end %>
         <%= form.text_field :instructor_username, id: :course_instructor_username %>
       </div>
 
@@ -44,8 +58,14 @@
         <%= form.label :semester %>
         <%= form.collection_select :semester_id, Semester.active, :id, :semester %>
       </div>
+
+      <div class="rvt-grid__item-12 rvt-p-all-md">
+        <%= fa_icon 'asterisk' %> indicates required.
+      </div>
     </div>
   </div>
+
+
 
   <%= render 'bod_modal' %>
   <%= render 'non-iupui_modal' %>

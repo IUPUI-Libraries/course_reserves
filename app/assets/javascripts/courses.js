@@ -15,7 +15,32 @@ $(document).on('change', 'form[role="check-modified"]:not([data-remote]) :input'
   return unsaved = true;
 });
 
+// Autocomplete for course department field.
+// Autocomplete for course department field.
+jQuery(() =>
+  $('#course_department_name').autocomplete({
+    source: $('#course_department_name').data('autocomplete-source'),
+    change: function(event, ui) {
+      if (ui.item == null) {
+        $("#course_department_name").val("");
+        $("#course_department_name").focus();
+      }
+    }
+  }));
+
 $(document).on('turbolinks:load', function() {
+  // Autocomplete for course department field.
+  jQuery(() =>
+    $('#course_department_name').autocomplete({
+      source: $('#course_department_name').data('autocomplete-source'),
+      change: function(event, ui) {
+        if (ui.item == null) {
+          $("#course_department_name").val("");
+          $("#course_department_name").focus();
+        }
+      }
+    }));
+
   return unsaved = false;
 });
 
