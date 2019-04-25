@@ -41,7 +41,15 @@
       <% end %>
     </div>
     <div class="rvt-grid">
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md'>
+      <div class='rvt-grid__item-12'>
+        <%= item_form.check_box :will_supply %>
+        <%= item_form.label :will_supply, "I will supply" %>
+      </div>
+      <div class='rvt-grid__item-12'>
+        <%= item_form.check_box :purchase %>
+        <%= item_form.label :purchase, "Please purchase" %>
+      </div>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md rvt-p-top-lg'>
         <%= item_form.remove_nested_fields_link 'Remove Item x', class: 'rvt-button rvt-button--danger' %>
       </div>
     </div>
