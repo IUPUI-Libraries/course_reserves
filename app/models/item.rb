@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :course
   belongs_to :item_status
+  belongs_to :loan_period
   after_initialize :init
 
   def init
