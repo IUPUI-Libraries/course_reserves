@@ -2,6 +2,7 @@ class Course < ApplicationRecord
   has_many :items, dependent: :destroy
   belongs_to :semester
   belongs_to :department
+  belongs_to :library
 
   validates :name, :course_number, :department_name, presence: true
   validates :instructor, :instructor_username, presence: true
