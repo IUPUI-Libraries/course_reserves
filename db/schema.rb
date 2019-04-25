@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190419172727) do
+ActiveRecord::Schema.define(version: 20190425134123) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20190419172727) do
     t.datetime "updated_at", null: false
     t.integer "course_id"
     t.integer "item_status_id"
+    t.boolean "will_supply"
+    t.boolean "purchase"
     t.index ["course_id"], name: "index_items_on_course_id"
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
   end
