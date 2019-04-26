@@ -63,6 +63,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    deep_cloneable (2.4.0)
+      activerecord (>= 3.1.0, < 6)
     devise (4.6.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -283,6 +285,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  deep_cloneable (~> 2.4.0)
   devise (>= 4.6.0)
   factory_bot_rails
   font-awesome-rails
