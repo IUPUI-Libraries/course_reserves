@@ -82,7 +82,7 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(
       :name, :course_number, :instructor,
-      :instructor_username, :library, :semester_id, :department_id,
+      :instructor_username, :library_id, :semester_id, :department_id,
       :department_name,
       items_attributes: policy(:item).permitted_attributes
     )

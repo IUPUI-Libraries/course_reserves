@@ -23,8 +23,8 @@
           <%= f.search_field :instructor_or_instructor_username_cont %>
         </div>
         <div class="rvt-grid__item-md">
-          <%= f.label :libary_cont, 'Library' %>
-          <%= f.search_field :library_cont %>
+          <%= f.label :libary_id_eq, 'Library' %>
+          <%= f.select :library_id_eq, options_from_collection_for_select(Library.all, 'id', 'name', param_library), include_blank: true %>
         </div>
         <div class="rvt-grid__item-md">
           <%= f.label :semester_id_eq, 'Semester' %>
@@ -51,7 +51,7 @@
         <th><%= sort_link(@q, :department_name, 'Department') %></th>
         <th><%= sort_link(@q, :instructor) %></th>
         <th><%= sort_link(@q, :instructor_username, 'Username') %></th>
-        <th><%= sort_link(@q, :library) %></th>
+        <th><%= sort_link(@q, :library_name) %></th>
         <th><%= sort_link(@q, :semester_semester, 'Semester') %></th>
         <th colspan="1"></th>
       </tr>
@@ -65,7 +65,7 @@
           <td><%= course.department_name %></td>
           <td><%= course.instructor %></td>
           <td><%= course.instructor_username %></td>
-          <td><%= course.library %></td>
+          <td><%= course.library.name %></td>
           <td><%= course.semester.semester %></td>
           <td>
             <div class='rvt-button-segmented' role='group'>
