@@ -23,11 +23,11 @@ class ItemPolicy < ApplicationPolicy
   def permitted_attributes
     if user.admin?
       [:_destroy, :id, :item_status_id, :title, :author, :publication_date,
-       :publisher, :edition, :loan_period, :owner, :call_number, :note,
+       :publisher, :edition, :loan_period_id, :owner, :call_number, :note,
        :iucat_id, :bod_format, :will_supply, :purchase]
     else
       [:_destroy, :id, :title, :author, :publication_date, :publisher,
-       :edition, :loan_period, :owner, :call_number, :note, :iucat_id,
+       :edition, :loan_period_id, :owner, :call_number, :note, :iucat_id,
        :bod_format, :will_supply, :purchase]
     end
   end
