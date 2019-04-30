@@ -27,6 +27,10 @@
         <%= item_form.label :publication_date %>
         <%= item_form.text_field :publication_date %>
       </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= item_form.label :loan_period %>
+        <%= item_form.collection_select :loan_period_id, LoanPeriod.all, :id, :length %>
+      </div>
       <div style="display:<%= bod_display(item_form) %>;"
            class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up"
            id="div_bod_format___nested_field_for_replace_with_index__">

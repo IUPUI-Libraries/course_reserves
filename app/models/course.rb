@@ -18,6 +18,17 @@ class Course < ApplicationRecord
     attributes['publication_date'].blank?
   end
 
+  def duplicate
+    dup_course = self.deep_clone include: :items
+    dup_course.semester = Semester.active.first
+    dup_course.items.each do |item|
+      pending = ItemStatus.find_by(status: 'Pending')
+      item.item_status_id = pending.id
+      item.save
+    end
+    dup_course
+  end
+
   def self.today
     where('created_at >= ?', Time.zone.now.beginning_of_day)
   end

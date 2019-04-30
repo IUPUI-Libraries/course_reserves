@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20190425185715) do
     t.string "publication_date"
     t.string "publisher"
     t.string "edition"
-    t.string "loan_period"
     t.string "owner"
     t.string "call_number"
     t.string "note"
@@ -68,8 +67,16 @@ ActiveRecord::Schema.define(version: 20190425185715) do
     t.integer "item_status_id"
     t.boolean "will_supply"
     t.boolean "purchase"
+    t.integer "loan_period_id"
     t.index ["course_id"], name: "index_items_on_course_id"
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
+    t.index ["loan_period_id"], name: "index_items_on_loan_period_id"
+  end
+
+  create_table "loan_periods", force: :cascade do |t|
+    t.string "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "libraries", force: :cascade do |t|
