@@ -51,7 +51,7 @@
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :library %>
-        <%= form.text_field :library, id: :course_library %>
+        <%= form.collection_select :library_id, Library.all, :id, :name %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
