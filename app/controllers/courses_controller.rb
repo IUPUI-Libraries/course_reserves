@@ -27,6 +27,13 @@ class CoursesController < ApplicationController
     authorize @course
   end
 
+  # GET /courses/1/duplicate
+  def duplicate
+    template = Course.find(params[:id])
+    @course = template.duplicate # defined in Course.duplicate
+    render action: 'new'
+  end
+
   # POST /courses
   # POST /courses.json
   def create

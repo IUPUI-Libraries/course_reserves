@@ -16,7 +16,6 @@ $(document).on('change', 'form[role="check-modified"]:not([data-remote]) :input'
 });
 
 // Autocomplete for course department field.
-// Autocomplete for course department field.
 jQuery(() =>
   $('#course_department_name').autocomplete({
     source: $('#course_department_name').data('autocomplete-source'),
@@ -28,7 +27,17 @@ jQuery(() =>
     }
   }));
 
+$(document).ready(function(){
+  // Warn of unsaved courses when duplicating.
+  if(window.location.href.indexOf("duplicate") > -1) {
+    return unsaved = true;
+  } else {
+    return unsaved = false;
+  }
+});
+
 $(document).on('turbolinks:load', function() {
+
   // Autocomplete for course department field.
   jQuery(() =>
     $('#course_department_name').autocomplete({
@@ -39,9 +48,13 @@ $(document).on('turbolinks:load', function() {
           $("#course_department_name").focus();
         }
       }
-    }));
+  }));
 
-  return unsaved = false;
+  if(window.location.href.indexOf("duplicate") > -1) {
+    return unsaved = true;
+  } else {
+    return unsaved = false;
+  }
 });
 
 $(document).on('submit', 'form[role="check-modified"]', function() {

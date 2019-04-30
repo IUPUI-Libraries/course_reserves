@@ -56,6 +56,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'deep_cloneable', '~> 2.4.0'
 gem 'devise', '>=4.6.0'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
