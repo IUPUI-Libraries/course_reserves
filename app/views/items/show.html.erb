@@ -55,5 +55,6 @@
   <%= @item.iucat_id %>
 </p>
 
+<%= link_to 'Generate Book Tag', item_path(format: :pdf) %> |
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

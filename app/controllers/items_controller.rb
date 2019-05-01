@@ -18,6 +18,16 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     authorize @item
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ItemPdf.new(@item)
+        send_data pdf.render,
+                  filename: "item_#{@item.id}",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   # GET /items/new

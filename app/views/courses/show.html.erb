@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h3>Course</h3>
-<table class="rvt-table-stripes">
+<table id="course-table" class="rvt-table-stripes">
   <caption class="sr-only">Course Information</caption>
   <tbody>
     <tr>
@@ -42,7 +42,7 @@
 
 <h3>Items</h3>
 
-<ul>
+<ul id='item-list'>
   <%= render @course.items %>
 </ul>
 
