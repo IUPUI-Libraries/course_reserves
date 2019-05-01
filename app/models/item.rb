@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   belongs_to :loan_period
   after_initialize :init
 
+  validates :title, :author, :publication_date, presence: true
+
   def init
     self.item_status_id ||= 1
   end
