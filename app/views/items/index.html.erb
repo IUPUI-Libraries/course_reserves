@@ -10,17 +10,16 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Title</th>
       <th>Author</th>
       <th>Publication date</th>
       <th>Status</th>
-      <th>Publisher</th>
       <th>Edition</th>
       <th>Loan period</th>
-      <th>Owner</th>
       <th>Call number</th>
       <th>Note</th>
-      <th>Iucat</th>
+      <th>IUCAT</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,14 +27,13 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= item.id %></td>
         <td><%= item.title %></td>
         <td><%= item.author %></td>
         <td><%= item.publication_date %></td>
         <td><%= ItemStatus.find(item.item_status_id).status %></td>
-        <td><%= item.publisher %></td>
         <td><%= item.edition %></td>
-        <td><%= item.loan_period %></td>
-        <td><%= item.owner %></td>
+        <td><%= LoanPeriod.find(item.loan_period_id).length %></td>
         <td><%= item.call_number %></td>
         <td><%= item.note %></td>
         <td>
@@ -58,7 +56,7 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path, class: 'rvt-button' %>
+<%#= link_to 'New Item', new_item_path, class: 'rvt-button' %>
 
 <br/><br/>
 

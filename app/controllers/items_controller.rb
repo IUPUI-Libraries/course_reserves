@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
       format.html
       format.pdf do
         pdf = ItemPdf.new(@item)
+        pdf.create_tag
         send_data pdf.render,
                   filename: "item_#{@item.id}",
                   type: 'application/pdf',
