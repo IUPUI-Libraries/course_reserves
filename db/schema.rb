@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190425185715) do
+ActiveRecord::Schema.define(version: 20190507145618) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -68,19 +68,20 @@ ActiveRecord::Schema.define(version: 20190425185715) do
     t.boolean "will_supply"
     t.boolean "purchase"
     t.integer "loan_period_id"
+    t.integer "user_id"
     t.index ["course_id"], name: "index_items_on_course_id"
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["loan_period_id"], name: "index_items_on_loan_period_id"
   end
 
-  create_table "loan_periods", force: :cascade do |t|
-    t.string "length"
+  create_table "libraries", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "libraries", force: :cascade do |t|
-    t.string "name"
+  create_table "loan_periods", force: :cascade do |t|
+    t.string "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

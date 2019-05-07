@@ -24,6 +24,9 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    @course.items.each do |item|
+      item.user_id = @course.user_id
+    end
     authorize @course
   end
 
@@ -39,6 +42,9 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.user_id = current_user.id
+    @course.items.each do |item|
+      item.user_id = current_user.id
+    end
     authorize @course
     respond_to do |format|
       if @course.save
@@ -57,6 +63,11 @@ class CoursesController < ApplicationController
     authorize @course
     respond_to do |format|
       if @course.update(course_params)
+        # Make sure all items are owned by course_user after update
+        @course.items.each do |item|
+          item.user_id = @course.user_id
+        end
+        @course.save
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
