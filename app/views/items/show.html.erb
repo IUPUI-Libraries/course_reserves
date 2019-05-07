@@ -48,8 +48,14 @@
   </tbody>
 </table>
 
+<% if current_user.admin? %>
 <div class="rvt-button-group rvt-p-top-md">
   <%= link_to 'Edit', edit_item_path(@item), class: 'rvt-button rvt-button--small' %>
   <%= link_to 'Tag', item_path(format: :pdf), target: 'blank', class: 'rvt-button rvt-button--small rvt-button--secondary' %>
   <%= link_to 'Back', :back, class: 'rvt-button rvt-button--small rvt-button--secondary' %>
 </div>
+<% else %>
+<div class="rvt-button-group rvt-p-top-md">
+  <%= link_to 'Back', :back, class: 'rvt-button rvt-button--small' %>
+</div>
+<% end %>
