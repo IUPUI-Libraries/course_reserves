@@ -14,7 +14,7 @@
   </span>
   <span class="rvt-p-left-md">
     <%= link_to 'Show', item %> |
-    <%= link_to 'Tag', item_path(format: :pdf), target: 'blank' %> |
-    <%= link_to 'Edit', edit_item_path %>
+    <%= link_to 'Tag', item_path(item, format: :pdf), target: 'blank' %> |
+    <%= link_to 'Edit', edit_item_path(item) %>
   </span>
 </li>
