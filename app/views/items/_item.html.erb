@@ -1,13 +1,20 @@
-<li>
+<li class="rvt-p-bottom-sm">
   <span class="rvt-badge <%= item_badge(item) %>">
     <%= item.item_status.status %>
   </span>
   <%= item.author.to_s %>
   (<%= item.publication_date.to_s %>).
   <i><%= item.title.to_s %></i>.
-  <% if item.iucat_id %>
-    <%= link_to(iucat_link(item), target: '_blank') do %>
-      IUCAT <%= fa_icon 'external-link' %>
+  <span class="rvt-ts-xxs">
+    <% if item.iucat_id %>
+      <%= link_to(iucat_link(item), target: '_blank') do %>
+        IUCAT <%= fa_icon 'external-link' %>
+      <% end %>
     <% end %>
-  <% end %>
+  </span>
+  <span class="rvt-p-left-md">
+    <%= link_to 'Show', item %> |
+    <%= link_to 'Tag', item_path(item, format: :pdf), target: 'blank' %> |
+    <%= link_to 'Edit', edit_item_path(item) %>
+  </span>
 </li>

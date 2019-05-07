@@ -13,3 +13,18 @@
 .iucat-data input{
   background-color: #fff !important;
 }
+
+ #course-table{
+
+  th{
+    width:250px;
+  }
+}
+
+#item-list{
+  list-style: none;
+
+  .item-link{
+    text-decoration: none;
+  }
+}

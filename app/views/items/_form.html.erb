@@ -2,7 +2,6 @@
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
       <ul>
       <% item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,62 +10,73 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :item_title %>
+  <div class="rvt-container">
+    <div class="rvt-grid">
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :course_id do %>
+          Course
+          <%= link_to @item.course, target: 'blank' do %>
+            <%= fa_icon 'external-link' %>
+          <% end %>
+        <% end %>
+        <%= form.text_field :course_id, disabled: true  %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :iucat_id do %>
+          IUCAT record number
+          <a href="https://iucat.iu.edu/catalog/<%= item.iucat_id %>" target="_blank">
+            <%= fa_icon 'external-link' %>
+          </a>
+        <% end %>
+        <%= form.text_field :iucat_id, id: :item_iucat_id, disabled: true  %>
+      </div>
+    </div>
+    <div class="rvt-grid">
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :item_title %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :author %>
+        <%= form.text_field :author, id: :item_author %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :publication_date %>
+        <%= form.text_field :publication_date, id: :item_publication_date %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :edition %>
+        <%= form.text_field :edition, id: :item_edition %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :call_number %>
+        <%= form.text_field :call_number, id: :item_call_number %>
+      </div>
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :loan_period %>
+        <%= form.collection_select :loan_period_id, LoanPeriod.all, :id, :length %>
+      </div>
+      <div class="field rvt-grid__item-12-md-up rvt-grid__item-8-lg-up">
+        <%= form.label :note %>
+        <%= form.text_area :note, id: :item_note %>
+      </div>
+    </div>
+    <div class="rvt-grid">
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :item_status %>
+        <%= form.collection_select :item_status_id, ItemStatus.all, :id, :status %>
+      </div>
+      <div class='rvt-grid__item-12 rvt-p-top-md'>
+        <%= form.check_box :will_supply, id: 'item_will_supply' %>
+        <%= form.label :will_supply, "Patron will supply" %>
+      </div>
+      <div class='rvt-grid__item-12 rvt-p-bottom-md'>
+        <%= form.check_box :purchase, id: 'item_purchase' %>
+        <%= form.label :purchase, "Please purchase" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :item_author %>
-  </div>
-
-  <div class="field">
-    <%= form.label :publication_date %>
-    <%= form.text_field :publication_date, id: :item_publication_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :item_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :publisher %>
-    <%= form.text_field :publisher, id: :item_publisher %>
-  </div>
-
-  <div class="field">
-    <%= form.label :edition %>
-    <%= form.text_field :edition, id: :item_edition %>
-  </div>
-
-  <div class="field">
-    <%= form.label :loan_period %>
-    <%= form.text_field :loan_period, id: :item_loan_period %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner %>
-    <%= form.text_field :owner, id: :item_owner %>
-  </div>
-
-  <div class="field">
-    <%= form.label :call_number %>
-    <%= form.text_field :call_number, id: :item_call_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_field :note, id: :item_note %>
-  </div>
-
-  <div class="field">
-    <%= form.label :iucat_id %>
-    <%= form.text_field :iucat_id, id: :item_iucat_id %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save Item', class: 'rvt-button' %>
   </div>
 <% end %>
