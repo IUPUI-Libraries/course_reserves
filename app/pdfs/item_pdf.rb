@@ -42,8 +42,10 @@ class ItemPdf
   def add_right_column
     bounding_box([6.in, 14.in], width: 4.in) do
       period = LoanPeriod.find(@item.loan_period_id).length.to_s
+      use = LoanPeriod.find(@item.loan_period_id).use.to_s
+      period_use = use.empty? ? period : "#{period} (#{use})"
       font('Helvetica-Bold') do
-        text "#{period} (library use only)",
+        text period_use,
              align: :center,
              color: '990000',
              size: 18
