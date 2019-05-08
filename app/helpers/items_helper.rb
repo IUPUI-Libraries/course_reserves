@@ -21,4 +21,12 @@ module ItemsHelper
     return nil if item.iucat_id.nil?
     "https://iucat.iu.edu/catalog/#{item.iucat_id}"
   end
+
+  def title_iucat_link(item)
+    return item.title if item.iucat_id.nil?
+    link_display = "#{item.title} #{fa_icon 'external-link'}"
+    link_to iucat_link(item), target: "_blank" do
+      link_display
+    end
+  end
 end
