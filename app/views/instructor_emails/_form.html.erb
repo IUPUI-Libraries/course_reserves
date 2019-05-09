@@ -1,0 +1,59 @@
+<%= form_with(model: instructor_email, local: true) do |form| %>
+  <% if instructor_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(instructor_email.errors.count, "error") %> prohibited this instructor_email from being saved:</h2>
+
+      <ul>
+      <% instructor_email.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="rvt-container">
+    <div class="rvt-grid">
+
+      <div class="field rvt-grid__item-12">
+        <%= radio_button_tag :send_option, 'current_semester' %>
+        <%= label_tag :send_option_current_semester, 'Current Semester' %>
+      </div>
+
+      <div class="field rvt-grid__item-4">
+        <%= radio_button_tag :send_option, 'select_semester' %>
+        <%= label_tag :send_option_select_semester, 'Selected semester' %>
+      </div>
+
+      <div class="field rvt-grid__item-8">
+        <%= form.label :semester %>
+        <%= form.text_field :semester_id, id: :instructor_email_semester %>
+      </div>
+
+      <div class="field rvt-grid__item-4">
+        <%= radio_button_tag :send_option, 'instructors' %>
+        <%= label_tag :send_option_current_semester, 'Listed Instructors' %>
+      </div>
+
+      <div class="field rvt-grid__item-8">
+        <%= form.label :instuctors %>
+        <%= form.text_field :instuctors, id: :instructor_email_instuctors %>
+      </div>
+
+      <div class="field rvt-grid__item">
+        <%= form.label :library %>
+        <%= form.text_field :library_id, id: :instructor_email_library %>
+      </div>
+
+      <div class="field rvt-grid__item">
+        <%= form.label :message %>
+        <%= form.text_field :message, id: :instructor_email_message %>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit 'Save', class: 'rvt-button' %>
+  </div>
+<% end %>

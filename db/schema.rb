@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190508130356) do
+ActiveRecord::Schema.define(version: 20190508181919) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -42,6 +42,19 @@ ActiveRecord::Schema.define(version: 20190508130356) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "instructor_emails", force: :cascade do |t|
+    t.string "send_option"
+    t.integer "semester_id"
+    t.string "instuctors"
+    t.integer "library_id"
+    t.text "message"
+    t.datetime "sent_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_instructor_emails_on_library_id"
+    t.index ["semester_id"], name: "index_instructor_emails_on_semester_id"
   end
 
   create_table "item_statuses", force: :cascade do |t|
