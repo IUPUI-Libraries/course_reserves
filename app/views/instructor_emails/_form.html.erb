@@ -19,34 +19,32 @@
         <%= label_tag :send_option_current_semester, 'Current Semester' %>
       </div>
 
-      <div class="field rvt-grid__item-4">
+      <div class="field rvt-grid__item-12">
         <%= radio_button_tag :send_option, 'select_semester' %>
         <%= label_tag :send_option_select_semester, 'Selected semester' %>
       </div>
 
-      <div class="field rvt-grid__item-8">
-        <%= form.label :semester %>
-        <%= form.text_field :semester_id, id: :instructor_email_semester %>
+      <div id="semester-select" class="field rvt-grid__item-12" style="display:none;">
+        <%= form.collection_select :semester_id, Semester.all, :id, :semester, {include_blank: true}, {multiple: true} %>
       </div>
 
-      <div class="field rvt-grid__item-4">
+      <div class="field rvt-grid__item-12">
         <%= radio_button_tag :send_option, 'instructors' %>
-        <%= label_tag :send_option_current_semester, 'Listed Instructors' %>
+        <%= label_tag :send_option_instructors, 'Listed Instructors' %>
       </div>
 
-      <div class="field rvt-grid__item-8">
-        <%= form.label :instuctors %>
+      <div id="instructor-list" class="field rvt-grid__item-12" style="display:none;">
         <%= form.text_field :instuctors, id: :instructor_email_instuctors %>
       </div>
 
-      <div class="field rvt-grid__item">
+      <div class="field rvt-grid__item-12">
         <%= form.label :library %>
-        <%= form.text_field :library_id, id: :instructor_email_library %>
+        <%= form.collection_select :library_id, Library.all, :id, :name %>
       </div>
 
-      <div class="field rvt-grid__item">
+      <div class="field rvt-grid__item-12">
         <%= form.label :message %>
-        <%= form.text_field :message, id: :instructor_email_message %>
+        <%= form.text_area :message, id: :instructor_email_message %>
       </div>
 
     </div>
