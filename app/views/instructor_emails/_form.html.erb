@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="rvt-container">
-    <div class="rvt-grid">
-
+    <div id = "send_options" class="rvt-grid">
       <div class="field rvt-grid__item-12">
-        <%= radio_button_tag :send_option, 'current_semester' %>
+        <%= form.radio_button :send_option, 'current_semester', id: :send_option_current_semester %>
         <%= label_tag :send_option_current_semester, 'Current Semester' %>
       </div>
 
       <div class="field rvt-grid__item-12">
-        <%= radio_button_tag :send_option, 'select_semester' %>
+        <%= form.radio_button :send_option, 'select_semester', id: :send_option_select_semester %>
         <%= label_tag :send_option_select_semester, 'Selected semester' %>
       </div>
 
       <div id="semester-select" class="field rvt-grid__item-12" style="display:none;">
-        <%= form.collection_select :semester_id, Semester.all, :id, :semester, {include_blank: true}, {multiple: true} %>
+        <%= form.collection_select :semesters, Semester.all, :id, :semester, {include_blank: true}, {multiple: true} %>
       </div>
 
       <div class="field rvt-grid__item-12">
-        <%= radio_button_tag :send_option, 'instructors' %>
+        <%= form.radio_button :send_option, 'instructors', id: :send_option_instructors %>
         <%= label_tag :send_option_instructors, 'Listed Instructors' %>
       </div>
 
       <div id="instructor-list" class="field rvt-grid__item-12" style="display:none;">
         <%= form.text_field :instuctors, id: :instructor_email_instuctors %>
       </div>
-
+    </div>
+    <div class="rvt-grid"
       <div class="field rvt-grid__item-12">
         <%= form.label :library %>
         <%= form.collection_select :library_id, Library.all, :id, :name %>

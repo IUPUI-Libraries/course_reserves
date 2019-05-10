@@ -7,7 +7,7 @@
 
 <p>
   <strong>Semester:</strong>
-  <%= @instructor_email.semester %>
+  <%= @instructor_email.semesters.each { |semester| semester.semester.to_s } %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Library:</strong>
-  <%= @instructor_email.library %>
+  <%= @instructor_email.library.name %>
 </p>
 
 <p>

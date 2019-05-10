@@ -62,13 +62,19 @@ class InstructorEmailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_instructor_email
-      @instructor_email = InstructorEmail.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def instructor_email_params
-      params.require(:instructor_email).permit(:send_option, :semester, :instuctors, :library, :message, :sent_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_instructor_email
+    @instructor_email = InstructorEmail.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def instructor_email_params
+    params.require(:instructor_email).permit(
+      :send_option, :semester, :instuctors,
+      :library, :message, :sent_date,
+      :library_id, semester_id: []
+    )
+  end
 end

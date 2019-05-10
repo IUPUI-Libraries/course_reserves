@@ -19,9 +19,9 @@
     <% @instructor_emails.each do |instructor_email| %>
       <tr>
         <td><%= instructor_email.send_option %></td>
-        <td><%= instructor_email.semester %></td>
+        <td><%= instructor_email.semesters %></td>
         <td><%= instructor_email.instuctors %></td>
-        <td><%= instructor_email.library %></td>
+        <td><%= instructor_email.library.name %></td>
         <td><%= instructor_email.message %></td>
         <td><%= instructor_email.sent_date %></td>
         <td><%= link_to 'Show', instructor_email %></td>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Instructor Email', new_instructor_email_path %>
+<%= link_to 'New Email', new_instructor_email_path, class: 'rvt-button' %>
