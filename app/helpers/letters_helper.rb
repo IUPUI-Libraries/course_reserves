@@ -9,7 +9,7 @@ module LettersHelper
     recipients = []
     letter.semesters.each do |semester|
       semester.courses.each do |course|
-        recipients << course.instructor_username
+        recipients |= [course.instructor_username]
       end
     end
     recipients
