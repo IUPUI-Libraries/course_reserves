@@ -1,0 +1,39 @@
+<%= form_with(model: letter, local: true) do |form| %>
+  <% if letter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(letter.errors.count, "error") %> prohibited this letter from being saved:</h2>
+
+      <ul>
+      <% letter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.collection_select :semester_ids, Semester.all, :id, :semester, { :selected => @letter.semester_ids }, { :multiple => true, :name => 'letter[semester_ids][]' } %>
+ </div>
+
+  <div class="field">
+    <%= form.label :library %>
+    <%= form.collection_select :library_id, Library.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message, id: :letter_message %>
+  </div>
+
+  <!--
+  <div class="field">
+    <%= form.label :sent_date %>
+    <%= form.datetime_select :sent_date, id: :letter_sent_date %>
+  </div>
+  -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

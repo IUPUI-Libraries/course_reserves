@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :letters do
+    member do
+      get 'duplicate'
+    end
+  end
+
   resources :items
 
   resources :iucat_records

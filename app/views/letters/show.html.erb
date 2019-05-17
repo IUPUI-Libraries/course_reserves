@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Semester(s):</strong>
+  <%= show_semesters %>
+</p>
+
+<p>
+  <strong>Library:</strong>
+  <%= @letter.library.name %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @letter.message %>
+</p>
+
+<p>
+  <strong>Recipients</strong>
+  <%= recipient_list %>
+</p>
+
+<p>
+  <strong>Sent date:</strong>
+  <%= @letter.sent_date %>
+</p>
+
+<%= link_to 'Edit', edit_letter_path(@letter) %> |
+<%= link_to 'Back', :back %>

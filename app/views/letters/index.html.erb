@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Letters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Semesters</th>
+      <th>Library</th>
+      <th>Message</th>
+      <th>Sent date</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @letters.each do |letter| %>
+      <tr>
+        <td><%= show_semesters(letter) %></td>
+        <td><%= letter.library.name %></td>
+        <td><%= letter.message %></td>
+        <td><%= letter.sent_date %></td>
+        <td>
+          <div class='rvt-button-segmented' role='group'>
+          <%= link_to 'Show', letter, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+          <%= link_to 'Edit', edit_letter_path(letter), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+          <%= link_to 'Destroy', letter, method: :delete, data: { confirm: 'Are you sure?'}, class: 'rvt-button rvt-button--secondary rvt-button--small'  %>
+          <%= link_to 'Duplicate', duplicate_letter_path(letter), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Letter', new_letter_path, class: 'rvt-button' %>
