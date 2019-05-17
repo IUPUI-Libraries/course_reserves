@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :letters do
     member do
       get 'duplicate'
+      get 'mail'
     end
   end
 

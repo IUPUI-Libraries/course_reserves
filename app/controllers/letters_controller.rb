@@ -21,10 +21,21 @@ class LettersController < ApplicationController
   def edit
   end
 
-  # GET /courses/1/duplicate
+  # GET /letters/1/duplicate
   def duplicate
     @letter = Letter.find(params[:id]).duplicate
     render action: 'new'
+  end
+
+  # GET /letters/1/mail
+  def mail
+    @letter = Letter.find(params[:id])
+    @letter.sent_date = Date.today
+    respond_to do |format|
+      if @letter.save
+        format.html { redirect_to @letter, notice: 'Letter was successfully sent.' }
+      end
+    end
   end
 
   # POST /letters
