@@ -30,9 +30,10 @@ class LettersController < ApplicationController
   # GET /letters/1/mail
   def mail
     @letter = Letter.find(params[:id])
-    @letter.sent_date = Date.today
+    @letter.sent_date = Time.now
     respond_to do |format|
       if @letter.save
+        LetterMailer.with(letter: @letter).letter_email.deliver_later
         format.html { redirect_to @letter, notice: 'Letter was successfully sent.' }
       end
     end
