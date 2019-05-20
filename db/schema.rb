@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190516174546) do
+ActiveRecord::Schema.define(version: 20190520184641) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20190516174546) do
     t.datetime "sent_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "subject"
     t.index ["library_id"], name: "index_letters_on_library_id"
   end
 

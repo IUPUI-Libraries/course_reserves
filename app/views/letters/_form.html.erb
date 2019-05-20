@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :subject %>
+    <%= form.text_field :subject, id: :subject %>
+  </div>
+
+  <div class="field">
     <%= form.label :message %>
     <%= form.text_area :message, id: :letter_message %>
   </div>
