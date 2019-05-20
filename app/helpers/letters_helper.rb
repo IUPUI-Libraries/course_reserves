@@ -12,6 +12,6 @@ module LettersHelper
         recipients |= [course.instructor_username]
       end
     end
-    recipients
+    recipients.join(', ')
   end
 end

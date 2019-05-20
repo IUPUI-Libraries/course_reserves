@@ -43,7 +43,7 @@ class LettersController < ApplicationController
   # POST /letters.json
   def create
     @letter = Letter.new(letter_params)
-
+    @letter.recipient = helpers.recipient_list
     respond_to do |format|
       if @letter.save
         format.html { redirect_to @letter, notice: 'Letter was successfully created.' }

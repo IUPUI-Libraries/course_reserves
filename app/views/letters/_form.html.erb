@@ -11,15 +11,34 @@
     </div>
   <% end %>
 
+
+
+  <% if @letter.persisted? %>
+  <div class="field">
+    <%= form.label :semester, 'Original Semester(s)' %>
+    <%= form.collection_select :semester_ids, Semester.all, :id, :semester, { :selected => @letter.semester_ids }, { :disabled => true, :multiple => true, :name => 'letter[semester_ids][]' } %>
+ </div>
+
+ <div class="field">
+   <%= form.label :library, 'Original Libray' %>
+   <%= form.collection_select :library_id, Library.all, :id, :name, {:selected => @letter.library.id}, {:disabled => true} %>
+ </div>
+
+  <div class="field">
+    <%= form.label :recipient, 'Recipents' %>
+    <%= form.text_field :recipient, id: :recipient %>
+  </div>
+  <% else %>
   <div class="field">
     <%= form.label :semester %>
     <%= form.collection_select :semester_ids, Semester.all, :id, :semester, { :selected => @letter.semester_ids }, { :multiple => true, :name => 'letter[semester_ids][]' } %>
  </div>
 
-  <div class="field">
-    <%= form.label :library %>
-    <%= form.collection_select :library_id, Library.all, :id, :name %>
-  </div>
+ <div class="field">
+   <%= form.label :library %>
+   <%= form.collection_select :library_id, Library.all, :id, :name %>
+ </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :subject %>
