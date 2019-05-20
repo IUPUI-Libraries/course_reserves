@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <th scope="row">Library:</th>
-      <td><%= @letter.library.name %></td>
+      <td><%= @letter&.library&.name || 'Both' %></td>
     </tr>
     <tr>
       <th scope="row">Subject:</th>

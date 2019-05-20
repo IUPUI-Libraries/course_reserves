@@ -21,7 +21,7 @@
 
  <div class="field">
    <%= form.label :library, 'Original Libray' %>
-   <%= form.collection_select :library_id, Library.all, :id, :name, {:selected => @letter.library.id}, {:disabled => true} %>
+   <%= text_field @lettter, :library, {:value => @letter.library&.name || 'Both', :disabled => true} %>
  </div>
 
   <div class="field">
@@ -36,7 +36,7 @@
 
  <div class="field">
    <%= form.label :library %>
-   <%= form.collection_select :library_id, Library.all, :id, :name %>
+   <%= form.collection_select :library_id, Library.all, :id, :name, :include_blank => 'Both' %>
  </div>
   <% end %>
 

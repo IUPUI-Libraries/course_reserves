@@ -1,5 +1,5 @@
 class Letter < ApplicationRecord
-  belongs_to :library
+  belongs_to :library, optional: true
   has_and_belongs_to_many :semesters
 
   def duplicate

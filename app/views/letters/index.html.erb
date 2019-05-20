@@ -17,7 +17,7 @@
     <% @letters.each do |letter| %>
       <tr>
         <td><%= show_semesters(letter) %></td>
-        <td><%= letter.library.name %></td>
+        <td><%= letter&.library&.name || 'Both' %></td>
         <td><%= letter.message %></td>
         <td><%= letter.sent_date %></td>
         <td>
