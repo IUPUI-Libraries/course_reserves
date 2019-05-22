@@ -1,4 +1,5 @@
 menubar: false
+statusbar: false
 toolbar:
   - styleselect | bold italic link| numlist bullist | undo redo
 plugins:
