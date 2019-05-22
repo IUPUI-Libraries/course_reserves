@@ -18,7 +18,7 @@
       <tr>
         <td><%= show_semesters(letter) %></td>
         <td><%= letter&.library&.name || 'Both' %></td>
-        <td><%= letter.message %></td>
+        <td><%= sanitize(letter.message, tags:[]).truncate(100) %></td>
         <td><%= letter.sent_date %></td>
         <td>
           <div class='rvt-button-segmented' role='group'>

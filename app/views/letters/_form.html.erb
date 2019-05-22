@@ -47,7 +47,7 @@
 
   <div class="field">
     <%= form.label :message %>
-    <%= form.text_area :message, id: :letter_message %>
+    <%= form.text_area :message, id: :letter_message, class: 'tinymce' %>
   </div>
 
   <!--
@@ -58,6 +58,6 @@
   -->
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save Letter', class: 'rvt-button'%>
   </div>
 <% end %>

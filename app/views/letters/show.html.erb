@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <th scope="row">Message:</th>
-      <td><%= @letter.message %></td>
+      <td><%= @letter.message.html_safe %></td>
     </tr>
     <tr>
       <th scope="row">Recipients:</th>

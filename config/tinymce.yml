@@ -1,0 +1,6 @@
+menubar: false
+toolbar:
+  - styleselect | bold italic link| numlist bullist | undo redo
+plugins:
+  - link
+  - lists
