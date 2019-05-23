@@ -15,3 +15,4 @@
 
 ## Precompiling Assets
 * RAILS_ENV=production bin/rails assets:precompile
+* (NEW) RAILS_ENV=production RAILS_RELATIVE_URL_ROOT="/reserves" bundle exec rake assets:precompile //Required for tinymce
