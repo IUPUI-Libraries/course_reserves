@@ -7,14 +7,4 @@ class Letter < ApplicationRecord
     dup_letter.sent_date = nil
     dup_letter
   end
-
-  def recipient_list
-    recipients = []
-    semesters.each do |semester|
-      semester.courses.each do |course|
-        recipients |= [course.instructor_username]
-      end
-    end
-    recipients
-  end
 end
