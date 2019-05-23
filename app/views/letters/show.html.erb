@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<h3>Letter #<%= @letter.id %></h3>
+<table id="letter-table" class="rvt-table-stripes">
+  <caption class="sr-only">Letter Information</caption>
+  <tbody>
+    <tr>
+      <th scope="row">Semesters:</th>
+      <td><%= show_semesters %></td>
+    </tr>
+    <tr>
+      <th scope="row">Library:</th>
+      <td><%= @letter&.library&.name || 'Both' %></td>
+    </tr>
+    <tr>
+      <th scope="row">Subject:</th>
+      <td><%= @letter.subject %></td>
+    </tr>
+    <tr>
+      <th scope="row">Message:</th>
+      <td><%= @letter.message.html_safe %></td>
+    </tr>
+    <tr>
+      <th scope="row">Recipients:</th>
+      <td><%= @letter.recipient %></td>
+    </tr>
+    <tr>
+      <th scope="row">Date Sent:</th>
+      <td><%= @letter.sent_date %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="rvt-button-group rvt-p-top-md">
+  <%= link_to 'Edit', edit_letter_path(@letter), class: 'rvt-button rvt-button--small'  %>
+  <% if @letter.sent_date.nil? %>
+    <%= link_to 'Send',
+                mail_letter_path(@letter),
+                data: { confirm: 'Are you sure?'},
+                class: 'rvt-button rvt-button--small rvt-button--secondary' %>
+  <% else %>
+    <%= link_to 'Duplicate', duplicate_letter_path(@letter), class: 'rvt-button rvt-button--small rvt-button--secondary' %>
+  <% end %>
+  <%= link_to 'Letters', letters_path, class: 'rvt-button rvt-button--small rvt-button--secondary' %>
+</div>

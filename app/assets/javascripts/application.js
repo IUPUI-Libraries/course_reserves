@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require jquery-ui
 //= require turbolinks
+//= require tinymce-jquery
 //= require_tree .
 //= require rivet.min.js
 //= require nested_form_fields

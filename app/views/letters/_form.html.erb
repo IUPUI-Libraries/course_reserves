@@ -1,0 +1,63 @@
+<%= form_with(model: letter, local: true) do |form| %>
+  <% if letter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(letter.errors.count, "error") %> prohibited this letter from being saved:</h2>
+
+      <ul>
+      <% letter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <% if @letter.persisted? %>
+  <div class="field">
+    <%= form.label :semester, 'Original Semester(s)' %>
+    <%= form.collection_select :semester_ids, Semester.all, :id, :semester, { :selected => @letter.semester_ids }, { :disabled => true, :multiple => true, :name => 'letter[semester_ids][]' } %>
+ </div>
+
+ <div class="field">
+   <%= form.label :library, 'Original Libray' %>
+   <%= text_field @lettter, :library, {:value => @letter.library&.name || 'Both', :disabled => true} %>
+ </div>
+
+  <div class="field">
+    <%= form.label :recipient, 'Recipents' %>
+    <%= form.text_field :recipient, id: :recipient %>
+  </div>
+  <% else %>
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.collection_select :semester_ids, Semester.all, :id, :semester, { :selected => @letter.semester_ids }, { :multiple => true, :name => 'letter[semester_ids][]' } %>
+ </div>
+
+ <div class="field">
+   <%= form.label :library %>
+   <%= form.collection_select :library_id, Library.all, :id, :name, :include_blank => 'Both' %>
+ </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.text_field :subject, id: :subject %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message, id: :letter_message, class: 'tinymce' %>
+  </div>
+
+  <!--
+  <div class="field">
+    <%= form.label :sent_date %>
+    <%= form.datetime_select :sent_date, id: :letter_sent_date %>
+  </div>
+  -->
+
+  <div class="actions">
+    <%= form.submit 'Save Letter', class: 'rvt-button'%>
+  </div>
+<% end %>
