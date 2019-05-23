@@ -32,4 +32,10 @@ module ItemsHelper
       "#{item.title} #{fa_icon 'external-link'}".html_safe
     end
   end
+
+  def param_item_status
+    return '' unless params.has_key?(:q) && params[:q].has_key?(:item_status_id_eq)
+
+    params[:q][:item_status_id_eq]
+  end
 end

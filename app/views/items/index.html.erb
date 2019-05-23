@@ -1,20 +1,45 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Items</h1>
-<div class="rvt-button-group">
-  <%= link_to "All Items", items_path, class: status_class(nil) %>
-  <%= link_to "Pending", items_path(status: 'Pending'), class: status_class('Pending') %>
-  <%= link_to "Ordering", items_path(status: 'Ordering'), class: status_class('Ordering') %>
+
+<div id="item-filters">
+  <div class="rvt-box">
+    <div class="rvt-box__header">
+      Filters
+    </div>
+    <div class="rvt-box__body rvt-m-right-sm">
+    <%= search_form_for @q do |f| %>
+      <div class="rvt-grid">
+        <div class="rvt-grid__item-md">
+          <%= f.label :title_or_author_cont, 'Title | Author' %>
+          <%= f.search_field :title_or_author_cont %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label :course_name_cont, 'Course' %>
+          <%= f.search_field :course_name_cont %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label :item_status_id_eq, 'Status' %>
+          <%= f.select :item_status_id_eq, options_from_collection_for_select(ItemStatus.all, 'id', 'status', param_item_status), include_blank: true %>
+        </div>
+        <div class="rvt-grid__item">
+          <br/>
+          <%= f.submit "Filter", class: "rvt-button" %>
+          <%= link_to 'Reset', items_path, class: 'rvt-button rvt-button--secondary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Status</th>
-      <th>Course Name</th>
+      <th><%= sort_link(@q, :id, 'ID') %></th>
+      <th><%= sort_link(@q, :title) %></th>
+      <th><%= sort_link(@q, :author) %></th>
+      <th><%= sort_link(@q, :course_name, 'Course') %></th>
+      <th><%= sort_link(@q, :status) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,8 +50,8 @@
         <td><%= item.id %></td>
         <td><%= title_iucat_link(item) %></td>
         <td><%= item.author %></td>
-        <td><%= ItemStatus.find(item.item_status_id).status %></td>
         <td><%= link_to Course.find(item.course_id).name, course_path(item.course_id)%></td>
+        <td><%= ItemStatus.find(item.item_status_id).status %></td>
         <td>
           <div class='rvt-button-segmented' role='group'>
           <%= link_to 'Show', item, class: 'rvt-button rvt-button--secondary rvt-button--small' %>

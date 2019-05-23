@@ -6,12 +6,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    if params[:status]
-      stat_id = ItemStatus.find_by(status: params[:status])
-      @pagy, @items = pagy(policy_scope(Item.where(item_status_id: stat_id)))
-    else
-      @pagy, @items = pagy(policy_scope(Item))
-    end
+    @q = Item.ransack(params[:q])
+    @pagy, @items = pagy(policy_scope(@q.result))
   end
 
   # GET /items/1
