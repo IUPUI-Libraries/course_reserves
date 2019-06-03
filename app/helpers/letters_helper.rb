@@ -1,4 +1,6 @@
 module LettersHelper
+  include Pagy::Frontend
+
   def show_semesters(let = false)
     letter = let || @letter
     letter.semesters.map { |sem| sem.semester.to_s }.join('<br/>').html_safe

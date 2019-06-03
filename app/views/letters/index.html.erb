@@ -8,7 +8,7 @@
       <th>Semesters</th>
       <th>Library</th>
       <th>Message</th>
-      <th>Sent date</th>
+      <th><%= sort_link(@q, :sent_date, 'Sent Date') %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -36,3 +36,8 @@
 <br>
 
 <%= link_to 'New Letter', new_letter_path, class: 'rvt-button' %>
+
+<br/><br/>
+
+<%== pagy_info(@pagy) %>
+<%== render '/pagy/nav', locals: {pagy: @pagy} %>
