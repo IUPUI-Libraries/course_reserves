@@ -9,7 +9,7 @@ module LettersHelper
     recipients = []
     letter.semesters.each do |semester|
       semester.courses.each do |course|
-        recipients |= [course.instructor_username] if library_filter(course, letter)
+        recipients |= [course.instructor_email] if library_filter(course, letter)
       end
     end
     recipients.join(', ')

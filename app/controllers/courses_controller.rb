@@ -20,6 +20,8 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    @course.instructor_username = current_user.uid
+    @course.instructor_email = LdapService.fetch_info(current_user.uid)[:email]
   end
 
   # GET /courses/1/edit
@@ -99,8 +101,8 @@ class CoursesController < ApplicationController
   # only allow the white list through.
   def course_params
     params.require(:course).permit(
-      :name, :course_number, :instructor,
-      :instructor_username, :library_id, :semester_id, :department_id,
+      :name, :course_number, :instructor, :instructor_username,
+      :instructor_email, :library_id, :semester_id, :department_id,
       :department_name,
       items_attributes: policy(:item).permitted_attributes
     )
