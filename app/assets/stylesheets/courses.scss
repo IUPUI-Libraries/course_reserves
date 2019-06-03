@@ -34,3 +34,8 @@ ul.ui-autocomplete {
 
 // Hide autocomplete helper
 .ui-helper-hidden-accessible { position: absolute; left:-999em; }
+
+// Add space below table before showing items.
+#course-table{
+  margin-bottom:20px;
+}

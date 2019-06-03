@@ -6,6 +6,7 @@ class Course < ApplicationRecord
 
   validates :name, :course_number, :department_name, presence: true
   validates :instructor, :instructor_username, presence: true
+  validates :instructor_email, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'invalid email' }
   validates :semester_id, presence: true
 
   accepts_nested_attributes_for :items,

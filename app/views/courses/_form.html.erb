@@ -44,9 +44,16 @@
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :instructor_username do %>
-          Instructor name <%= fa_icon 'asterisk' %>
+          Instructor username <%= fa_icon 'asterisk' %>
         <% end %>
         <%= form.text_field :instructor_username, id: :course_instructor_username %>
+      </div>
+
+      <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
+        <%= form.label :instructor_email do %>
+          Instructor email <%= fa_icon 'asterisk' %>
+        <% end %>
+        <%= form.text_field :instructor_email, id: :course_instructor_email %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
