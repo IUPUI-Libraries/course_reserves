@@ -23,6 +23,10 @@ class CoursePolicy < ApplicationPolicy
     user.admin?
   end
 
+  def expired?
+    user.admin?
+  end
+
   class Scope < Scope
     attr_reader :user, :scope
 
