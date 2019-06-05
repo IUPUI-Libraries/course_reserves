@@ -39,6 +39,19 @@ class CoursesController < ApplicationController
     render action: 'new'
   end
 
+  # Get /course/1/available
+  # Changes status to all items as available
+  def available
+    @course = Course.find(params[:id])
+    authorize @course
+    available_id = ItemStatus.find_by(status: 'Available').id
+    @course.items.each do |item|
+      item.item_status_id = available_id
+      item.save
+    end
+    render :show
+  end
+
   # POST /courses
   # POST /courses.json
   def create
