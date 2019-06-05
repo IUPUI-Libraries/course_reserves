@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   validates :title, :author, :publication_date, presence: true
 
   def init
-    self.item_status_id ||= 1
+    self.item_status_id ||= pending_id
   end
 
   def self.pending
@@ -19,7 +19,14 @@ class Item < ApplicationRecord
   end
 
   def self.items_with_status(status)
-    pending_id = ItemStatus.find_by(status: status).id
-    where(item_status_id: pending_id)
+    where(item_status_id: status_id(status))
+  end
+
+  def pending_id
+    status_id('Pending')
+  end
+
+  def status_id(status)
+    ItemStatus.find_by(status: status).id
   end
 end
