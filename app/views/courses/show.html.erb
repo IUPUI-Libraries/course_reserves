@@ -49,6 +49,8 @@
 
 <ul id='item-list'>
   <%= render @course.items %>
+  <li class="rvt-button-group">
+    <%= link_to 'All Available', available_course_path(@course), class: 'rvt-button rvt-button--small' %>
 </ul>
 
 <div class="rvt-button-group rvt-p-top-md">

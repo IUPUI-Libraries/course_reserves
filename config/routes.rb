@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :courses do
     member do
       get 'duplicate'
+      get 'available'
     end
   end
 

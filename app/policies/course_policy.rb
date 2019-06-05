@@ -19,6 +19,10 @@ class CoursePolicy < ApplicationPolicy
     user.admin? || record.user_id == user.id
   end
 
+  def available?
+    user.admin?
+  end
+
   class Scope < Scope
     attr_reader :user, :scope
 
