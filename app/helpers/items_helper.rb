@@ -2,7 +2,8 @@ module ItemsHelper
   include Pagy::Frontend
 
   def item_badge(item)
-    return 'rvt-badge--info' unless item.item_status.status == 'Available'
+    return 'rvt-badge--info' if item.item_status.status == 'Available'
+    return 'rvt-badge--danger' if item.item_status.status == 'Expired'
 
     'rvt-badge--success'
   end

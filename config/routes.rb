@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get 'duplicate'
       get 'available'
+      get 'expired'
     end
   end
 

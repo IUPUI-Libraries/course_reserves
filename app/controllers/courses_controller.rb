@@ -52,6 +52,17 @@ class CoursesController < ApplicationController
     render :show
   end
 
+  def expired
+    @course = Course.find(params[:id])
+    authorize @course
+    expired_id = ItemStatus.find_by(status: 'Expired').id
+    @course.items.each do |item|
+      item.item_status_id = expired_id
+      item.save
+    end
+    render :show
+  end
+
   # POST /courses
   # POST /courses.json
   def create
