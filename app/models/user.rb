@@ -16,6 +16,15 @@ class User < ApplicationRecord
     end
   end
 
+  # Return all users with instructor role.
+  def self.instructors
+    users = []
+    User.all.each do |user|
+      users << user if user.role?(:instructor)
+    end
+    users
+  end
+
   def role?(role)
     roles.any? { |r| r.name.underscore.to_sym == role }
   end
