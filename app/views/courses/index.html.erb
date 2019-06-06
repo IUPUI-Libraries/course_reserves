@@ -71,7 +71,7 @@
             <div class='rvt-button-segmented' role='group'>
             <%= link_to 'Show', course, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
             <%= link_to 'Edit', edit_course_path(course), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
-            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?'}, class: 'rvt-button rvt-button--secondary rvt-button--small'  %>
+            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?'}, class: 'rvt-button rvt-button--secondary rvt-button--small' if current_user.admin?  %>
             <%= link_to 'Duplicate', duplicate_course_path(course), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
             </div>
         </tr>
