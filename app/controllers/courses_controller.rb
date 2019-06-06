@@ -12,9 +12,20 @@ class CoursesController < ApplicationController
   end
 
   # GET /courses/1
-  # GET /courses/1.json
+  # GET /courses/1.pdf
   def show
     authorize @course
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CoursePdf.new(@course)
+        pdf.create_tags
+        send_data pdf.render,
+                  filename: "course_#{@course.id}",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   # GET /courses/new
@@ -52,6 +63,8 @@ class CoursesController < ApplicationController
     render :show
   end
 
+  # Get /course/1/expired
+  # Changes status of all course items to expired
   def expired
     @course = Course.find(params[:id])
     authorize @course

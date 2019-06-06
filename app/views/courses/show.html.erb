@@ -55,6 +55,9 @@
 <ul id='item-list'>
   <%= render @course.items %>
   <li class="rvt-button-group">
+    <%= link_to course_path(@course, format: :pdf), target: '_blank', class: 'rvt-button rvt-button--small' do %>
+      <%= fa_icon 'bookmark' %> &nbsp; Create Tags
+    <% end %>
     <%= link_to available_course_path(@course), class: 'rvt-button rvt-button--small'  do %>
       <%= fa_icon 'plus-circle' %> &nbsp; All Available
     <% end %>
