@@ -54,6 +54,7 @@
 
 <ul id='item-list'>
   <%= render @course.items %>
+  <% if current_user.admin? %>
   <li class="rvt-button-group">
     <%= link_to course_path(@course, format: :pdf), target: '_blank', class: 'rvt-button rvt-button--small' do %>
       <%= fa_icon 'bookmark' %> &nbsp; Create Tags
@@ -64,6 +65,8 @@
     <%= link_to expired_course_path(@course), class: 'rvt-button rvt-button--small rvt-button--danger' do %>
       <%= fa_icon 'minus-circle' %> &nbsp; All Expired
     <% end %>
+  </li>
+  <% end %>
 </ul>
 
 <div class="rvt-button-group rvt-p-top-md">
