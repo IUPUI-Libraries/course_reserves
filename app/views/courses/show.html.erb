@@ -42,6 +42,11 @@
       <th scope="row">Semester:</th>
       <td><%= @course.semester.semester %></td>
     </tr>
+
+    <tr>
+      <th scope="row">Creator:</th>
+      <td><%= User.find(@course.user_id).uid %></td>
+    </tr>
   </tbody>
 </table>
 
