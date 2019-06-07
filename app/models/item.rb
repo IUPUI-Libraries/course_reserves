@@ -22,11 +22,30 @@ class Item < ApplicationRecord
     where(item_status_id: status_id(status))
   end
 
+  def self.pending_id
+    status_id('Pending')
+  end
+
+  def self.status_id(status)
+    ItemStatus.find_by(status: status).id
+  end
+
+  def self.last_24
+    last_24 = Time.zone.now - 24 * 60 * 60
+    where('created_at >= ? or updated_at >= ?', last_24, last_24)
+  end
+
   def pending_id
     status_id('Pending')
   end
 
   def status_id(status)
     ItemStatus.find_by(status: status).id
+  end
+
+  def expired?
+    return true if status_id('Expired') == self.item_status_id
+
+    false
   end
 end

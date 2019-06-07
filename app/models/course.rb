@@ -30,8 +30,9 @@ class Course < ApplicationRecord
     dup_course
   end
 
-  def self.today
-    where('created_at >= ?', Time.zone.now.beginning_of_day)
+  def self.last_24
+    last_24 = Time.zone.now - 24 * 60 * 60
+    where('created_at >= ? or updated_at >= ?', last_24, last_24)
   end
 
   def title
