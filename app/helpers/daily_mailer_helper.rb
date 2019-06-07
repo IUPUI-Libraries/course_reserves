@@ -9,6 +9,14 @@ module DailyMailerHelper
   end
 
   def courses_today
-    Course.today
+    Course.last_24
+  end
+
+  def items_expired_today
+    items = []
+    Item.last_24.each do |item|
+      items << item if item.expired?
+    end
+    items
   end
 end

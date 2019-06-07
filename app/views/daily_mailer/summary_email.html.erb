@@ -1,26 +1,51 @@
-Pending Items
-<ul>
-<% pending_items.each do |item| %>
-  <li>
-    <%= item.title %>
-  </li>
-<% end %>
-</ul>
-
-Ordering Items
-<ul>
-<% ordering_items.each do |item| %>
-  <li>
-    <%= item.title %>
-  </li>
-<% end %>
-</ul>
-
-Courses Created Today
+<h3>Courses Created / Updated in last 24 Hours</h3>
 <ul>
 <% courses_today.each do |course| %>
   <li>
-    <%= course.title %>
+    <%= link_to course.title, course %>
   </li>
 <% end %>
 </ul>
+
+<h3>Items Expired in last 24 Hours</h3>
+<table>
+  <tr><th>Item</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Course</th></tr>
+  <% items_expired_today.each do |item| %>
+  <% course = Course.find(item.course_id) %>
+  <tr>
+    <td><%= link_to item.title, item %></td>
+    <td></td>
+    <td><%= link_to course.title, course %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>All Pending Items</h3>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>Course</th>
+  </tr>
+  <% pending_items.each do |item| %>
+  <% course = Course.find(item.course_id) %>
+  <tr>
+    <td><%= link_to item.title, item %></td>
+    <td></td>
+    <td><%= link_to course.title, course %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>All Ordering Items</h3>
+<table>
+  <tr><th>Item</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Course</th></tr>
+  <% ordering_items.each do |item| %>
+  <% course = Course.find(item.course_id) %>
+  <tr>
+    <td><%= link_to item.title, item %></td>
+    <td></td>
+    <td><%= link_to course.title, course %></td>
+  </tr>
+  <% end %>
+</table>
