@@ -24,6 +24,11 @@
    <%= text_field @lettter, :library, {:value => @letter.library&.name || 'Both', :disabled => true} %>
  </div>
 
+ <div class="field">
+   <%= form.label :from %>
+   <%= form.text_field :from, id: :from %>
+ </div>
+
   <div class="field">
     <%= form.label :recipient, 'Recipents' %>
     <%= form.text_field :recipient, id: :recipient %>

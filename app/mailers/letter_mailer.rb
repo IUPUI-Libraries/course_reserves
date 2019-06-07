@@ -3,6 +3,7 @@ class LetterMailer < ApplicationMailer
 
   def letter_email
     @letter = params[:letter]
-    mail(to: @letter.recipient, subject: @letter.subject)
+    @letter.from ||= CourseReserves.config[:email][:default_from]
+    mail(to: @letter.recipient, from: @letter.from, subject: @letter.subject)
   end
 end

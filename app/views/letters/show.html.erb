@@ -12,16 +12,20 @@
       <td><%= @letter&.library&.name || 'Both' %></td>
     </tr>
     <tr>
+      <th scope="row">From:</th>
+      <td><%= @letter.from %></td>
+    </tr>
+    <tr>
+      <th scope="row">Recipients:</th>
+      <td><%= @letter.recipient %></td>
+    </tr>
+    <tr>
       <th scope="row">Subject:</th>
       <td><%= @letter.subject %></td>
     </tr>
     <tr>
       <th scope="row">Message:</th>
       <td><%= @letter.message.html_safe %></td>
-    </tr>
-    <tr>
-      <th scope="row">Recipients:</th>
-      <td><%= @letter.recipient %></td>
     </tr>
     <tr>
       <th scope="row">Date Sent:</th>
