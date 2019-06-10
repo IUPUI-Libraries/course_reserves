@@ -17,6 +17,15 @@ module LettersHelper
     recipients.join(', ')
   end
 
+  def from_address(let = false)
+    letter = let || @letter
+    if Library.exists?(id: letter.library_id)
+      library = Library.find(letter.library_id).name
+      return CourseReserves.config[:email][:library_from][library] unless CourseReserves.config[:email][:library_from][library].nil?
+    end
+    CourseReserves.config[:email][:default_from]
+  end
+
   private
 
   def library_filter(course, letter)
