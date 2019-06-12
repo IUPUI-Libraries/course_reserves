@@ -14,14 +14,6 @@ default: &default
     :admin:
       - LIB-OPS
 
-  # Email settings
-  :email:
-    :default_from: 'noreply@univeristy.edu'
-    :daily_to: 'user@university.edu'
-    :library_from:
-      'University Library': library@university.edu
-      'Art Library': art@university.edu
-
 development:
   <<: *default
 
