@@ -41,7 +41,7 @@
 
  <div class="field">
    <%= form.label :library %>
-   <%= form.collection_select :library_id, Library.all, :id, :name, :include_blank => 'Both' %>
+   <%= form.collection_select :library_id, Library.all, :id, :name %>
  </div>
   <% end %>
 

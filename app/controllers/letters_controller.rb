@@ -49,6 +49,7 @@ class LettersController < ApplicationController
   def create
     @letter = Letter.new(letter_params)
     @letter.recipient = helpers.recipient_list
+    @letter.from = helpers.from_address
     authorize @letter
     respond_to do |format|
       if @letter.save
