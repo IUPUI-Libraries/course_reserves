@@ -27,7 +27,9 @@ module LettersHelper
   private
 
   def library_filter(course, letter)
-    return true if letter.library.nil? || letter.library == course.library
+    return true if letter.library.nil? ||
+                   letter.library == course.library ||
+                   letter.library == Library.where(name: 'All').first
 
     false
   end
