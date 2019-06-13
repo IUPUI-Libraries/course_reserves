@@ -25,12 +25,12 @@
  </div>
 
  <div class="field">
-   <%= form.label :from %>
+   <%= form.label :from, 'From: / To:' %>
    <%= form.text_field :from, id: :from %>
  </div>
 
   <div class="field">
-    <%= form.label :recipient, 'Recipents' %>
+    <%= form.label :recipient, 'Bcc: Recipents' %>
     <%= form.text_field :recipient, id: :recipient %>
   </div>
   <% else %>
