@@ -19,7 +19,7 @@
           <%= f.search_field :department_name_cont %>
         </div>
         <div class="rvt-grid__item-md">
-          <%= f.label :instructor_or_instructor_username_cont, 'Instructor|Username' %>
+          <%= f.label :instructor_or_instructor_username_cont, 'Instr|User' %>
           <%= f.search_field :instructor_or_instructor_username_cont %>
         </div>
         <div class="rvt-grid__item-md">
@@ -31,9 +31,8 @@
           <%= f.select :semester_id_eq, options_from_collection_for_select(Semester.all, 'id', 'semester', param_semester), include_blank: true %>
         </div>
         <div class="rvt-grid__item">
-          <br/>
-          <%= f.submit "Filter", class: "rvt-button" %>
-          <%= link_to 'Reset', courses_path, class: 'rvt-button rvt-button--secondary' %>
+          <%= f.submit "Filter", class: "rvt-button rvt-m-top-md" %>
+          <%= link_to 'Reset', courses_path, class: 'rvt-button rvt-button--secondary rvt-m-top-md' %>
         </div>
     <% end %>
     </div>
@@ -46,12 +45,13 @@
   <table class="rvt-table-compact">
     <thead>
       <tr>
+        <th><%= sort_link(@q, :id) %></th>
         <th><%= sort_link(@q, :name) %></th>
         <th><%= sort_link(@q, :course_number, 'Number') %></th>
         <th><%= sort_link(@q, :department_name, 'Department') %></th>
         <th><%= sort_link(@q, :instructor) %></th>
         <th><%= sort_link(@q, :instructor_username, 'Username') %></th>
-        <th><%= sort_link(@q, :library_name) %></th>
+        <th><%= sort_link(@q, :library_name, 'Library') %></th>
         <th><%= sort_link(@q, :semester_semester, 'Semester') %></th>
         <th colspan="1"></th>
       </tr>
@@ -60,6 +60,7 @@
     <tbody>
       <% @courses.each do |course| %>
         <tr>
+          <td><%= course.id %></td>
           <td><%= course.name %></td>
           <td><%= course.course_number %></td>
           <td><%= course.department_name %></td>
