@@ -17,6 +17,13 @@ module LettersHelper
     recipients.join(', ')
   end
 
+  def from_address(let = false)
+    letter = let || @letter
+    return Library.find(letter.library_id).email if Library.exists?(id: letter.library_id)
+
+    ''
+  end
+
   private
 
   def library_filter(course, letter)
