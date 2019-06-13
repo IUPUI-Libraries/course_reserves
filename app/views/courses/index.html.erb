@@ -24,7 +24,7 @@
         </div>
         <div class="rvt-grid__item-md">
           <%= f.label :libary_id_eq, 'Library' %>
-          <%= f.select :library_id_eq, options_from_collection_for_select(Library.all, 'id', 'name', param_library), include_blank: true %>
+          <%= f.select :library_id_eq, options_from_collection_for_select(Library.where.not(name: 'All'), 'id', 'name', param_library), include_blank: true %>
         </div>
         <div class="rvt-grid__item-md">
           <%= f.label :semester_id_eq, 'Semester' %>
