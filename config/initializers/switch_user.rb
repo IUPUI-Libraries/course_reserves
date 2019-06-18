@@ -7,7 +7,7 @@ SwitchUser.setup do |config|
   # available_users is a hash,
   # key is the model name of user (:user, :admin, or any name you use),
   # value is a block that return the users that can be switched.
-  config.available_users = { user: -> { User.instructors } }
+  config.available_users = { user: -> { User.joins(:assignments).where(assignments: {role_id: Role.find_by(name: 'instructor')}) } }
 
   # available_users_identifiers is a hash,
   # keys in this hash should match a key in the available_users hash
@@ -40,7 +40,7 @@ SwitchUser.setup do |config|
 
   # helper_with_guest is a boolean value, if it set to false
   # the guest item in the helper won't be shown
-  config.helper_with_guest = false
+  config.helper_with_guest = true
 
   # false = login from one scope to another and you are logged in only in both scopes
   # true = you are logged only into one scope at a time
