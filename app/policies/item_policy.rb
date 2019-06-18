@@ -13,6 +13,10 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def destroy?
+    user.admin?
+  end
+
+  def expire?
     user.admin? || record.user_id == user.id
   end
 

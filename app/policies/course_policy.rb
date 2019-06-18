@@ -24,7 +24,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def expired?
-    user.admin?
+    user.admin? || record.user_id == user.id
   end
 
   class Scope < Scope
