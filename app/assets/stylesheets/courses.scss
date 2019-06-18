@@ -39,3 +39,8 @@ ul.ui-autocomplete {
 #course-table{
   margin-bottom:20px;
 }
+
+// Grey out expired items.
+div.item_expired {
+  background-color: #ccc;
+}
