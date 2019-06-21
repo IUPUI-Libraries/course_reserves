@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    member do
+      get 'expire'
+    end
+  end
 
   resources :iucat_records
 end

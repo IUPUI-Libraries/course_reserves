@@ -1,12 +1,22 @@
 <%= form.nested_fields_for :items do |item_form| %>
-<div class='rvt-border-all rvt-border-radius rvt-m-bottom-sm rvt-p-all-md'>
-  <div class="add_items rvt-container">
+<% expired = item_form.object.item_status_id == ItemStatus.find_by(status: 'Expired').id %>
+
+
+<% if expired %>
+  <div class='item_expired rvt-border-all rvt-border-radius rvt-m-bottom-sm rvt-p-all-md'>
+    <div class="add_items rvt-container">
+      <p><span class="rvt-badge rvt-badge--danger">ITEM EXPIRED</span></p>
+<% else %>
+  <div class='rvt-border-all rvt-border-radius rvt-m-bottom-sm rvt-p-all-md'>
+    <div class="add_items rvt-container">
+<% end %>
+
     <div class="rvt-grid iucat-data" style="">
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
         <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>IUCAT Data</button>
       </div>
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-9-md-up rvt-grid__item-10-lg-up rvt-p-bottom-md'>
-        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID.", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__);", class: 'iucat-record-id' %>
+        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID.", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__);", class: 'iucat-record-id', disabled: expired %>
       </div>
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-1-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
         <a  id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button-disabled rvt-button iucat-link-bttn" target="_blank">
@@ -17,31 +27,31 @@
     <div class="rvt-grid">
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :title %> <%= fa_icon 'asterisk' %>
-        <%= item_form.text_field :title %>
+        <%= item_form.text_field :title, disabled: expired %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :author %> <%= fa_icon 'asterisk' %>
-        <%= item_form.text_field :author %>
+        <%= item_form.text_field :author, disabled: expired %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :publication_date %> <%= fa_icon 'asterisk' %>
-        <%= item_form.text_field :publication_date %>
+        <%= item_form.text_field :publication_date, disabled: expired %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :edition %>
-        <%= item_form.text_field :edition %>
+        <%= item_form.text_field :edition, disabled: expired %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :call_number %>
-        <%= item_form.text_field :call_number %>
+        <%= item_form.text_field :call_number, disabled: expired %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :loan_period %>
-        <%= item_form.collection_select :loan_period_id, LoanPeriod.all, :id, :length %>
+        <%= item_form.collection_select :loan_period_id, LoanPeriod.all, :id, :length, {}, {disabled: expired} %>
       </div>
       <div class="field rvt-grid__item-12-md-up rvt-grid__item-8-lg-up">
         <%= item_form.label :note %>
-        <%= item_form.text_area :note %>
+        <%= item_form.text_area :note, disabled: expired %>
       </div>
     </div>
     <div class="rvt-grid">
@@ -49,26 +59,31 @@
            class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up"
            id="div_bod_format___nested_field_for_replace_with_index__">
         <%= item_form.label :bod_format, 'Books on Demand format' %>
-        <%= item_form.text_field :bod_format %>
+        <%= item_form.text_field :bod_format, disabled: expired %>
       </div>
       <% if current_user.admin? %>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :item_status %>
-        <%= item_form.collection_select :item_status_id, ItemStatus.all, :id, :status %>
+        <%= item_form.collection_select :item_status_id, ItemStatus.all, :id, :status, {}, {disabled: expired} %>
       </div>
       <% end %>
     </div>
     <div class="rvt-grid">
       <div class='rvt-grid__item-12'>
-        <%= item_form.check_box :will_supply %>
+        <%= item_form.check_box :will_supply, disabled: expired %>
         <%= item_form.label :will_supply, "I will supply" %>
       </div>
       <div class='rvt-grid__item-12'>
-        <%= item_form.check_box :purchase %>
+        <%= item_form.check_box :purchase, disabled: expired %>
         <%= item_form.label :purchase, "Please purchase" %>
       </div>
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md rvt-p-top-lg'>
+      <% if item_form.object.persisted? && !expired %>
+        <%= link_to "Expire Item", expire_item_path(id: item_form.object.id), class: 'rvt-button rvt-button--danger' %>
+      <% end %>
+      <% if current_user.admin? %>
         <%= item_form.remove_nested_fields_link 'Remove Item x', class: 'rvt-button rvt-button--danger' %>
+      <% end %>
       </div>
     </div>
   </div>

@@ -38,6 +38,21 @@ class ItemsController < ApplicationController
     authorize @item
   end
 
+  # GET /items/1/expire
+  def expire
+    @item = Item.find(params[:id])
+    @course = Course.find(@item.course_id)
+    authorize @item
+    @item.item_status_id = ItemStatus.find_by(status: 'Expired').id
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to course_url(@course), notice: 'Item expired.' }
+      else
+        format.html { redirect_to course_url(@course), notice: 'Item could not be expired.' }
+      end
+    end
+  end
+
   # POST /items
   # POST /items.json
   def create
