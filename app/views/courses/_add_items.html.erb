@@ -12,18 +12,19 @@
 <% end %>
 
     <div class="rvt-grid iucat-data" style="">
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
-        <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>IUCAT Data</button>
-      </div>
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-9-md-up rvt-grid__item-10-lg-up rvt-p-bottom-md'>
-        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID.", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__);", class: 'iucat-record-id', disabled: expired %>
-      </div>
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-1-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
-        <a  id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button-disabled rvt-button iucat-link-bttn" target="_blank">
-          <%= fa_icon 'external-link' %>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-3-md-up rvt-grid__item-3-lg-up rvt-p-bottom-md'>
+        <a href="https://iucat.iu.edu" id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button iucat-link-bttn" target="_iucat">
+          Go to IUCAT <%= fa_icon 'external-link' %>
         </a>
       </div>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-7-md-up rvt-grid__item-7-lg-up rvt-p-bottom-md'>
+        <%= item_form.text_field :iucat_id, placeholder: "Paste IUCAT URL.", onkeydown: "preventSubmit(event);", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__, event); return false;", class: 'iucat-record-id', disabled: expired %>
+      </div>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-2-lg-up rvt-p-bottom-md'>
+        <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>Autofill</button>
+      </div>
     </div>
+
     <div class="rvt-grid">
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :title %> <%= fa_icon 'asterisk' %>
