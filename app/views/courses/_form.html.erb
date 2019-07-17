@@ -32,7 +32,7 @@
         <%= form.label :department_name do %>
           Department <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :department_name, placeholder: 'Select department...', data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
+        <%= form.text_field :department_name, placeholder: 'Enter department...', data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
