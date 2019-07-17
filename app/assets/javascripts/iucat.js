@@ -18,17 +18,29 @@ function iucatLink(id){
   return "https://iucat.iu.edu/catalog/" + iucatRecordId(id).toString();
 }
 
-function checkIUCAT(x){
-  iucat_field = courseAttr(x, 'iucat_id');
-  iucat_val = $(iucat_field).val();
-  iucat_button = "#iucat_data_" + x;
-  iucat_link = "#iucat_link_" + x;
-  if(iucatRecordId(iucat_val)){
-    $(iucat_button).attr("disabled", false);
-    $(iucat_link).attr("href", iucatLink(iucat_val));
+function preventSubmit(event){
+  if(event.keyCode == 13) {
+    event.preventDefault();
+    return false;
+  }
+}
+
+function checkIUCAT(x, event = false){
+  var key = event.keyCode;
+  if(key == '13'){
+    fetchMetadata(x);
   }else{
-    $(iucat_button).attr("disabled", true);
-    $(iucat_link).attr("href", "https://iucat.iu.edu");
+    iucat_field = courseAttr(x, 'iucat_id');
+    iucat_val = $(iucat_field).val();
+    iucat_button = "#iucat_data_" + x;
+    iucat_link = "#iucat_link_" + x;
+    if(iucatRecordId(iucat_val)){
+      $(iucat_button).attr("disabled", false);
+      $(iucat_link).attr("href", iucatLink(iucat_val));
+    }else{
+      $(iucat_button).attr("disabled", true);
+      $(iucat_link).attr("href", "https://iucat.iu.edu");
+    }
   }
 }
 
