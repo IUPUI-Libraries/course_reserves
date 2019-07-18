@@ -31,6 +31,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    @course.items.build
     @course.instructor_username = current_user.uid
     @course.instructor_email = LdapService.fetch_info(current_user.uid)[:email]
   end
