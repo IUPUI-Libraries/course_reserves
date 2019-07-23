@@ -1,4 +1,3 @@
-<p>Application for holding materials at IUPUI Univeristy Library.</p>
 <% if user_signed_in? %>
   <% if current_user.admin? || current_user.role?(:instructor) %>
     <div class='rvt-p-all-sm'>
@@ -24,7 +23,5 @@
     <p>Go to IUCAT to search for Course Reserve Materials.</p>
   <% end %>
 <% else %>
-<div class='rvt-p-all-sm'>
-  <%= link_to "Sign in with IUCAS", user_cas_omniauth_authorize_path, class: 'rvt-button' %>
-</div>
+  <%== render "presignin.html.erb" %>
 <% end %>
