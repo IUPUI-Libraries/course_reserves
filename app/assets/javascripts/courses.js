@@ -78,7 +78,11 @@ $(document).on('turbolinks:before-visit', function(event) {
 $(document).on("keydown", "input.enterastab, select.enterastab, textarea.enterastab", function(e) {
  if (e.keyCode==13) {
   var focusable = $('input,a,select,button,textarea').filter(':visible');
-  focusable.eq(focusable.index(this)+1).focus();
+  if (e.shiftKey) {
+    focusable.eq(focusable.index(this)-1).focus();
+  }else{
+    focusable.eq(focusable.index(this)+1).focus();
+  }
   return false;
  }
 });
