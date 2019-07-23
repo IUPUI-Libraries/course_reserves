@@ -19,7 +19,7 @@
             <%= fa_icon 'external-link' %>
           <% end %>
         <% end %>
-        <%= form.text_field :course_id, disabled: true  %>
+        <%= form.text_field :course_id, disabled: true %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :iucat_id do %>
@@ -34,27 +34,27 @@
     <div class="rvt-grid">
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :title %>
-        <%= form.text_field :title, id: :item_title %>
+        <%= form.text_field :title, id: :item_title, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :author %>
-        <%= form.text_field :author, id: :item_author %>
+        <%= form.text_field :author, id: :item_author, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :publication_date %>
-        <%= form.text_field :publication_date, id: :item_publication_date %>
+        <%= form.text_field :publication_date, id: :item_publication_date, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :edition %>
-        <%= form.text_field :edition, id: :item_edition %>
+        <%= form.text_field :edition, id: :item_edition, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :call_number %>
-        <%= form.text_field :call_number, id: :item_call_number %>
+        <%= form.text_field :call_number, id: :item_call_number, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :loan_period %>
-        <%= form.collection_select :loan_period_id, LoanPeriod.all, :id, :length %>
+        <%= form.collection_select :loan_period_id, LoanPeriod.all, :id, :length, {}, {class: 'enterastab'} %>
       </div>
       <div class="field rvt-grid__item-12-md-up rvt-grid__item-8-lg-up">
         <%= form.label :note %>
@@ -64,14 +64,14 @@
     <div class="rvt-grid">
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :item_status %>
-        <%= form.collection_select :item_status_id, ItemStatus.all, :id, :status %>
+        <%= form.collection_select :item_status_id, ItemStatus.all, :id, :status, {}, {class: 'enterastab'} %>
       </div>
       <div class='rvt-grid__item-12 rvt-p-top-md'>
-        <%= form.check_box :will_supply, id: 'item_will_supply' %>
+        <%= form.check_box :will_supply, id: 'item_will_supply', class: 'enterastab' %>
         <%= form.label :will_supply, "Patron will supply" %>
       </div>
       <div class='rvt-grid__item-12 rvt-p-bottom-md'>
-        <%= form.check_box :purchase, id: 'item_purchase' %>
+        <%= form.check_box :purchase, id: 'item_purchase', class: 'enterastab' %>
         <%= form.label :purchase, "Please purchase" %>
       </div>
     </div>

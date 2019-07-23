@@ -18,52 +18,52 @@
         <%= form.label :name do %>
             Course Name <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :name, id: :course_name %>
+        <%= form.text_field :name, id: :course_name, class: 'enterastab' %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :course_number do %>
           Course number <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :course_number, id: :course_course_number, placeholder: 'example: X101, W131' %>
+        <%= form.text_field :course_number, id: :course_course_number, class: 'enterastab', placeholder: 'example: X101, W131' %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :department_name do %>
           Department <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :department_name, placeholder: 'Enter department...', data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
+        <%= form.text_field :department_name, class: 'enterastab', placeholder: 'Enter department...', data: {autocomplete_source: Department.order(:name).active.map(&:name)} %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :instructor do %>
           Instructor <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :instructor, id: :course_instructor %>
+        <%= form.text_field :instructor, id: :course_instructor, class: 'enterastab' %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :instructor_username do %>
           Instructor username <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :instructor_username, id: :course_instructor_username %>
+        <%= form.text_field :instructor_username, id: :course_instructor_username, class: 'enterastab' %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :instructor_email do %>
           Instructor email <%= fa_icon 'asterisk' %>
         <% end %>
-        <%= form.text_field :instructor_email, id: :course_instructor_email %>
+        <%= form.text_field :instructor_email, id: :course_instructor_email, class: 'enterastab' %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :library %>
-        <%= form.collection_select :library_id, Library.where.not(name: 'All'), :id, :name %>
+        <%= form.collection_select :library_id, Library.where.not(name: 'All'), :id, :name, {}, {class: 'enterastab'} %>
       </div>
 
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :semester %>
-        <%= form.collection_select :semester_id, Semester.active, :id, :semester %>
+        <%= form.collection_select :semester_id, Semester.active, :id, :semester, {}, {class: 'enterastab'} %>
       </div>
 
       <div class="rvt-grid__item-12 rvt-p-all-md">
