@@ -7,11 +7,10 @@ SwitchUser.setup do |config|
   # available_users is a hash,
   # key is the model name of user (:user, :admin, or any name you use),
   # value is a block that return the users that can be switched.
-  config.available_users = {
-    user: -> { User.joins(:assignments).where(assignments: {role_id: Role.find_by(name: 'instructor')}) -
-               User.joins(:assignments).where(assignments: {role_id: Role.find_by(name: 'admin')})
-             }
-  }
+  users = User.joins(:assignments).where(assignments: {role_id: Role.find_by(name: 'instructor')}) -
+          User.joins(:assignments).where(assignments: {role_id: Role.find_by(name: 'admin')})
+
+  config.available_users = { user: -> { User.where(id: users.map(&:id)) } }
 
   # available_users_identifiers is a hash,
   # keys in this hash should match a key in the available_users hash
