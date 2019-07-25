@@ -1,5 +1,16 @@
 RailsAdmin.config do |config|
 
+  config.model "User" do
+    edit do
+      field :uid
+      field :email
+      field :provider do
+        default_value :cas
+      end
+      field :roles
+    end
+  end
+
   ### Popular gems integration
 
   ## == Devise ==
