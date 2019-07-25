@@ -12,42 +12,43 @@
 <% end %>
 
     <div class="rvt-grid iucat-data" style="">
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
-        <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>IUCAT Data</button>
-      </div>
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-9-md-up rvt-grid__item-10-lg-up rvt-p-bottom-md'>
-        <%= item_form.text_field :iucat_id, placeholder: "Optionally fetch data from IUCAT URL or record ID.", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__);", class: 'iucat-record-id', disabled: expired %>
-      </div>
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-1-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
-        <a  id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button-disabled rvt-button iucat-link-bttn" target="_blank">
-          <%= fa_icon 'external-link' %>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-3-md-up rvt-grid__item-3-lg-up rvt-p-bottom-md'>
+        <a href="https://iucat.iu.edu" id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button iucat-link-bttn" target="_iucat">
+          Go to IUCAT <%= fa_icon 'external-link' %>
         </a>
       </div>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-7-md-up rvt-grid__item-7-lg-up rvt-p-bottom-md'>
+        <%= item_form.text_field :iucat_id, placeholder: "Paste IUCAT URL.", onkeydown: "preventSubmit(event);", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__, event); return false;", class: 'iucat-record-id', disabled: expired %>
+      </div>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-2-lg-up rvt-p-bottom-md'>
+        <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>Autofill</button>
+      </div>
     </div>
+
     <div class="rvt-grid">
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :title %> <%= fa_icon 'asterisk' %>
-        <%= item_form.text_field :title, disabled: expired %>
+        <%= item_form.text_field :title, disabled: expired, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :author %> <%= fa_icon 'asterisk' %>
-        <%= item_form.text_field :author, disabled: expired %>
+        <%= item_form.text_field :author, disabled: expired, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :publication_date %> <%= fa_icon 'asterisk' %>
-        <%= item_form.text_field :publication_date, disabled: expired %>
+        <%= item_form.text_field :publication_date, disabled: expired, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :edition %>
-        <%= item_form.text_field :edition, disabled: expired %>
+        <%= item_form.text_field :edition, disabled: expired, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :call_number %>
-        <%= item_form.text_field :call_number, disabled: expired %>
+        <%= item_form.text_field :call_number, disabled: expired, class: 'enterastab' %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :loan_period %>
-        <%= item_form.collection_select :loan_period_id, LoanPeriod.all, :id, :length, {}, {disabled: expired} %>
+        <%= item_form.collection_select :loan_period_id, LoanPeriod.all, :id, :length, {}, {disabled: expired, class: 'enterastab'} %>
       </div>
       <div class="field rvt-grid__item-12-md-up rvt-grid__item-8-lg-up">
         <%= item_form.label :note %>
@@ -59,22 +60,22 @@
            class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up"
            id="div_bod_format___nested_field_for_replace_with_index__">
         <%= item_form.label :bod_format, 'Books on Demand format' %>
-        <%= item_form.text_field :bod_format, disabled: expired %>
+        <%= item_form.text_field :bod_format, disabled: expired, class: 'enterastab' %>
       </div>
       <% if current_user.admin? %>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= item_form.label :item_status %>
-        <%= item_form.collection_select :item_status_id, ItemStatus.all, :id, :status, {}, {disabled: expired} %>
+        <%= item_form.collection_select :item_status_id, ItemStatus.all, :id, :status, {}, {disabled: expired, class: 'enterastab'} %>
       </div>
       <% end %>
     </div>
     <div class="rvt-grid">
       <div class='rvt-grid__item-12'>
-        <%= item_form.check_box :will_supply, disabled: expired %>
+        <%= item_form.check_box :will_supply, disabled: expired, class: 'enterastab' %>
         <%= item_form.label :will_supply, "I will supply" %>
       </div>
       <div class='rvt-grid__item-12'>
-        <%= item_form.check_box :purchase, disabled: expired %>
+        <%= item_form.check_box :purchase, disabled: expired, class: 'enterastab' %>
         <%= item_form.label :purchase, "Please purchase" %>
       </div>
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md rvt-p-top-lg'>

@@ -1,12 +1,18 @@
 <% if user_signed_in? %>
-  <% if current_user.admin? || current_user.role?(:instructor) %>
+  <% if current_user.role?(:instructor) && !current_user.admin? %>
+    <div class='rvt-p-all-sm'>
+      <%= link_to "New Course", new_course_path, class: 'rvt-button' %>
+    </div>
+    <div class='rvt-p-all-sm'>
+      <%= link_to "My Courses", courses_path, class: 'rvt-button' %>
+    </div>
+  <% elsif current_user.admin? %>
     <div class='rvt-p-all-sm'>
       <%= link_to "Add Course", new_course_path, class: 'rvt-button' %>
     </div>
     <div class='rvt-p-all-sm'>
       <%= link_to "List Courses", courses_path, class: 'rvt-button' %>
     </div>
-    <% if current_user.admin? %>
     <div class='rvt-p-all-sm'>
       <%= link_to "List Items", items_path, class: 'rvt-button' %>
     </div>
@@ -14,11 +20,10 @@
       <%= link_to "Send Letter", letters_path, class: 'rvt-button' %>
     </div>
     <div class='rvt-p-all-sm'>
-      <%= link_to "Administer", rails_admin_path, class: 'rvt-button' %>
+      <%= link_to "Admin", rails_admin_path, class: 'rvt-button' %>
     </div>
     <p class='rvt-text-bold'>Switch User</p>
     <%= switch_user_select style: 'width: 220px' %>
-    <% end %>
   <% else %>
     <p>Go to IUCAT to search for Course Reserve Materials.</p>
   <% end %>
