@@ -1,7 +1,7 @@
 default: &default
   :ldap:
     :host: ads.university.edu
-    :username: username
+    :user: username
     :password: password
     :authbase: 'ou=group,ou=accounts,dc=ads,dc=university,dc=edu'
     :treebase: 'ou=accounts,dc=ads,dc=university,dc=edu'
@@ -17,7 +17,7 @@ default: &default
   # Email settings
   :email:
     :default_from: 'noreply@library.edu'
-    :daily_to: 'someone@library.edu'      
+    :daily_to: 'someone@library.edu'
 
 development:
   <<: *default
