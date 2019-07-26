@@ -22,3 +22,10 @@ test:
 
 production:
   <<: *default
+  :secret_key: 12345678900987654321
+  :db:
+    :adapter: mysql2
+    :host: localhost
+    :database: db_name
+    :username: db_username
+    :password: db_password

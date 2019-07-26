@@ -22,4 +22,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: <%= CourseReserves.config[:db][:adapter] %>
+  host: <%= CourseReserves.config[:db][:host] %>
+  database: <%= CourseReserves.config[:db][:database] %>
+  username: <%= CourseReserves.config[:db][:username] %>
+  password: <%= CourseReserves.config[:db][:password] %>
