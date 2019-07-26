@@ -1,7 +1,7 @@
 default: &default
   :ldap:
     :host: ads.university.edu
-    :username: username
+    :user: username
     :password: password
     :authbase: 'ou=group,ou=accounts,dc=ads,dc=university,dc=edu'
     :treebase: 'ou=accounts,dc=ads,dc=university,dc=edu'
@@ -14,6 +14,11 @@ default: &default
     :admin:
       - LIB-OPS
 
+  # Email settings
+  :email:
+    :default_from: 'noreply@library.edu'
+    :daily_to: 'someone@library.edu'
+
 development:
   <<: *default
 
@@ -22,3 +27,10 @@ test:
 
 production:
   <<: *default
+  :secret_key: 12345678900987654321
+  :db:
+    :adapter: mysql2
+    :host: localhost
+    :database: db_name
+    :username: db_username
+    :password: db_password
