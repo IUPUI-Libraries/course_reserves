@@ -34,3 +34,6 @@ production:
     :database: db_name
     :username: db_username
     :password: db_password
+  :action_mailer:
+    :default_url_options:
+      :host: library.university.edu
