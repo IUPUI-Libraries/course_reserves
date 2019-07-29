@@ -1,4 +1,5 @@
 default: &default
+  # LDAP used for adding users to roles.
   :ldap:
     :host: ads.university.edu
     :user: username
@@ -18,6 +19,17 @@ default: &default
   :email:
     :default_from: 'noreply@library.edu'
     :daily_to: 'someone@library.edu'
+
+  # Production secret must be set in config file.
+  :secret_key: 12345678900987654321
+
+  # Production Database settings must be in config file.
+  :db:
+    :adapter: mysql2
+    :host: localhost
+    :database: db_name
+    :username: db_username
+    :password: db_password
 
 development:
   <<: *default
