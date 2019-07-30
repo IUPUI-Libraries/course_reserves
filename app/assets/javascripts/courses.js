@@ -15,6 +15,25 @@ $(document).on('change', 'form[role="check-modified"]:not([data-remote]) :input'
   return unsaved = true;
 });
 
+// Enable course submit button when at least on title is not empty.
+$(document).on('change', 'input.item-title', function(){
+  item_title_check();
+});
+
+// Disable submit if no item title exists.
+function item_title_check(){
+  no_title = true;
+  $('input.item-title').each(function(){
+    if(no_title && $(this).val() != ''){
+      disabled_status(false);
+      no_title = false;
+    }
+  });
+  if(no_title){
+    disabled_status(true);
+  }
+}
+
 // Autocomplete for course department field.
 jQuery(() =>
   $('#course_department_name').autocomplete({
@@ -25,7 +44,7 @@ jQuery(() =>
         $("#course_department_name").focus();
       }
     }
-  }));
+}));
 
 $(document).ready(function(){
   // Warn of unsaved courses when duplicating.
@@ -34,9 +53,13 @@ $(document).ready(function(){
   } else {
     return unsaved = false;
   }
+  // Check for item title(s)
+  item_title_check();
 });
 
 $(document).on('turbolinks:load', function() {
+  // Check for item title(s)
+  item_title_check();
 
   // Autocomplete for course department field.
   jQuery(() =>
@@ -86,3 +109,7 @@ $(document).on("keydown", "input.enterastab, select.enterastab, textarea.enteras
   return false;
  }
 });
+
+function disabled_status(status){
+  $('input[name=commit]').prop('disabled', status);
+}
