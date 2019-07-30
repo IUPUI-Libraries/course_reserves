@@ -74,6 +74,7 @@ function fetchMetadata(x){
         populate_form(x, fields);
         $(iucat_field).val(iucat_id);
         $(iucat_button).attr("disabled", true);
+        item_title_check();
       }
     }).fail(function() { alert('Could not retrieve data from IUCAT.'); });
   }else{
