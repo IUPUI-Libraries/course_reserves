@@ -20,11 +20,9 @@
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-7-md-up rvt-grid__item-7-lg-up rvt-p-bottom-md'>
         <%= item_form.text_field :iucat_id, placeholder: "Paste IUCAT URL.", onkeydown: "preventSubmit(event);", onkeyup: "checkIUCAT(__nested_field_for_replace_with_index__, event); return false;", class: 'iucat-record-id', disabled: expired %>
       </div>
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-1-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
+      <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-2-lg-up rvt-p-bottom-md'>
         <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>Autofill</button>
-      </div>
-      <div class='rvt-grid__item-12-sm-up rvt-grid__item-1-md-up rvt-grid__item-1-lg-up rvt-p-bottom-md'>
-        <a data-modal-trigger="modal-example-basic"><%= fa_icon 'info-circle' %></a>
+        <a data-modal-trigger='modal-example-basic'><%= fa_icon 'info-circle 2x' %></a>
       </div>
       <%= render 'autofill_modal' %>
     </div>
