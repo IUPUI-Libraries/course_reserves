@@ -44,3 +44,10 @@ ul.ui-autocomplete {
 div.item_expired {
   background-color: #ccc;
 }
+
+// Position info buttons.
+a.info-link {
+  position: relative;
+  top: 7px;
+  left: 10px
+}

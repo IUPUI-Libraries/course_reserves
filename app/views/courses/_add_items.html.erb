@@ -11,7 +11,7 @@
     <div class="add_items rvt-container">
 <% end %>
 
-    <div class="rvt-grid iucat-data" style="">
+    <div class="rvt-grid iucat-data">
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-3-md-up rvt-grid__item-3-lg-up rvt-p-bottom-md'>
         <a href="https://iucat.iu.edu" id="iucat_link___nested_field_for_replace_with_index__" class="rvt-button iucat-link-bttn" target="_iucat">
           Go to IUCAT <%= fa_icon 'external-link' %>
@@ -22,7 +22,9 @@
       </div>
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-2-md-up rvt-grid__item-2-lg-up rvt-p-bottom-md'>
         <button id="iucat_data___nested_field_for_replace_with_index__" class="rvt-button iucat-data-bttn" onclick="fetchMetadata(__nested_field_for_replace_with_index__);return false;" disabled>Autofill</button>
+        <a data-modal-trigger='modal-info-autofill' class='info-link' id='autofill-info-link'><%= fa_icon 'info-circle 2x' %></a>
       </div>
+      <%= render 'autofill_modal' %>
     </div>
 
     <div class="rvt-grid">
