@@ -1,20 +1,84 @@
 <div class="rvt-modal"
-     id="modal-example-basic"
+     id="modal-info-autofill"
      role="dialog"
-     aria-labelledby="modal-example-title"
+     aria-labelledby="modal-info-autofill"
      aria-hidden="true"
      tabindex=-1>
      <div class="rvt-modal__inner">
         <header class="rvt-modal__header">
-            <h1 class="rvt-modal__title" id="modal-example-title">Modal title</h1>
+            <h1 class="rvt-modal__title" id="modal-example-title">Using IUCAT to Autofill Item</h1>
         </header>
+
         <div class="rvt-modal__body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <a href="#">incididunt ut labore</a> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <ol class="rvt-steps rvt-steps--vertical">
+            <li class="rvt-steps__item">
+              <span class="rvt-steps__item-content">
+                <span class="rvt-steps__label">
+                  Search for item in IUCAT
+                </span>
+                <span class="rvt-steps__indicator">
+                  <span class="rvt-sr-only">Step</span> 1
+                </span>
+              </span>
+            </li>
+            <li class="rvt-steps__item">
+              <span class="rvt-steps__item-content">
+                <span class="rvt-steps__label">Copy URL of item</span>
+                <span class="rvt-steps__indicator">
+                  <span class="rvt-sr-only">Step</span> 2
+                </span>
+              </span>
+            </li>
+            <li class="rvt-steps__item">
+              <span class="rvt-steps__item-content">
+                <span class="rvt-steps__label">Paste URL into Course Reserves item</span>
+                <span class="rvt-steps__indicator">
+                  <span class="rvt-sr-only">Step</span> 3
+                </span>
+              </span>
+            </li>
+            <li class="rvt-steps__item">
+              <span class="rvt-steps__item-content">
+                <span class="rvt-steps__label">Autofill item</span>
+                <span class="rvt-steps__indicator">
+                  <span class="rvt-sr-only">Step</span> 4
+                </span>
+              </span>
+            </li>
+          </ol>
+
+          <h4 class="rvt-p-top-md">1. Search for item in IUCAT</h4>
+          <div class="rvt-p-left-md">
+            Click on <%= image_tag('info/go_iucat', height: '32px') %>
+            to open IUCAT <br/> in another browser tab.
+          </div>
+
+          <h4 class="rvt-p-top-md">2. Copy URL of item</h4>
+          <div class="rvt-p-left-md">
+            Copy the link from the Browser's URL bar.<br/>
+            <%= image_tag('info/copy_url', height: '256px') %>
+          </div>
+
+          <h4 class="rvt-p-top-md">3. Paste URL into Course Reserves item</h4>
+          <div class="rvt-p-left-md">
+            Paste the copied URL into the field marked "Paste IUCAT URL."
+            The Autofill button should now be enabled.
+            <%= image_tag('info/paste_url', height: '48px') %>
+          </div>
+
+          <h4 class="rvt-p-top-md">4. Autofill item</h4>
+          <div class="rvt-p-left-md">
+            Click on <%= image_tag('info/autofill_button', height: '32px') %>. <br/>
+            Available information pulled from IUCAT should now populate
+            the item. Verify all fields are correct.
+            Add another item or save course.
+          </div>
         </div>
+
         <div class="rvt-modal__controls">
-            <button type="button" class="rvt-button" data-modal-close="modal-example-basic">OK</button>
+            <button type="button" class="rvt-button" data-modal-close="modal-info-autofill">OK</button>
         </div>
-        <button type="button" class="rvt-button rvt-modal__close" data-modal-close="modal-example-basic">
+        <button type="button" class="rvt-button rvt-modal__close" data-modal-close="modal-info-autofill">
             <span class="rvt-sr-only">Close</span>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                 <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
