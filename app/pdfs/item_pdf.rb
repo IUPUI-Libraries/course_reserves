@@ -56,7 +56,7 @@ class ItemPdf
              size: 18
       end
       move_down 0.25.in
-      text 'Burrower is responsible for returning this item to the Circulation Desk.',
+      text 'Borrower is responsible for returning this item to the Circulation Desk.',
            align: :center
       move_down 0.25.in
       font('Helvetica-Bold') do
