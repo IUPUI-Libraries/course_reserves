@@ -128,4 +128,6 @@ function set_bod(format){
   status_name = "course\\[items_attributes\\]\\[" + bod_id + "\\]\\[item_status_id\\]";
   $('select[name=' + status_name + '] option:contains("Ordering")').prop('selected', true);
   $("#div_bod_format_" + bod_id).show();
+  $("#div_purchase_" + bod_id).hide();
+  $("#div_supply_" + bod_id).hide();
 }
