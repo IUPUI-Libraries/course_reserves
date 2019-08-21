@@ -28,7 +28,7 @@
         </div>
         <div class="rvt-grid__item-md">
           <%= f.label :semester_id_eq, 'Semester' %>
-          <%= f.select :semester_id_eq, options_from_collection_for_select(Semester.all, 'id', 'semester', param_semester), include_blank: true %>
+          <%= f.select :semester_id_eq, options_from_collection_for_select(Semester.order(id: :desc), 'id', 'semester', param_semester), include_blank: true %>
         </div>
         <div class="rvt-grid__item">
           <%= f.submit "Filter", class: "rvt-button rvt-m-top-md" %>

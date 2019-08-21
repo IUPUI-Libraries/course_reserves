@@ -20,7 +20,7 @@
         </div>
         <div class="rvt-grid__item-md">
           <%= f.label :course_semester_semester_cont, 'Semester' %>
-          <%= f.select :course_semester_semester_eq, options_from_collection_for_select(Semester.all, 'semester', 'semester', param_semester), include_blank: true %>
+          <%= f.select :course_semester_semester_eq, options_from_collection_for_select(Semester.order(id: :desc), 'semester', 'semester', param_course_semester), include_blank: true %>
         </div>
         <div class="rvt-grid__item-md">
           <%= f.label :item_status_id_eq, 'Status' %>
