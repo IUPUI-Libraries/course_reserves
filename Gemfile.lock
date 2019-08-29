@@ -133,7 +133,7 @@ GEM
       rails (>= 3.2.0)
     net-ldap (0.16.1)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
@@ -309,7 +309,7 @@ DEPENDENCIES
   mysql2
   nested_form_fields
   net-ldap (~> 0.16.1)
-  nokogiri
+  nokogiri (>= 1.10.4)
   omniauth
   omniauth-cas (~> 1.1, >= 1.1.1)
   omniauth-rails_csrf_protection (~> 0.1)
