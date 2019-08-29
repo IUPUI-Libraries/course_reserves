@@ -34,3 +34,8 @@ public/assets/
 # Mac generated files
 .DS_Store
 */.DS_Store
+
+# Ignore RubyMine stuff
+.idea
+.generators
+.rakeTasks
