@@ -39,4 +39,10 @@ module ItemsHelper
 
     params[:q][:item_status_id_eq]
   end
+
+  def param_course_semester
+    return '' unless params.has_key?(:q) && params[:q].has_key?(:course_semester_semester_eq)
+
+    params[:q][:course_semester_semester_eq]
+  end
 end
