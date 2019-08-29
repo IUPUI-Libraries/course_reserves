@@ -45,6 +45,14 @@
       <th scope="row">Course:</th>
       <td><%= link_to Course.find(@item.course_id).name, course_path(@item.course_id) %></td>
     </tr>
+    <tr>
+      <th scope="row">Patron will supply:</th>
+      <td><%= "Yes" if @item.will_supply %></td>
+    </tr>
+    <tr>
+      <th scope="row">Please purchase:</th>
+      <td><%= "Yes" if @item.purchase %></td>
+    </tr>
   </tbody>
 </table>
 
