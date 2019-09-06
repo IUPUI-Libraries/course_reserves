@@ -10,7 +10,7 @@
     <span class="rvt-header__title">
       <%= link_to root_path do %>
         University Library <br/>
-        <span class="header__subtitle">Course Reserves</span>
+        <span class="header__subtitle"><%= CourseReserves.config[:title] %></span>
       <% end %>
     </span>
     <% if user_signed_in? %>
