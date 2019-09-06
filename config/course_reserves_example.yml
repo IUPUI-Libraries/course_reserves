@@ -1,4 +1,7 @@
 default: &default
+  # Application title
+  :title: Course Reserves
+
   # LDAP used for adding users to roles.
   :ldap:
     :host: ads.university.edu
