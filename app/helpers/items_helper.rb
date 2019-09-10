@@ -45,4 +45,10 @@ module ItemsHelper
 
     params[:q][:course_semester_semester_eq]
   end
+
+  def param_libary
+    return '' unless params.has_key?(:q) && params[:q].has_key?(:course_library_id_eq)
+
+    params[:q][:course_library_id_eq]
+  end
 end

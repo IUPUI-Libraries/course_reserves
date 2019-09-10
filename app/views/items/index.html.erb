@@ -19,6 +19,10 @@
           <%= f.search_field :course_name_cont %>
         </div>
         <div class="rvt-grid__item-md">
+          <%= f.label :course_library_id_eq, 'Library' %>
+          <%= f.select :course_library_id_eq, options_from_collection_for_select(Library.where.not(name: 'All'), 'id', 'name', param_libary), include_blank: true %>
+        </div>
+        <div class="rvt-grid__item-md">
           <%= f.label :course_semester_semester_cont, 'Semester' %>
           <%= f.select :course_semester_semester_eq, options_from_collection_for_select(Semester.order(id: :desc), 'semester', 'semester', param_course_semester), include_blank: true %>
         </div>
@@ -42,6 +46,7 @@
       <th><%= sort_link(@q, :title) %></th>
       <th><%= sort_link(@q, :author) %></th>
       <th><%= sort_link(@q, :course_name, 'Course') %></th>
+      <th><%= sort_link(@q, :course_library, 'Library') %></th>
       <th><%= sort_link(@q, :course_semester_semester, 'Semester') %></th>
       <th><%= sort_link(@q, :status) %></th>
       <th colspan="3"></th>
@@ -55,6 +60,7 @@
         <td><%= title_iucat_link(item) %></td>
         <td><%= item.author %></td>
         <td><%= link_to Course.find(item.course_id).name, course_path(item.course_id)%></td>
+        <td><%= Course.find(item.course_id).library.name %></td>
         <td><%= Course.find(item.course_id).semester.semester %></td>
         <td><%= ItemStatus.find(item.item_status_id).status %></td>
         <td>
