@@ -18,6 +18,10 @@ class Item < ApplicationRecord
     items_with_status('Ordering')
   end
 
+  def self.processing
+    items_with_status('Processing')
+  end
+
   def self.items_with_status(status)
     where(item_status_id: status_id(status))
   end

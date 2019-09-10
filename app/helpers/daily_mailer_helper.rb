@@ -8,6 +8,10 @@ module DailyMailerHelper
     Item.ordering
   end
 
+  def processing_items
+    Item.processing
+  end
+
   def courses_today
     Course.last_24
   end
