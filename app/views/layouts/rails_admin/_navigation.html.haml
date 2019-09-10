@@ -6,6 +6,6 @@
       %span.icon-bar
       %span.icon-bar
     %a.navbar-brand.pjax{href: main_app.root_path}
-      = _get_plugin_name[0] || 'Rails'
+      = CourseReserves.config[:title] || _get_plugin_name[0] || 'Rails'
   .collapse.navbar-collapse#secondary-navigation
     = render partial: 'layouts/rails_admin/secondary_navigation'
