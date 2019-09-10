@@ -17,7 +17,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def expire?
-    user.admin? || record.user_id == user.id
+    user.admin? || record.user_id == user.id || Course.find(record.course_id).instructor_username == user.uid
   end
 
   def update?
