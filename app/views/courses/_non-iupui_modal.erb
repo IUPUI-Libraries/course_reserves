@@ -1,5 +1,5 @@
 <div class = "rvt-modal"
-     id = "modal-local"
+     id = "modal-non-iupui"
      role = "dialog"
      aria-labelledby="modal-dialog-title"
      aria-hidden="true"
@@ -19,7 +19,17 @@
       </p>
     </div>
     <div class="rvt-modal__controls">
-      <button class="rvt-button rvt-button--secondary" data-modal-close="modal-local">Close</button>
+      <button class="rvt-button"
+              onclick="Modal.close('modal-non-iupui', function(){set_request(true)});
+                       return false;">
+        Please Purchase
+      </button>
+      <button class="rvt-button rvt-button--secondary"
+              onclick="Modal.close('modal-non-iupui', function(){set_request(false)});
+                       return false;">
+        Remove Item
+      </button>
     </div>
   </div>
+  <input type="hidden" id="non_iupui_modal_index" />
 </div>

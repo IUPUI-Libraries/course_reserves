@@ -57,8 +57,10 @@ function fetchMetadata(x){
       $.each(data, function(key, val){
         if(key == 'local_location' && !val){
           // Must be Ul or Herron
-          Modal.open('modal-local', function(){});
-          populate = false;
+          Modal.open('modal-non-iupui', function(){
+            $('#non_iupui_modal_index').val(x);
+          });
+          populate = true;
         }else if(key == 'book_on_demand' && val == true){
           // Check if Book on Demand
           Modal.open('modal-bod', function(){
@@ -130,4 +132,23 @@ function set_bod(format){
   $("#div_bod_format_" + bod_id).show();
   $("#div_purchase_" + bod_id).hide();
   $("#div_supply_" + bod_id).hide();
+}
+
+function set_request(order){
+  non_iupui_id = $('#non_iupui_modal_index').val();
+  if (order){
+    // Check Please Request option
+    $("#course_items_attributes_" + non_iupui_id + "_purchase").prop("checked", true);
+  }else{
+    // Clear IUCAT data
+    clear_iucat_data(non_iupui_id);
+  }
+}
+
+function clear_iucat_data(id){
+  var fields = ['iucat_id', 'title', 'author', 'publication_date', 'edition', 'call_number'];
+   fields.forEach(function(field){
+     input_field = "#course_items_attributes_" + id + "_" + field;
+     $(input_field).val('');
+   });
 }
