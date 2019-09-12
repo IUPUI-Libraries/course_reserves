@@ -53,31 +53,26 @@ function fetchMetadata(x){
   if(iucat_json){
     $.getJSON(iucat_json, function(data){
       fields = {};
-      populate = true;
       $.each(data, function(key, val){
         if(key == 'local_location' && !val){
-          // Must be Ul or Herron
+          // Non UL or Herron Item
           Modal.open('modal-non-iupui', function(){
             $('#non_iupui_modal_index').val(x);
           });
-          populate = true;
         }else if(key == 'book_on_demand' && val == true){
-          // Check if Book on Demand
+          // Book on Demand Item
           Modal.open('modal-bod', function(){
             $('#bod_modal_index').val(x);
           });
-          populate = true;
         }else{
-          // Add item to display array
+          // Add to metadata
           fields[key] = val;
         }
       })
-      if(populate){
-        populate_form(x, fields);
-        $(iucat_field).val(iucat_id);
-        $(iucat_button).attr("disabled", true);
-        item_title_check();
-      }
+      populate_form(x, fields);
+      $(iucat_field).val(iucat_id);
+      $(iucat_button).attr("disabled", true);
+      item_title_check();
     }).fail(function() { alert('Could not retrieve data from IUCAT.'); });
   }else{
     alert('Invalid IUCAT ID.')
@@ -125,6 +120,8 @@ function get_base_path(){
 }
 
 function set_bod(format){
+  // Response from Book on Demand modal
+  // Set requested format for purchase
   bod_id = $('#bod_modal_index').val();
   $("#course_items_attributes_" + bod_id + "_bod_format").val(format);
   status_name = "course\\[items_attributes\\]\\[" + bod_id + "\\]\\[item_status_id\\]";
@@ -135,20 +132,21 @@ function set_bod(format){
 }
 
 function set_request(order){
+  // Response from non IUPUI item modal
+  // True should check the Please Purchase checkbox
+  // False should clear all IUCAT data fields
   non_iupui_id = $('#non_iupui_modal_index').val();
   if (order){
-    // Check Please Request option
     $("#course_items_attributes_" + non_iupui_id + "_purchase").prop("checked", true);
   }else{
-    // Clear IUCAT data
     clear_iucat_data(non_iupui_id);
   }
 }
 
 function clear_iucat_data(id){
   var fields = ['iucat_id', 'title', 'author', 'publication_date', 'edition', 'call_number'];
-   fields.forEach(function(field){
-     input_field = "#course_items_attributes_" + id + "_" + field;
-     $(input_field).val('');
-   });
+    fields.forEach(function(field){
+      input_field = "#course_items_attributes_" + id + "_" + field;
+      $(input_field).val('');
+    });
 }
