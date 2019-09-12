@@ -49,3 +49,16 @@
   </tr>
   <% end %>
 </table>
+
+<h3>All Processing Items</h3>
+<table>
+  <tr><th>Item</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Course</th></tr>
+  <% processing_items.each do |item| %>
+  <% course = Course.find(item.course_id) %>
+  <tr>
+    <td><%= link_to item.title, item %></td>
+    <td></td>
+    <td><%= link_to course.title, course %></td>
+  </tr>
+  <% end %>
+</table>
