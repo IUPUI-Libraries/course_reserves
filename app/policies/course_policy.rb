@@ -1,6 +1,6 @@
 class CoursePolicy < ApplicationPolicy
   def show?
-    user.admin? || record.user_id == user.id
+    user.admin? || record.user_id == user.id || record.instructor_username == user.uid
   end
 
   def create?
@@ -8,7 +8,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin? || record.user_id == user.id
+    user.admin? || record.user_id == user.id || record.instructor_username == user.uid
   end
 
   def destroy?
@@ -16,7 +16,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || record.user_id == user.id
+    user.admin? || record.user_id == user.id || record.instructor_username == user.uid
   end
 
   def available?
@@ -24,7 +24,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def expired?
-    user.admin? || record.user_id == user.id
+    user.admin? || record.user_id == user.id || record.instructor_username == user.uid
   end
 
   class Scope < Scope
@@ -39,7 +39,7 @@ class CoursePolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        scope.where(user_id: user.id)
+        scope.where(user_id: user.id).or(scope.where(instructor_username: user.uid))
       end
     end
   end
