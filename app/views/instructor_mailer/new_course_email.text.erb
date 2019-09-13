@@ -1,0 +1,15 @@
+New Course Reserves material placed for you at <%= @course.library.name %>.
+
+Course: <%= @course.name %> <br/>
+Instructor: <%= @course.instructor %> <br/>
+Semester: <%= @course.semester.semester %> <br/>
+
+Items:
+<% @course.items.each do |item| %>
+* <%= item.title %>
+<% end %>
+
+Created by user <%= User.find(@course.user_id).uid %>.
+
+For more details, got to the UL Course Reserves website,
+<%= root_url.to_s %>, and select this course.
