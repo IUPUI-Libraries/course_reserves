@@ -1,0 +1,23 @@
+<h3>New Course Reserves material created for you at <%= @course.library.name %>.</h3>
+
+<p>
+  Course: <%= @course.name %> <br/>
+  Instructor: <%= @course.instructor %> <br/>
+  Semester: <%= @course.semester.semester %> <br/>
+</p>
+
+Items:
+<ul>
+  <% @course.items.each do |item| %>
+  <li><%= item.title %></li>
+  <% end %>
+</ul>
+
+<p>
+  Created by user <%= User.find(@course.user_id).uid %>.
+</p>
+
+<p>
+  For more details, go to the UL Course Reserves website,
+  <%= link_to root_url.to_s, root_url %>, and select this course.
+</p>

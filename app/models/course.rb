@@ -13,6 +13,8 @@ class Course < ApplicationRecord
     allow_destroy: true,
     reject_if: :reject_item
 
+  after_create :send_instructor_email
+
   def reject_item(attributes)
     attributes['title'].blank? &&
     attributes['author'].blank? &&
@@ -45,5 +47,11 @@ class Course < ApplicationRecord
 
   def department_name=(name)
     self.department = Department.find_by_name(name) if name.present?
+  end
+
+  def send_instructor_email
+    return unless instructor_username != User.find(user_id).uid
+
+    InstructorMailer.new_course_email(self).deliver
   end
 end
