@@ -50,17 +50,31 @@ function fetchMetadata(x){
   iucat_id = iucatRecordId(iucat_input);
   iucat_json = iucatRecordUrl(iucat_input);
   iucat_button = "#iucat_data_" + x;
+  populate = true;
   if(iucat_json){
     $.getJSON(iucat_json, function(data){
       fields = {};
       $.each(data, function(key, val){
-        if(key == 'local_location' && !val){
-          // Non UL or Herron Item
-          Modal.open('modal-non-iupui', function(){
-            $('#non_iupui_modal_index').val(x);
+        if(key == 'ebook' && val == true){
+          // eBook item
+          Modal.open('modal-ebook', function(){
+            $('#ebook_modal_index').val(x);
           });
+          populate = false;
+        }else if(key == 'online' && val == true){
+          // Online item
+          Modal.open('modal-ebook', function(){
+            $('#ebook_modal_index').val(x);
+          });
+          populate = false;
+        }else if(key == 'local_location' && !val){
+          if(populate){
+            Modal.open('modal-non-iupui', function(){
+              $('#non_iupui_modal_index').val(x);
+            });
+          }
         }else if(key == 'book_on_demand' && val == true){
-          // Book on Demand Item
+          // Book on Demand item
           Modal.open('modal-bod', function(){
             $('#bod_modal_index').val(x);
           });
@@ -69,10 +83,12 @@ function fetchMetadata(x){
           fields[key] = val;
         }
       })
-      populate_form(x, fields);
-      $(iucat_field).val(iucat_id);
-      $(iucat_button).attr("disabled", true);
-      item_title_check();
+      if(populate){
+        populate_form(x, fields);
+        $(iucat_field).val(iucat_id);
+        $(iucat_button).attr("disabled", true);
+        item_title_check();
+      }
     }).fail(function() { alert('Could not retrieve data from IUCAT.'); });
   }else{
     alert('Invalid IUCAT ID.')
