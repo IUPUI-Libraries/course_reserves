@@ -41,6 +41,14 @@
         <td><%= wrap(@record.data['999m']) %></td>
       </tr>
       <tr>
+        <th scope="row">eBook</th>
+        <td><%= ebook([@record.data['949h'], @record.data['300a']]) %></td>
+      </tr>
+      <tr>
+        <th scope="row">Online Resource</th>
+        <td><%= online(@record.data['999m']) %></td>
+      </tr>
+      <tr>
         <th scope="row">Local Location</th>
         <td><%= local(@record.data['999m']) %></td>
       </tr>
