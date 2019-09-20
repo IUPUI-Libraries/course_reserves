@@ -23,7 +23,8 @@ module IucatRecordHelper
 
     online = '1 online resource'
     online_period = online + '.'
-    return true if (data & ['ulebook', [online_period]]).any?
+    libs = %w[seasebook wellsebook ulebook kokoebook sbenebook coebook]
+    return true if (data & libs.push([online_period])).any?
 
     data.each do |datum|
       return true if datum.to_s.include?(online)
