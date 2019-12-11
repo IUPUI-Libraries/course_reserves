@@ -3,6 +3,6 @@ class Semester < ApplicationRecord
   has_and_belongs_to_many :letters
 
   def self.active
-    Semester.select { |sem| sem.active == true }
+    Semester.order(id: :desc).select { |sem| sem.active == true }
   end
 end
