@@ -14,7 +14,7 @@ module LettersHelper
         recipients |= [course.instructor_email] if library_filter(course, letter)
       end
     end
-    recipients.join(', ')
+    recipients.join('; ')
   end
 
   def from_address(let = false)
