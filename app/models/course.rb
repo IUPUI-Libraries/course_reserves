@@ -27,7 +27,6 @@ class Course < ApplicationRecord
     dup_course.items.each do |item|
       pending = ItemStatus.find_by(status: 'Pending')
       item.item_status_id = pending.id
-      item.save
     end
     dup_course
   end

@@ -48,7 +48,7 @@ class CoursesController < ApplicationController
   def duplicate
     template = Course.find(params[:id])
     @course = template.duplicate # defined in Course.duplicate
-    render action: 'new'
+    render action: 'new', notice: 'Review Course before Saving.'
   end
 
   # Get /course/1/available
