@@ -34,11 +34,11 @@
     <div class="rvt-grid">
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :title %>
-        <%= form.text_field :title, id: :item_title, class: 'enterastab' %>
+        <%= form.text_field :title, id: :item_title, class: 'enterastab', maxlength: 255 %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :author %>
-        <%= form.text_field :author, id: :item_author, class: 'enterastab' %>
+        <%= form.text_field :author, id: :item_author, class: 'enterastab', maxlength: 255 %>
       </div>
       <div class="field rvt-grid__item-6-md-up rvt-grid__item-4-lg-up">
         <%= form.label :publication_date %>
