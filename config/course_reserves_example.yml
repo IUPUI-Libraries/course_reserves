@@ -5,6 +5,7 @@ default: &default
   # LDAP used for adding users to roles.
   :ldap:
     :host: ads.university.edu
+    :port: 636
     :user: username
     :password: password
     :authbase: 'ou=group,ou=accounts,dc=ads,dc=university,dc=edu'
