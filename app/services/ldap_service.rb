@@ -4,8 +4,9 @@ module LdapService
 
   def self.fetch_info(username)
     info = Hash.new
-    ldap = Net::LDAP.new
+    ldap = Net::LDAP.new encryption: {method: :simple_tls}
     ldap.host = CourseReserves.config[:ldap][:host]
+    ldap.port = CourseReserves.config[:ldap][:port]
     auth_user = ["cn=#{CourseReserves.config[:ldap][:user]}", CourseReserves.config[:ldap][:authbase]].join(',')
     ldap.auth auth_user, CourseReserves.config[:ldap][:password]
     if ldap.bind
