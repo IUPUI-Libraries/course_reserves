@@ -6,6 +6,8 @@ class Item < ApplicationRecord
 
   validates :title, :author, :publication_date, presence: true
 
+  validates_length_of :title, :author, :publication_date, :edition, :call_number,  maximum: 255
+
   def init
     self.item_status_id ||= pending_id
   end
