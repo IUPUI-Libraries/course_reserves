@@ -97,7 +97,7 @@ function fetchMetadata(x){
 
 function populate_form(x, fields){
   $.each(fields, function(key, val){
-    if($(courseAttr(x,'title')).length){
+    if($(courseAttr(x,'title')).length && typeof val === 'string'){
       $(courseAttr(x,key)).val(val.substring(0,255));
     }
   })
