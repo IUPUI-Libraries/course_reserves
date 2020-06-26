@@ -13,3 +13,17 @@ $(document).on("keydown", "input.enterastab, select.enterastab, textarea.enteras
   return false;
  }
 });
+
+// Show and hide digital option fields
+// THIS WILL NOT WORK AS FIELDS ARE INDEXED
+
+$(document).ready(function(){
+  var digital_option = $("input[name='course[items_attributes][1][digital_option]']");
+
+  // Show after loading if checked
+  if(digital_option.checked){
+    $("#digital_option_info").show("slow");
+  }
+
+  // Toggle function
+})

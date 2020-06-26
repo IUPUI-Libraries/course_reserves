@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190612193016) do
+ActiveRecord::Schema.define(version: 20200626200017) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -70,6 +70,9 @@ ActiveRecord::Schema.define(version: 20190612193016) do
     t.boolean "purchase"
     t.integer "loan_period_id"
     t.integer "user_id"
+    t.boolean "digital_option"
+    t.string "digital_title"
+    t.string "digital_url"
     t.index ["course_id"], name: "index_items_on_course_id"
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["loan_period_id"], name: "index_items_on_loan_period_id"

@@ -76,12 +76,32 @@
         <%= item_form.check_box :will_supply, disabled: expired, class: 'enterastab' %>
         <%= item_form.label :will_supply, "I will supply" %>
       </div>
+
       <div id='div_purchase___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
         <%= item_form.check_box :purchase, disabled: expired, class: 'enterastab' %>
         <%= item_form.label :purchase, "Please purchase" %>
         <a data-modal-trigger='modal-info-pleasepurchase' class='info-link' id='pleasepurchase-info-link'><%= fa_icon 'info-circle 2x' %></a>
       </div>
       <%= render 'pleasepurchase_modal' %>
+
+      <div id='div_digitaloption___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
+        <%= item_form.check_box :digital_option, disabled: expired, class: 'enterastab' %>
+        <%= item_form.label :digital_option, "Digital option available" %>
+        <a data-modal-trigger='modal-info-digitaloption' class='info-link' id='digitaloption-info-link'><%= fa_icon 'info-circle 2x' %></a>
+      </div>
+      <%= render 'digitaloption_modal' %>
+
+      <div id="digital_option_info">
+        <div id='div_digitaltitle___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
+          <%= item_form.label :digital_title %>
+          <%= item_form.text_field :digital_title, disabled: expired, class: 'enterastab' %>
+        </div>
+        <div id='div_digitaltitle___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
+          <%= item_form.label :digital_url %>
+          <%= item_form.text_field :digital_url, disabled: expired, class: 'enterastab' %>
+        </div>
+      </div>
+
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md rvt-p-top-lg'>
       <% if item_form.object.persisted? && !expired %>
         <%= link_to "Expire Item", expire_item_path(id: item_form.object.id), class: 'rvt-button rvt-button--danger' %>

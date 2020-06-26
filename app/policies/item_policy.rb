@@ -28,11 +28,13 @@ class ItemPolicy < ApplicationPolicy
     if user.admin?
       [:_destroy, :id, :item_status_id, :title, :author, :publication_date,
        :publisher, :edition, :loan_period_id, :owner, :call_number, :note,
-       :iucat_id, :bod_format, :will_supply, :purchase]
+       :iucat_id, :bod_format, :will_supply, :purchase,
+       :digital_option, :digital_title, :digital_url]
     else
       [:_destroy, :id, :title, :author, :publication_date, :publisher,
        :edition, :loan_period_id, :owner, :call_number, :note, :iucat_id,
-       :bod_format, :will_supply, :purchase]
+       :bod_format, :will_supply, :purchase,
+       :digital_option, :digital_title, :digital_url]
     end
   end
 
