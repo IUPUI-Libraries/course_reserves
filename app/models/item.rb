@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   after_initialize :init
 
   validates :title, :author, :publication_date, presence: true
+  validates_presence_of :digital_title, :digital_url, if: :digital_checked?
 
   validates_length_of :title, :author, :publication_date, :edition, :call_number,  maximum: 255
 
@@ -51,6 +52,12 @@ class Item < ApplicationRecord
 
   def expired?
     return true if status_id('Expired') == self.item_status_id
+
+    false
+  end
+
+  def digital_checked?
+    return true if digital_option == true
 
     false
   end
