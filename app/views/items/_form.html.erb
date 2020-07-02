@@ -70,14 +70,23 @@
         <%= form.check_box :will_supply, id: 'item_will_supply', class: 'enterastab' %>
         <%= form.label :will_supply, "Patron will supply" %>
       </div>
-      <div class='rvt-grid__item-12 rvt-p-bottom-md'>
+      <div class='rvt-grid__item-12'>
         <%= form.check_box :purchase, id: 'item_purchase', class: 'enterastab' %>
         <%= form.label :purchase, "Please purchase" %>
       </div>
-      <div class='rvt-grid__item-12 rvt-p-bottom-md'>
+      <div class='rvt-grid__item-12'>
         <%= form.check_box :digital_option, id: 'item_digital_option', class: 'enterastab' %>
         <%= form.label :digital_option, "Digital option available" %>
       </div>
+      <div class='rvt-grid__item-12'>
+        <%= form.label :digital_title %>
+        <%= form.text_field :digital_title, class: 'enterastab', maxlength: 100 %>
+      </div>
+      <div class='rvt-grid__item-12 rvt-p-bottom-md'>
+        <%= form.label :digital_url %>
+        <%= form.text_field :digital_url, class: 'enterastab', maxlength: 100 %>
+      </div>
+
     </div>
   </div>
   <div class="actions">
