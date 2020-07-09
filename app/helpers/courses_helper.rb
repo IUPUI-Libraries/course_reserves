@@ -12,4 +12,8 @@ module CoursesHelper
 
     params[:q][:library_id_eq]
   end
+
+  def digital_option_display(digital_option)
+    return 'style=display:none;' unless digital_option
+  end
 end

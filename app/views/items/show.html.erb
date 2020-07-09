@@ -53,6 +53,18 @@
       <th scope="row">Please purchase:</th>
       <td><%= "Yes" if @item.purchase %></td>
     </tr>
+    <tr>
+      <th scope="row">Digital alternative available:</th>
+      <td><%= "Yes" if @item.digital_option %></td>
+    </tr>
+    <tr>
+      <th scope="row">Digital title:</th>
+      <td><%= @item.digital_title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Digital url:</th>
+      <td><%= link_to(@item.digital_url, @item.digital_url) if @item.digital_url %></td>
+    </tr>
   </tbody>
 </table>
 

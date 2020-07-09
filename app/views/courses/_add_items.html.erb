@@ -82,6 +82,25 @@
         <a data-modal-trigger='modal-info-pleasepurchase' class='info-link' id='pleasepurchase-info-link'><%= fa_icon 'info-circle 2x' %></a>
       </div>
       <%= render 'pleasepurchase_modal' %>
+
+      <div id='div_digitaloption___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
+        <%= item_form.check_box :digital_option, disabled: expired, class: 'enterastab', onclick: 'digital_options_toggle($(this));' %>
+        <%= item_form.label :digital_option, "Digital alternative available" %>
+        <a data-modal-trigger='modal-info-digitaloption' class='info-link' id='digitaloption-info-link'><%= fa_icon 'info-circle 2x' %></a>
+      </div>
+      <%= render 'digitaloption_modal' %>
+
+      <div id="digital_option_info___nested_field_for_replace_with_index__" <%= digital_option_display(item_form.object.digital_option) %>>
+        <div id='div_digitaltitle___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
+          <%= item_form.label :digital_title %>
+          <%= item_form.text_field :digital_title, disabled: expired, class: 'enterastab', maxlength: 100 %>
+        </div>
+        <div id='div_digitaltitle___nested_field_for_replace_with_index__' class='rvt-grid__item-12'>
+          <%= item_form.label :digital_url %>
+          <%= item_form.text_field :digital_url, disabled: expired, class: 'enterastab', maxlength: 100 %>
+        </div>
+      </div>
+
       <div class='rvt-grid__item-12-sm-up rvt-grid__item-12-md-up rvt-grid__item-12-xxl-up  rvt-p-bottom-md rvt-p-top-lg'>
       <% if item_form.object.persisted? && !expired %>
         <%= link_to "Expire Item", expire_item_path(id: item_form.object.id), class: 'rvt-button rvt-button--danger' %>

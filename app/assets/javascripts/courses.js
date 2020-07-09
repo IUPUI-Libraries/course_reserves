@@ -119,3 +119,16 @@ function item_title_check(){
 function disabled_status(status){
   $('input[name=commit][id=course_submit]').prop('disabled', status);
 }
+
+// Hide | Show digital options info
+function digital_options_toggle(obj){
+  idx = obj.attr('id').split("_")[3];
+  div_id = 'digital_option_info_' + idx;
+  if(obj.is(':checked')){
+    $('#' + div_id).show("slow");
+  }else{
+    $('#' + div_id).hide("slow");
+    $('input[name="course[items_attributes][' + idx + '][digital_title]"]').val('');
+    $('input[name="course[items_attributes][' + idx + '][digital_url]"]').val('');
+  }
+}
