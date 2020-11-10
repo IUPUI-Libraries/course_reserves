@@ -30,3 +30,12 @@
 <% else %>
   <%= render 'presignin' %>
 <% end %>
+<% if !user_signed_in? || !current_user.admin? %>
+  <div>
+    <p class="rvt-text-bold">
+      Find information about the  Course Material Transformation Fellowship
+      Program application opportunity
+      <a href="https://www.ulib.iupui.edu/resources/course-material-transformation-fellowship">here</a>.
+    </p>
+  </div>
+<% end %>
